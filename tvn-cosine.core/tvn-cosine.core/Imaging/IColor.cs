@@ -1,4 +1,6 @@
-﻿namespace Tvn.Cosine.Imaging
+﻿using Tvn.Cosine.Data;
+
+namespace Tvn.Cosine.Imaging
 {
     /// <summary>
     /// Default IColor interface.

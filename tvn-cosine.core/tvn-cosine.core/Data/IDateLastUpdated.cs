@@ -1,4 +1,4 @@
-﻿namespace Tvn.Cosine
+﻿namespace Tvn.Cosine.Data
 {
     /// <summary>
     /// Interface to implement a Date Last Updated field.

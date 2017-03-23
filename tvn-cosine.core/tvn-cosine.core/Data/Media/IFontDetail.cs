@@ -1,4 +1,4 @@
-﻿namespace Tvn.Cosine 
+﻿namespace Tvn.Cosine.Data.Media
 {
     /// <summary>
     /// Implementation for font detail.
