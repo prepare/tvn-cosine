@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v1.6/",
-    "signature": "3fd4c7d72ecf7ae59d4a497809fa74ec9c5be6d4"
+    "signature": "97f2a35a1e5ee3a4908f68052fd14904e4ef328d"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,8 +9,7 @@
     ".NETStandard,Version=v1.6/": {
       "tvn-cosine.core/1.0.0-0": {
         "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Collections.NonGeneric": "4.3.0"
+          "NETStandard.Library": "1.6.1"
         },
         "runtime": {
           "tvn-cosine.core.dll": {}
@@ -163,19 +162,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Concurrent.dll": {}
-        }
-      },
-      "System.Collections.NonGeneric/4.3.0": {
-        "dependencies": {
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Threading": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
         }
       },
       "System.Console/4.3.0": {
@@ -893,11 +879,6 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-ztl69Xp0Y/UXCL+3v3tEU+lIy+bvjKNUmopn1wep/a291pVPK7dxBd6T7WnlQqRog+d1a/hSsgRsmFnIBKTPLQ=="
-    },
-    "System.Collections.NonGeneric/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA=="
     },
     "System.Console/4.3.0": {
       "type": "package",

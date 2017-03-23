@@ -20,7 +20,6 @@
 --reference:C:\Users\theunis\.nuget\packages\System.AppContext\4.3.0\ref\netstandard1.6\System.AppContext.dll
 --reference:C:\Users\theunis\.nuget\packages\System.Collections\4.3.0\ref\netstandard1.3\System.Collections.dll
 --reference:C:\Users\theunis\.nuget\packages\System.Collections.Concurrent\4.3.0\ref\netstandard1.3\System.Collections.Concurrent.dll
---reference:C:\Users\theunis\.nuget\packages\System.Collections.NonGeneric\4.3.0\ref\netstandard1.3\System.Collections.NonGeneric.dll
 --reference:C:\Users\theunis\.nuget\packages\System.Console\4.3.0\ref\netstandard1.3\System.Console.dll
 --reference:C:\Users\theunis\.nuget\packages\System.Diagnostics.Debug\4.3.0\ref\netstandard1.3\System.Diagnostics.Debug.dll
 --reference:C:\Users\theunis\.nuget\packages\System.Diagnostics.Tools\4.3.0\ref\netstandard1.0\System.Diagnostics.Tools.dll
