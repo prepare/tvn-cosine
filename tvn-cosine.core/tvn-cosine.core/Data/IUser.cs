@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Tvn.Cosine.Data.Media
+namespace Tvn.Cosine.Data
 {
     /// <summary>
     /// Interface for a user.

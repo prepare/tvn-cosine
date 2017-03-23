@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Contracts\IDecision.cs" />
+    <Compile Include="Data\Contracts\IDecisionState.cs" />
+    <Compile Include="Data\Contracts\ILineItem.cs" />
+    <Compile Include="Data\Contracts\IStatus.cs" />
+    <Compile Include="Data\Contracts\IContract.cs" />
+    <Compile Include="Data\Contracts\ICurrency.cs" />
     <Compile Include="Data\Media\IClip.cs" />
     <Compile Include="Data\Media\IClipPart.cs" />
     <Compile Include="Data\Media\IClipPartFile.cs" />
@@ -47,10 +53,11 @@
     <Compile Include="Data\Media\IDocumentFormat.cs" />
     <Compile Include="Data\Media\IFile.cs" />
     <Compile Include="Data\Media\IPageStatus.cs" />
+    <Compile Include="Data\Media\ILanguage.cs" />
     <Compile Include="IBody.cs" />
     <Compile Include="IFontDetail.cs" />
     <Compile Include="Data\Media\IIssue.cs" />
-    <Compile Include="Data\Media\ILanguage.cs" />
+    <Compile Include="Data\ILanguage.cs" />
     <Compile Include="Data\Media\IMeasurementSystem.cs" />
     <Compile Include="Data\Media\IMeasurementUnit.cs" />
     <Compile Include="Data\Media\IPage.cs" />
@@ -58,7 +65,7 @@
     <Compile Include="Data\Media\IPublication.cs" />
     <Compile Include="Data\Media\IPublicationSection.cs" />
     <Compile Include="Data\Media\IRegion.cs" />
-    <Compile Include="Data\Media\IUser.cs" />
+    <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\Media\IZone.cs" />
     <Compile Include="Data\Media\IZoneType.cs" />
     <Compile Include="Geometry\IPoint.cs" />
@@ -90,9 +97,7 @@
     <Compile Include="Text\PatternMatching\AhoCorasick\RootNode.cs" />
     <Compile Include="Text\PatternMatching\IPattern.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

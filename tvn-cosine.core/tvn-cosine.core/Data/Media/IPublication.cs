@@ -20,7 +20,7 @@ namespace Tvn.Cosine.Data.Media
         /// <summary>
         /// List of languages of this publication.
         /// </summary>
-        ICollection<ILanguage> Languages { get; }
+        ICollection<Data.ILanguage> Languages { get; }
 
         /// <summary>
         /// Collection of publication sections.

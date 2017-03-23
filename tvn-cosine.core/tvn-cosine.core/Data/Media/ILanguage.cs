@@ -2,14 +2,8 @@
 
 namespace Tvn.Cosine.Data.Media
 {
-    /// <summary>
-    /// Interface to implement a language.
-    /// </summary>
-    public interface ILanguage : IId, IName, IPrefix
+    public interface ILanguage : Data.ILanguage
     {
-        /// <summary>
-        /// Collection of publications with this language.
-        /// </summary>
         ICollection<IPublication> Publications { get; }
     }
 }
