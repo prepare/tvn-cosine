@@ -5,7 +5,7 @@ namespace Tvn.Cosine.Data.Media
     /// <summary>
     /// Interface to implement a zone.
     /// </summary>
-    public interface IZone : IId, IRectangle, IDateCreated
+    public interface IZone : IId, IRectangle<decimal,decimal>, IDateCreated
     {
         /// <summary>
         /// The page for this zone.
