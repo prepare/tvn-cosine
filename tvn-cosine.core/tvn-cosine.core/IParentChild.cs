@@ -1,4 +1,4 @@
-﻿namespace tvn.cosine
+﻿namespace Tvn.Cosine
 {
     /// <summary>
     /// Generic interface to implement a parent child relationship.

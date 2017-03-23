@@ -1,4 +1,4 @@
-﻿namespace tvn.cosine.Imaging
+﻿namespace Tvn.Cosine.Imaging
 {
     /// <summary>
     /// Implementation of IColor.

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace tvn.cosine.Text.PatternMatching.AhoCorasick
+namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
 {
     internal class Node
     {

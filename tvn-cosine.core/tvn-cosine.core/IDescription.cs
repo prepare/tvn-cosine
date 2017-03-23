@@ -1,4 +1,4 @@
-﻿namespace tvn.cosine
+﻿namespace Tvn.Cosine
 {
     /// <summary>
     /// Interface to implement a description field.

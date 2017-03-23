@@ -7,7 +7,7 @@
     <ProjectGuid>{F8B67FE9-D126-44AC-9F9B-67E0EFA5083A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>tvn_cosine.core</RootNamespace>
+    <RootNamespace>Tvn.Cosine</RootNamespace>
     <AssemblyName>tvn-cosine.core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

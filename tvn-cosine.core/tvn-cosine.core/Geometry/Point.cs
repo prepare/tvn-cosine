@@ -1,4 +1,4 @@
-﻿namespace tvn.cosine.Geometry
+﻿namespace Tvn.Cosine.Geometry
 {
     /// <summary>
     /// Default IPoint implementation.

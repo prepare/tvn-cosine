@@ -1,4 +1,4 @@
-﻿namespace tvn.cosine.Text.PatternMatching.AhoCorasick
+﻿namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
 {
     internal class RootNode  : Node  
     { 
