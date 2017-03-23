@@ -8,9 +8,13 @@
 --suppress-warning:CS1705
 --optimize:False
 --output-name:tvn-cosine.core
+--title:tvn-cosine core
+--description:Core modules for tvn-cosine.
+--copyright:Copyright © tvn-cosine 2017
 --file-version:1.0.0.0
 --version:1.0.0.0
---informational-version:1.0.0
+--informational-version:1.0.0-0
+--neutral-language:en-GB
 --target-framework:.NETStandard,Version=v1.6
 --reference:C:\Users\theunis\.nuget\packages\Microsoft.Win32.Primitives\4.0.1\ref\netstandard1.3\Microsoft.Win32.Primitives.dll
 --reference:C:\Users\theunis\.nuget\packages\System.AppContext\4.1.0\ref\netstandard1.6\System.AppContext.dll
@@ -56,5 +60,9 @@
 --reference:C:\Users\theunis\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\theunis\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
 C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.core\src\tvn-cosine.core\IDateCreated.cs
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.core\src\tvn-cosine.core\IDescription.cs
 C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.core\src\tvn-cosine.core\IId.cs
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.core\src\tvn-cosine.core\IName.cs
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.core\src\tvn-cosine.core\IParentChild.cs
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.core\src\tvn-cosine.core\IPrefix.cs
 C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.core\src\tvn-cosine.core\Properties\AssemblyInfo.cs

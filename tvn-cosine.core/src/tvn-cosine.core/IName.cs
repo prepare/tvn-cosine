@@ -1,4 +1,4 @@
-﻿namespace tvn_cosine.core
+﻿namespace tvn.cosine
 {
     public interface IName
     {
