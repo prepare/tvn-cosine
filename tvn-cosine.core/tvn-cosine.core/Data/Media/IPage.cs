@@ -21,5 +21,20 @@ namespace Tvn.Cosine.Data.Media
         /// Collection of page files.
         /// </summary>
         ICollection<IPageFile> PageFiles { get; }
+
+        /// <summary>
+        /// The page number.
+        /// </summary>
+        ushort Number { get; }
+
+        /// <summary>
+        /// The publication section for this page.
+        /// </summary>
+        IPublicationSection PublicationSection { get; }
+
+        /// <summary>
+        /// The page status.
+        /// </summary>
+        IPageStatus PageStatus { get; }
     }
 }

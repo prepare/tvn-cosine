@@ -5,7 +5,7 @@ namespace Tvn.Cosine.Data.Media
     /// <summary>
     /// Interface to implement a zone.
     /// </summary>
-    public interface IZone : IId, IRectangle<decimal,decimal>, IDateCreated
+    public interface IZone : IId, IRectangle<decimal,decimal>, IDateCreated, IFontDetail, IText, IOrder
     {
         /// <summary>
         /// The page for this zone.
@@ -25,26 +25,6 @@ namespace Tvn.Cosine.Data.Media
         /// <summary>
         /// The measurement unit used.
         /// </summary>
-        IMeasurementUnit MeasurementUnit { get; }
-
-        /// <summary>
-        /// The text of the zone.
-        /// </summary>
-        string Text { get; }
-
-        /// <summary>
-        /// The font name for this zone.
-        /// </summary>
-        string FontName { get; }
-        
-        /// <summary>
-        /// The average font size for this zone.
-        /// </summary>
-        double AverageFontSize { get; }
-
-        /// <summary>
-        /// The order of this zone.
-        /// </summary>
-        int Order { get; }
+        IMeasurementUnit MeasurementUnit { get; } 
     }
 }

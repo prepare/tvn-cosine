@@ -5,7 +5,7 @@ namespace Tvn.Cosine.Data.Media
     /// <summary>
     /// Interface to implement a clip part.
     /// </summary>
-    public interface IClipPart : IId, IDateCreated
+    public interface IClipPart : IId, IDateCreated, IOrder, IText, IFontDetail
     {
         /// <summary>
         /// The clip associated with this part.

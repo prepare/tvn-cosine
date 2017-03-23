@@ -5,7 +5,7 @@ namespace Tvn.Cosine.Data.Media
     /// <summary>
     /// Interface to implement a clip.
     /// </summary>
-    public interface IClip : IId, IDateCreated
+    public interface IClip : IId, IDateCreated, IHeadline, ISubHeadline, IBody, IByline
     {
         /// <summary>
         /// The issue of this clip.
@@ -16,5 +16,10 @@ namespace Tvn.Cosine.Data.Media
         /// Collection of clip parts for clip.
         /// </summary>
         ICollection<IClipPart> ClipParts { get; }
+
+        /// <summary>
+        /// Status of the clip.
+        /// </summary>
+        IClipStatus ClipStatus { get; }
     }
 }

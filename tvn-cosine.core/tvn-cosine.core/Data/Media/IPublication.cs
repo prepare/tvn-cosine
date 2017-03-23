@@ -21,5 +21,10 @@ namespace Tvn.Cosine.Data.Media
         /// List of languages of this publication.
         /// </summary>
         ICollection<ILanguage> Languages { get; }
+
+        /// <summary>
+        /// Collection of publication sections.
+        /// </summary>
+        ICollection<IPublicationSection> PublicationSections { get; }
     }
 }
