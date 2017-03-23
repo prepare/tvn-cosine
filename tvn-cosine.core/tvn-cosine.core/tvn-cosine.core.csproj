@@ -68,6 +68,16 @@
     <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\Media\IZone.cs" />
     <Compile Include="Data\Media\IZoneType.cs" />
+    <Compile Include="Expressions\Associativity.cs" />
+    <Compile Include="Expressions\ExpressionObject.cs" />
+    <Compile Include="Expressions\Function.cs" />
+    <Compile Include="Expressions\ICalculate.cs" />
+    <Compile Include="Expressions\IFunction.cs" />
+    <Compile Include="Expressions\InfixExpression.cs" />
+    <Compile Include="Expressions\Operand.cs" />
+    <Compile Include="Expressions\Operator.cs" />
+    <Compile Include="Expressions\PostFixExpression.cs" />
+    <Compile Include="Expressions\ShuntingYard.cs" />
     <Compile Include="Geometry\IPoint.cs" />
     <Compile Include="Geometry\IRectangle.cs" />
     <Compile Include="Geometry\ISize.cs" />
