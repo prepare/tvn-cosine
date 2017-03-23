@@ -102,6 +102,13 @@
     <Compile Include="Data\Media\ISubHeadline.cs" />
     <Compile Include="Data\Media\IText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Text\Nlp\Document.cs" />
+    <Compile Include="Text\Nlp\INlpEngine.cs" />
+    <Compile Include="Text\Nlp\NamedEntity.cs" />
+    <Compile Include="Text\Nlp\PartOfSpeechTag.cs" />
+    <Compile Include="Text\Nlp\Sentence.cs" />
+    <Compile Include="Text\Nlp\Sentiment.cs" />
+    <Compile Include="Text\Nlp\Token.cs" />
     <Compile Include="Text\PatternMatching\AhoCorasick\Node.cs" />
     <Compile Include="Text\PatternMatching\AhoCorasick\PatternMatchingMachine.cs" />
     <Compile Include="Text\PatternMatching\AhoCorasick\RootNode.cs" />
