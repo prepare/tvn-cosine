@@ -10,7 +10,12 @@ namespace Tvn.Cosine.Data
         /// <summary>
         /// Encrypted Password.
         /// </summary>
-        byte[] Password { get; }
+        byte[] PasswordHash { get; }
+
+        /// <summary>
+        /// Password salt.
+        /// </summary>
+        byte[] PasswordSalt { get; }
 
         /// <summary>
         /// Collection of languases loaded for user.

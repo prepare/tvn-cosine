@@ -68,6 +68,7 @@
     <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\Media\IZone.cs" />
     <Compile Include="Data\Media\IZoneType.cs" />
+    <Compile Include="Data\UserBase.cs" />
     <Compile Include="Expressions\Associativity.cs" />
     <Compile Include="Expressions\ExpressionObject.cs" />
     <Compile Include="Expressions\Function.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Data\Media\ISubHeadline.cs" />
     <Compile Include="Data\Media\IText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Text\Hashing\PasswordHasher.cs" />
     <Compile Include="Text\Nlp\Document.cs" />
     <Compile Include="Text\Nlp\INlpEngine.cs" />
     <Compile Include="Text\Nlp\NamedEntity.cs" />
