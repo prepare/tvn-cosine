@@ -65,7 +65,7 @@
         /// </summary>
         /// <param name="point">The point to test.</param>
         /// <returns>Boolean indicating if rectangle contains a point.</returns>
-        public bool Contains(IPoint point)
+        public bool Contains(IPoint<int> point)
         {
             return X >= point.X && X2 <= point.X
                 && Y >= point.Y && Y2 <= point.Y;
@@ -78,7 +78,7 @@
         /// <param name="height">The height to deflate by.</param>
         /// <exception cref="System.OverflowException">Throws exception if deflate would result in overflow.</exception>
         /// <returns>A new deflated rectangle.</returns>
-        public IRectangle Deflate(uint width, uint height)
+        public IRectangle<int, uint> Deflate(uint width, uint height)
         { 
             if (X + width > int.MaxValue
              || Y + height > int.MaxValue)
@@ -110,7 +110,7 @@
         /// <param name="height">The height to inflate by.</param>
         /// <exception cref="System.OverflowException">Throws exception if deflate would result in overflow.</exception>
         /// <returns>A new inflated rectangle.</returns>
-        public IRectangle Inflate(uint width, uint height)
+        public IRectangle<int, uint> Inflate(uint width, uint height)
         {
             if (X - width < int.MinValue
              || Y - height < int.MinValue)
@@ -138,7 +138,7 @@
         /// </summary>
         /// <param name="rectangle">The rectangle to test.</param>
         /// <returns>A new rectangle where it intersects, null if it does not intersect.</returns>
-        public IRectangle Intersection(IRectangle rectangle)
+        public IRectangle<int, uint> Intersection(IRectangle<int, uint> rectangle)
         {
             if (Intersects(rectangle))
             {
@@ -161,7 +161,7 @@
         /// </summary>
         /// <param name="rectangle">The rectangle to test.</param>
         /// <returns>Boolean indicating if rectangle intersects another rectangle.</returns>
-        public bool Intersects(IRectangle rectangle)
+        public bool Intersects(IRectangle<int, uint> rectangle)
         {
             return X <= rectangle.X + rectangle.Width
                 && X2 >= rectangle.X
@@ -174,7 +174,7 @@
         /// </summary>
         /// <param name="rectangle">The rectangle to union.</param>
         /// <returns>A new rectangle with union applied.</returns>
-        public IRectangle Union(IRectangle rectangle)
+        public IRectangle<int, uint> Union(IRectangle<int, uint> rectangle)
         {
             int x = System.Math.Min(X, rectangle.X);
             int y = System.Math.Min(Y, rectangle.Y);

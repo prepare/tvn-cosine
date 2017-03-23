@@ -40,6 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Media\IClip.cs" />
+    <Compile Include="Data\Media\IClipPart.cs" />
+    <Compile Include="Data\Media\IClipPartFile.cs" />
+    <Compile Include="Data\Media\IDocumentFormat.cs" />
+    <Compile Include="Data\Media\IFile.cs" />
+    <Compile Include="Data\Media\IIssue.cs" />
+    <Compile Include="Data\Media\ILanguage.cs" />
+    <Compile Include="Data\Media\IMeasurementSystem.cs" />
+    <Compile Include="Data\Media\IMeasurementUnit.cs" />
+    <Compile Include="Data\Media\IPage.cs" />
+    <Compile Include="Data\Media\IPageFile.cs" />
+    <Compile Include="Data\Media\IPublication.cs" />
+    <Compile Include="Data\Media\IRegion.cs" />
+    <Compile Include="Data\Media\IUser.cs" />
+    <Compile Include="Data\Media\IZone.cs" />
+    <Compile Include="Data\Media\IZoneType.cs" />
     <Compile Include="Geometry\IPoint.cs" />
     <Compile Include="Geometry\IRectangle.cs" />
     <Compile Include="Geometry\ISize.cs" />
@@ -47,8 +63,12 @@
     <Compile Include="Geometry\Rectangle.cs" />
     <Compile Include="Geometry\Size.cs" />
     <Compile Include="IDateCreated.cs" />
+    <Compile Include="IDateLastUpdated.cs" />
     <Compile Include="IDescription.cs" />
+    <Compile Include="IEmail.cs" />
     <Compile Include="IId.cs" />
+    <Compile Include="IIsActive.cs" />
+    <Compile Include="IIsDeleted.cs" />
     <Compile Include="Imaging\Color.cs" />
     <Compile Include="Imaging\IColor.cs" />
     <Compile Include="IName.cs" />
@@ -59,6 +79,9 @@
     <Compile Include="Text\PatternMatching\AhoCorasick\PatternMatchingMachine.cs" />
     <Compile Include="Text\PatternMatching\AhoCorasick\RootNode.cs" />
     <Compile Include="Text\PatternMatching\IPattern.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

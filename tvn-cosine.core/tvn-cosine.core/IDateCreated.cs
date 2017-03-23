@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface to implement a date created field.
     /// </summary>
-    interface IDateCreated
+    public interface IDateCreated
     {
         /// <summary>
         /// Date when item was created.

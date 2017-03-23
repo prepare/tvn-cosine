@@ -3,16 +3,22 @@
     /// <summary>
     /// Default point interface.
     /// </summary>
-    public interface IPoint
+    public interface IPoint<T>
     {
         /// <summary>
         /// X coordinate of point.
         /// </summary>
-        int X { get; }
+        T X { get; }
 
         /// <summary>
         /// Y coordinate of point.
         /// </summary>
-        int Y { get; }
-    } 
+        T Y { get; }
+    }
+
+    /// <summary>
+    /// Default point interface.
+    /// </summary>
+    public interface IPoint : IPoint<int>
+    { }
 }

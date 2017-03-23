@@ -3,21 +3,27 @@
     /// <summary>
     /// Default size interface.
     /// </summary>
-    public interface ISize
+    public interface ISize<T>
     {
         /// <summary>
         /// Width of size.
         /// </summary>
-        uint Width { get; }
+        T Width { get; }
 
         /// <summary>
         /// Height of size.
         /// </summary>
-        uint Height { get; }
+        T Height { get; }
 
         /// <summary>
         /// Area of size.
         /// </summary>
-        uint Area { get; }
+        T Area { get; }
     }
+
+    /// <summary>
+    /// Default size interface.
+    /// </summary>
+    public interface ISize : ISize<uint>
+    { }
 }
