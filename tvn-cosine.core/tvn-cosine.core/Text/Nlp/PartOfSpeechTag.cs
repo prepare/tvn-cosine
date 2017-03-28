@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tvn.Cosine.Data;
+﻿using Tvn.Cosine.Data;
 
 namespace Tvn.Cosine.Text.Nlp
 {

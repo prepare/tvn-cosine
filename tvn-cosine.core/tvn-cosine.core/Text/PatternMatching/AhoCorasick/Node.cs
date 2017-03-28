@@ -4,22 +4,42 @@ namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
 {
     internal class Node
     {
-        internal const Node fail = null;
-        internal readonly Dictionary<char, Node> gotoStateDictionary; 
-
-        internal Node(char value)
+        internal Node(char value, bool isRootNode)
         {
-            Value = value;
-            gotoStateDictionary = new Dictionary<char, Node>();
+            GotoStateDictionary = new Dictionary<char, Node>();
             Output = new HashSet<IPattern>();
+            IsRootNode = isRootNode;
+            Value = value;
         }
 
+        internal IDictionary<char, Node> GotoStateDictionary { get; }
+        internal ISet<IPattern> Output { get; }
+        internal bool IsRootNode { get; }
         internal char Value { get; }
 
-        internal virtual Node Failure { get; set; }
-           
-        internal ICollection<Node> Edges { get { return gotoStateDictionary.Values; } }
+        private Node failure;
+        internal virtual Node Failure
+        {
+            get
+            {
+                if (IsRootNode)
+                {
+                    return this; //// a rootnode fails towards itself
+                }
+                return failure;
+            }
+            set
+            {
+                if (IsRootNode)
+                {
+                    throw new System.AccessViolationException("Trying to set failure of a root node.");
+                }
 
-        internal ICollection<IPattern> Output { get; }
+                if (failure != value)
+                {
+                    failure = value;
+                }
+            }
+        } 
     }
 }

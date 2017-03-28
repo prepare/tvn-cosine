@@ -3,40 +3,43 @@ using System.Collections.Generic;
 
 namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
 {
-    public class PatternMatchingMachine
+    public class PatternMatchingMachine : IPatternMatchingMachine
     {
-        private const string patternMatchFoundActionNullExceptionMessage = "patternMatchFoundAction cannot be null.";
-        private const string patternsNullExceptionMessage = "keywords cannot be null or count 0."; 
-        private const Node fail = null;
+        #region Private Members
+        private readonly Node root = new Node('ϵ', true);
+        #endregion
 
-        private readonly Node root = new RootNode();
-        private readonly Action<ICollection<IPattern>, uint, IEnumerable<char>> patternMatchFoundAction;
-         
-        public PatternMatchingMachine(Action<ICollection<IPattern>, uint, IEnumerable<char>> patternMatchFoundAction, ICollection<IPattern> patterns)
+        #region Ctors
+        public PatternMatchingMachine(ISet<IPattern> patterns)
         {
-            if (patternMatchFoundAction == null)
-                throw new ArgumentNullException(patternMatchFoundActionNullExceptionMessage);
-            if (patterns == null || patterns.Count == 0)
-                throw new ArgumentNullException(patternsNullExceptionMessage);
+            if (patterns == null)
+            {
+                throw new ArgumentNullException("Keywords cannot be null.");
+            }
+            if (patterns.Count == 0)
+            {
+                throw new ArgumentNullException("Keywords count cannot be 0.");
+            }
 
-            this.patternMatchFoundAction = patternMatchFoundAction;
             constructGotoFunction(patterns);
             constructFailureFunction();
         }
+        #endregion
 
+        #region Aho Corasic State Machine
         private Node g(Node state, char a)
         {
-            if (!state.gotoStateDictionary.ContainsKey(a))
+            if (!state.GotoStateDictionary.ContainsKey(a))
             {
-                if (state is RootNode)
+                if (state.IsRootNode)
                 {
                     return state;
                 }
 
-                return fail;
+                return null;
             }
 
-            return state.gotoStateDictionary[a]; 
+            return state.GotoStateDictionary[a];
         }
 
         private Node f(Node state)
@@ -44,20 +47,20 @@ namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
             return state.Failure;
         }
 
-        private ICollection<IPattern> output(Node state)
+        private ISet<IPattern> output(Node state)
         {
             return state.Output;
         }
 
         private void constructGotoFunction(ICollection<IPattern> k)
-        { 
+        {
             foreach (var y in k) enter(y);
         }
 
         private void constructFailureFunction()
         {
             Queue<Node> queue = new Queue<Node>();
-            foreach (var a in root.Edges)
+            foreach (var a in root.GotoStateDictionary.Values)
             {
                 queue.Enqueue(a);
                 a.Failure = root;
@@ -66,12 +69,12 @@ namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
             while (queue.Count > 0)
             {
                 Node r = queue.Dequeue();
-                foreach (var s in r.Edges)
+                foreach (var s in r.GotoStateDictionary.Values)
                 {
                     var a = s.Value;
                     queue.Enqueue(s);
                     var state = r.Failure;
-                    while (g(state, a) == fail) state = state.Failure;
+                    while (g(state, a) == null) state = state.Failure;
                     s.Failure = g(state, a);
 
                     foreach (var o in s.Failure.Output)
@@ -80,7 +83,7 @@ namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
                         {
                             s.Output.Add(o);
                         }
-                    } 
+                    }
                 }
             }
         }
@@ -91,13 +94,13 @@ namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
             foreach (char a in pattern)
             {
                 Node newNode = g(current, a);
-                if (newNode == fail ||
+                if (newNode == null ||
                     newNode == root)
                 {
-                    newNode = new Node(a); 
-                    if (!current.gotoStateDictionary.ContainsKey(newNode.Value))
+                    newNode = new Node(a, false);
+                    if (!current.GotoStateDictionary.ContainsKey(newNode.Value))
                     {
-                        current.gotoStateDictionary[newNode.Value] = newNode;
+                        current.GotoStateDictionary[newNode.Value] = newNode;
                     }
                 }
                 current = newNode;
@@ -106,39 +109,36 @@ namespace Tvn.Cosine.Text.PatternMatching.AhoCorasick
             if (!current.Output.Contains(pattern))
             {
                 current.Output.Add(pattern);
-            } 
-        }
-
-        public void Match(IEnumerable<char> input, out ICollection<IPattern> patternsMatched)
-        {
-            patternsMatched = new List<IPattern>();
-
-            patternsMatched.Clear(); 
-            var state = root;
-            foreach (char a in input)
-            { 
-                while (g(state, a) == fail) state = f(state);
-                state = g(state, a);
-
-                foreach (var pattern in output(state))
-                {
-                    patternsMatched.Add(pattern);
-                }
             }
         }
+        #endregion
 
-        public void Match(IEnumerable<char> input)
+        public ICollection<IPattern> Match(IEnumerable<char> input)
+        {
+            ICollection<IPattern> allPatternsFound = new HashSet<IPattern>();
+            Match(input, (sender, patternsFound, position) =>
+            {
+                foreach (var pattern in patternsFound)
+                {
+                    allPatternsFound.Add(pattern);
+                }
+            });
+
+            return allPatternsFound;
+        }
+
+        public void Match(IEnumerable<char> input, PatternFoundDelegate patternMatchFound)
         {
             uint position = 0;
-            var state = root;
+            Node state = root;
             foreach (char a in input)
             {
-                while (g(state, a) == fail) state = f(state);
+                while (g(state, a) == null) state = f(state);
                 state = g(state, a);
 
-                if (patternMatchFoundAction != null && output(state).Count > 0)
+                if (patternMatchFound != null && output(state).Count > 0)
                 {
-                    patternMatchFoundAction(output(state), position, input);
+                    patternMatchFound(this, output(state), position);
                 }
 
                 ++position;

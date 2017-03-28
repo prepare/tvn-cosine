@@ -1,6 +1,9 @@
-﻿namespace Tvn.Cosine.Text.PatternMatching
+﻿using System;
+using System.Collections.Generic;
+
+namespace Tvn.Cosine.Text.PatternMatching
 {
-    public interface IPattern : System.Collections.Generic.IEnumerable<char>
-    {
-    }
+    public interface IPattern : IEnumerable<char>, 
+                                IEquatable<IPattern>
+    { }
 }

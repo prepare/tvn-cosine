@@ -16,11 +16,11 @@ namespace Tvn.Cosine.Data
         public virtual ICollection<ILanguage> Languages { get; protected set; }
 
         #region Password    
-        private PasswordHasher passwordHasher;
+        private TextHasher passwordHasher;
 
         protected void SetPassword(string password)
         {
-            passwordHasher = new PasswordHasher(password);
+            passwordHasher = new TextHasher(password);
             PasswordHash = passwordHasher.Hash;
             PasswordSalt = passwordHasher.Salt;
         }
@@ -31,7 +31,7 @@ namespace Tvn.Cosine.Data
             {
                 if (PasswordHash != null && PasswordSalt != null)
                 {
-                    passwordHasher = new PasswordHasher(PasswordSalt, PasswordHash);
+                    passwordHasher = new TextHasher(PasswordSalt, PasswordHash);
                 }
             }
 

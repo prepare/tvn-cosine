@@ -5,11 +5,11 @@ namespace Tvn.Cosine.Text.Nlp
 {
     public class Sentence : IText
     {
-        public Sentence(string text, 
-                        List<Token> tokens, 
-                        List<Token> namedEntities, 
+        public Sentence(string text,
+                        ICollection<Token> tokens,
+                        ICollection<Token> namedEntities, 
                         Sentiment sentiment, 
-                        Dictionary<Sentiment, double> sentimentDictionary)
+                        IDictionary<Sentiment, double> sentimentDictionary)
         {
             Text = text;
             Tokens = tokens;
@@ -19,9 +19,9 @@ namespace Tvn.Cosine.Text.Nlp
         }
 
         public string Text { get; }
-        public List<Token> Tokens { get; }
-        public List<Token> NamedEntities { get; }
-        public Dictionary<Sentiment, double> SentimentDictionary { get; }
+        public ICollection<Token> Tokens { get; }
+        public ICollection<Token> NamedEntities { get; }
+        public IDictionary<Sentiment, double> SentimentDictionary { get; }
         public Sentiment Sentiment { get; } 
     }
 }
