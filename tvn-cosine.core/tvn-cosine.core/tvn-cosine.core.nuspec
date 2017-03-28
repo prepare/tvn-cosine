@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>tvn-cosine.core</id>
+    <title>tvn-cosine.core</title>
+    <version>$version$</version>
+    <authors>tvn-cosine</authors>
+    <owners>tvn-cosine</owners>
+    <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/tvn-cosine/tvn-cosine</projectUrl> 
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>core functionality of the tvn-cosine project.</description>
+    <releaseNotes>core functionality of the tvn-cosine project.</releaseNotes>
+    <copyright>Copyright © tvn-cosine 2017</copyright>
+    <tags>tvn-cosine</tags>
+    <dependencies />
+  </metadata>
+</package>
