@@ -1,23 +1,24 @@
-﻿Write-Host "########"
+﻿Write-Host "########" 
 
 $projectName = "tvn-cosine.core"
 $GitExe = "C:\Program Files\Git\bin\git.exe"
 $sourceNugetExe = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" 
 $localDirectory = "C:\csource\"
-$GitHttpsUrl = "https://github.com/tvn-cosine/imaging"
+$GitHttpsUrl = "https://github.com/tvn-cosine/tvn-cosine"
  
 Write-Host "########"
 Write-Host "Creating directory $localDirectory ..."
+Write-Host "########"
 
-if (Test-Path "$localDirectory\$projectName")
+if (Test-Path "$localDirectory\\$projectName\\")
 {
-    Remove-Item "$localDirectory\$projectName" -Force -Recurse
+    Remove-Item "$localDirectory\$projectName\" -Force -Recurse
     Write-Host "Done removing directory..."
 } 
 
-if (-not (Test-Path "$localDirectory"))
+if (-not (Test-Path "$localDirectory\"))
 {
-    New-Item $localDirectory -ItemType Directory
+    New-Item "$localDirectory\" -ItemType Directory
     Write-Host "Done creating directory..."
 }
 Write-Host "########"
@@ -36,7 +37,7 @@ Write-Host " "
 
 Write-Host "########"
 Write-Host "Cloning from git $localDirectory."
-$localDirectory = "C:\csource\$projectName"
+$localDirectory = "C:\csource\tvn-cosine\$projectName\"
 
 Try
 {
