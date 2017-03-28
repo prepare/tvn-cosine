@@ -76,6 +76,7 @@
     <Compile Include="Text\PatternMatching\IPattern.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CreateNuGetPackage.ps1" />
     <None Include="tvn-cosine.core.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
