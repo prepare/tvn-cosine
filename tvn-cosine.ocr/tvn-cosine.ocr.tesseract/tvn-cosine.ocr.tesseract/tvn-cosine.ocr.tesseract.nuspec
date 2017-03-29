@@ -10,6 +10,7 @@
     <projectUrl>https://github.com/tvn-cosine/ocr</projectUrl> 
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>a .net wrapper for tesseract ocr</description>
+    <summary>a .net wrapper for tesseract ocr</summary>
     <releaseNotes>a .net wrapper for tesseract ocr</releaseNotes>
     <copyright>Copyright © tvn-cosine 2017</copyright>
     <tags>dotNet OCR tesseract</tags>

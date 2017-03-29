@@ -40,13 +40,13 @@ namespace Tvn.Cosine.Ocr.Tesseract.Native
                     path = string.Format("{0}\\{1}", path, "x84");
                 }
 
-                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, zlibDllName));
-                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, libPngDllName));
-                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, jpegDllName));
-                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, tiffDllName));
-                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, tiffXxDllName));
-                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, leptonicaDllName));
-                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, tesseractDllName));
+                Architecture.LoadLibrary(string.Format("{0}\\{1}", path, zlibDllName));
+                Architecture.LoadLibrary(string.Format("{0}\\{1}", path, libPngDllName));
+                Architecture.LoadLibrary(string.Format("{0}\\{1}", path, jpegDllName));
+                Architecture.LoadLibrary(string.Format("{0}\\{1}", path, tiffDllName));
+                Architecture.LoadLibrary(string.Format("{0}\\{1}", path, tiffXxDllName));
+                Architecture.LoadLibrary(string.Format("{0}\\{1}", path, leptonicaDllName));
+                Architecture.LoadLibrary(string.Format("{0}\\{1}", path, tesseractDllName));
 
                 initialised = true;
             }
