@@ -26,7 +26,7 @@ namespace Tvn.Cosine.Imaging.Leptonica.Native
             if (!initialised)
             {
                 var path = string.Format("{0}\\Include", AppDomain.CurrentDomain.BaseDirectory);
-                if (Cosine.Architecture.is64BitProcess)
+                if (Architecture.is64BitProcess)
                 {
                     path = string.Format("{0}\\{1}", path, "x64");
                 }
@@ -34,13 +34,13 @@ namespace Tvn.Cosine.Imaging.Leptonica.Native
                 {
                     path = string.Format("{0}\\{1}", path, "x84");
                 }
-                 
-                Cosine.Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, zlibDllName));
-                Cosine.Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, libPngDllName));
-                Cosine.Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, jpegDllName));
-                Cosine.Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, tiffDllName));
-                Cosine.Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, tiffXxDllName));
-                Cosine.Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, leptonicaDllName));
+
+                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, zlibDllName));
+                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, libPngDllName));
+                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, jpegDllName));
+                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, tiffDllName));
+                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, tiffXxDllName));
+                Architecture.SetDllDirectory(string.Format("{0}\\{1}", path, leptonicaDllName));
 
                 initialised = true;
             }

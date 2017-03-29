@@ -1,0 +1,34 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>tvn-cosine.imaging.leptonica</id>
+    <title>tvn-cosine.imaging.leptonica</title>
+    <version>$version$</version>
+    <authors>tvn-cosine</authors>
+    <owners>tvn-cosine</owners>
+    <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/tvn-cosine/tvn-cosine</projectUrl> 
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>.net Leptonica wrapper.</description>
+    <releaseNotes>.net Leptonica wrapper.</releaseNotes>
+    <copyright>Copyright © tvn-cosine 2017</copyright>
+    <tags>tvn-cosine</tags>
+    <dependencies>
+		<dependency id="tvn-cosine.core" version="1.0.0.3" />
+	</dependencies>
+	<files>
+		<file src="Include\x86\jpeg.dll" target="Include\x86\jpeg.dll" />
+		<file src="Include\x86\leptonica-1.74.1.dll" target="Include\x86\leptonica-1.74.1.dll" />
+		<file src="Include\x86\libpng16.dll" target="Include\x86\libpng16.dll" />
+		<file src="Include\x86\tiff.dll" target="Include\x86\tiff.dll" />
+		<file src="Include\x86\tiffxx.dll" target="Include\x86\tiffxx.dll" />
+		<file src="Include\x86\zlib.dll" target="Include\x86\zlib.dll" />
+		<file src="Include\x64\jpeg.dll" target="Include\x64\jpeg.dll" />
+		<file src="Include\x64\leptonica-1.74.1.dll" target="Include\x64\leptonica-1.74.1.dll" />
+		<file src="Include\x64\libpng16.dll" target="Include\x64\libpng16.dll" />
+		<file src="Include\x64\tiff.dll" target="Include\x64\tiff.dll" />
+		<file src="Include\x64\tiffxx.dll" target="Include\x64\tiffxx.dll" />
+		<file src="Include\x64\zlib.dll" target="Include\x64\zlib.dll" />
+	</files>
+  </metadata>
+</package>

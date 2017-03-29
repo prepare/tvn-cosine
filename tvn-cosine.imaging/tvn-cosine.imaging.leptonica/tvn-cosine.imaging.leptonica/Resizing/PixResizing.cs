@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace leptonica.net.Resizing
+namespace Tvn.Cosine.Imaging.Leptonica.Resizing
 {
     public class PixResizing
     {

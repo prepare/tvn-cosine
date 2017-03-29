@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace leptonica.net
+namespace Tvn.Cosine.Imaging.Leptonica
 {
     public class PixColorMap : IDisposable, ICloneable, IEnumerable<Color>
     {

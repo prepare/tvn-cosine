@@ -1,12 +1,12 @@
 using System;
 using System.Runtime.InteropServices;
+using Tvn.Cosine.Geometry;
 
-namespace leptonica.net
+namespace Tvn.Cosine.Imaging.Leptonica
 {
-    public class Pix : IDisposable, ICloneable, geometry.net.ISize
+    public class Pix : IDisposable, ICloneable, ISize<int>
     {
-        public readonly HandleRef handleRef;
-        private readonly geometry.net.ISize size;
+        public readonly HandleRef handleRef; 
 
         #region ctors
         public Pix(IntPtr pointer)
@@ -245,33 +245,7 @@ namespace leptonica.net
             return Native.DllImports.pixWrite(fileName, handleRef, format) == 0;
         }
         #endregion
-
-        #region ISize Support
-        ulong geometry.net.ISize.Width
-        {
-            get
-            {
-                return size.Width;
-            }
-        }
-
-        ulong geometry.net.ISize.Height
-        {
-            get
-            {
-                return size.Height;
-            }
-        }
-
-        ulong geometry.net.ISize.Area
-        {
-            get
-            {
-                return size.Area;
-            }
-        }
-        #endregion
-
+         
         #region ICloneable Support
         public object Clone()
         {

@@ -1,4 +1,6 @@
-﻿namespace Tvn.Cosine.Imaging
+﻿using System;
+
+namespace Tvn.Cosine.Imaging
 {
     /// <summary>
     /// Implementation of IColor.
@@ -32,7 +34,7 @@
         private Color(byte a, byte g, byte b, byte r, string name)
             : this(a, g, b, r)
         {
-            Name = name; 
+            Name = name;
         }
         #endregion
 
@@ -60,6 +62,16 @@
         /// The string name of the color.
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// Convert the Color to a uint
+        /// </summary>
+        /// <returns>color in uint abgr</returns>
+        public uint ToAbgrUint()
+        {
+            byte[] data = { A, B, G, R };
+            return BitConverter.ToUInt32(data, 0);
+        }
 
         #region Static Implementations
         public static Color AliceBlue = new Color(0xFF, 0xF8, 0xFF, 0xF0, "AliceBlue");

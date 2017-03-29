@@ -1,4 +1,4 @@
-﻿namespace leptonica.net
+﻿namespace Tvn.Cosine.Imaging.Leptonica
 {
     public enum RotateInColorFlags
     {

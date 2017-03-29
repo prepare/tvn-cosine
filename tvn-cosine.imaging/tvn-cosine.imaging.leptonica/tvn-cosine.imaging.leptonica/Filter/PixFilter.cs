@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace leptonica.net.Filter
+namespace Tvn.Cosine.Imaging.Leptonica.Filter
 {
     public class PixFilter
     {

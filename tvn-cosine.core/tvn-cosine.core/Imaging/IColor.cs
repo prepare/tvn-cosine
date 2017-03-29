@@ -25,6 +25,12 @@ namespace Tvn.Cosine.Imaging
         /// <summary>
         /// The red component value.
         /// </summary>
-        byte R { get; } 
+        byte R { get; }
+
+        /// <summary>
+        /// Convert the Color to a uint
+        /// </summary>
+        /// <returns>color in uint abgr</returns>
+        uint ToAbgrUint();
     }
 }

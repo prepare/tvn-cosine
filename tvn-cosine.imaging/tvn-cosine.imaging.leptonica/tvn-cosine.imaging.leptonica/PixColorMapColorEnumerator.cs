@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace leptonica.net
+namespace Tvn.Cosine.Imaging.Leptonica
 { 
     public class PixColorMapColorEnumerator : IEnumerator<Color>, IDisposable
     {

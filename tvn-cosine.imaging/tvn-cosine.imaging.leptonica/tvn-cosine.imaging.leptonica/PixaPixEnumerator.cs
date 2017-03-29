@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace leptonica.net
+namespace Tvn.Cosine.Imaging.Leptonica
 {
     public class PixaPixEnumerator : IEnumerator<Pix>, IDisposable
     {

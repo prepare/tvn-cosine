@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace leptonica.net.Drawing
+namespace Tvn.Cosine.Imaging.Leptonica.Drawing
 {
     public class PixDrawing
     {

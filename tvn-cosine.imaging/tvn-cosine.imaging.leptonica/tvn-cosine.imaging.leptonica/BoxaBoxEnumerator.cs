@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace leptonica.net
+namespace Tvn.Cosine.Imaging.Leptonica
 {
    public class BoxaBoxEnumerator : IEnumerator<Box>
     {

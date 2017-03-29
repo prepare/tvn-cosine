@@ -1,17 +1,16 @@
-using System.Runtime.InteropServices; 
+using System.Runtime.InteropServices;
+using Tvn.Cosine.Geometry;
 
-namespace leptonica.net
+namespace Tvn.Cosine.Imaging.Leptonica
 {
-    public class Box : geometry.net.IRectangle, System.ICloneable, System.IDisposable
+    public class Box : IPoint<int>, ISize<int>, System.ICloneable, System.IDisposable
     {
         public readonly HandleRef handleRef;
-        private geometry.net.IRectangle rectangle;
 
         #region ctors
         public Box(System.IntPtr pointer)
         {
             handleRef = new HandleRef(this, pointer);
-            this.rectangle = new geometry.net.Rectangle(X, Y, (ulong)Width, (ulong)Height);
         }
 
         public Box(int x, int y, int width, int height)
@@ -30,9 +29,7 @@ namespace leptonica.net
             }
             set
             {
-                this.rectangle = new geometry.net.Rectangle(value, this.rectangle.Y, this.rectangle.Width, this.rectangle.Height);
-
-                Native.DllImports.boxSetGeometry(handleRef, (int)this.rectangle.X, (int)this.rectangle.Y, (int)this.rectangle.Width, (int)this.rectangle.Height);
+                Native.DllImports.boxSetGeometry(handleRef, value, this.Y, this.Width, this.Height);
             }
         }
 
@@ -46,9 +43,7 @@ namespace leptonica.net
             }
             set
             {
-                this.rectangle = new geometry.net.Rectangle(this.rectangle.X, value, this.rectangle.Width, this.rectangle.Height);
-
-                Native.DllImports.boxSetGeometry(handleRef, (int)this.rectangle.X, (int)this.rectangle.Y, (int)this.rectangle.Width, (int)this.rectangle.Height);
+                Native.DllImports.boxSetGeometry(handleRef, this.X, value, this.Width, this.Height);
             }
         }
 
@@ -62,8 +57,7 @@ namespace leptonica.net
             }
             set
             {
-                this.rectangle = new geometry.net.Rectangle(this.rectangle.X, this.rectangle.Y, (ulong)value, this.rectangle.Height);
-                Native.DllImports.boxSetGeometry(handleRef, (int)this.rectangle.X, (int)this.rectangle.Y, (int)this.rectangle.Width, (int)this.rectangle.Height);
+                Native.DllImports.boxSetGeometry(handleRef, this.X, this.Y, value, this.Height);
             }
         }
 
@@ -77,99 +71,18 @@ namespace leptonica.net
             }
             set
             {
-                this.rectangle = new geometry.net.Rectangle(this.rectangle.X, this.rectangle.Y, this.rectangle.Width, (ulong)value);
-                Native.DllImports.boxSetGeometry(handleRef, (int)this.rectangle.X, (int)this.rectangle.Y, (int)this.rectangle.Width, (int)this.rectangle.Height);
+                Native.DllImports.boxSetGeometry(handleRef, this.X, this.Y, this.Width, value);
             }
         }
-        #endregion
 
-        #region IRectangle Support
-        long geometry.net.IRectangle.X2
+
+        public int Area
         {
             get
             {
-                return rectangle.X2;
+                return Width * Height;
             }
         }
-
-        long geometry.net.IRectangle.Y2
-        {
-            get
-            {
-                return rectangle.Y2;
-            }
-        }
-
-        long geometry.net.IPoint.X
-        {
-            get
-            {
-                return rectangle.X;
-            }
-        }
-
-        long geometry.net.IPoint.Y
-        {
-            get
-            {
-                return rectangle.Y;
-            }
-        }
-
-        ulong geometry.net.ISize.Width
-        {
-            get
-            {
-                return rectangle.Width;
-            }
-        }
-
-        ulong geometry.net.ISize.Height
-        {
-            get
-            {
-                return rectangle.Height;
-            }
-        }
-
-        ulong geometry.net.ISize.Area
-        {
-            get
-            {
-                return rectangle.Area;
-            }
-        }
-
-        bool geometry.net.IRectangle.Intersects(geometry.net.IRectangle rectangle)
-        {
-            return this.rectangle.Intersects(rectangle);
-        }
-
-        geometry.net.IRectangle geometry.net.IRectangle.Intersection(geometry.net.IRectangle rectangle)
-        {
-            return this.rectangle.Intersection(rectangle);
-        }
-
-        geometry.net.IRectangle geometry.net.IRectangle.Inflate(ulong width, ulong height)
-        {
-            return this.rectangle.Inflate(width, height);
-        }
-
-        geometry.net.IRectangle geometry.net.IRectangle.Deflate(ulong width, ulong height)
-        {
-            return this.rectangle.Deflate(width, height);
-        }
-
-        geometry.net.IRectangle geometry.net.IRectangle.Union(geometry.net.IRectangle other)
-        {
-            return this.rectangle.Union(other);
-        }
-         
-        bool geometry.net.IRectangle.Contains(geometry.net.IPoint point)
-        {
-            return rectangle.Contains(point);
-        }
-
         #endregion
 
         #region ICloneable Support
