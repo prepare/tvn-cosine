@@ -14,7 +14,7 @@
     <copyright>Copyright © tvn-cosine 2017</copyright>
     <tags>tvn-cosine</tags>
     <dependencies>
-		<dependency id="tvn-cosine.core" version="1.0.0.3" />
+		  <dependency id="tvn-cosine.core" version="1.0.0.5" />
 	</dependencies>
 	<files>
 		<file src="Include\x86\jpeg.dll" target="Include\x86\jpeg.dll" />
