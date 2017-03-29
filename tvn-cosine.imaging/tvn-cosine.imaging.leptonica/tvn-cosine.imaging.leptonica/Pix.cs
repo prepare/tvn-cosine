@@ -11,8 +11,7 @@ namespace Tvn.Cosine.Imaging.Leptonica
         #region ctors
         public Pix(IntPtr pointer)
         {
-            handleRef = new HandleRef(this, pointer);
-            this.size = new geometry.net.Size((ulong)Width, (ulong)Height);
+            handleRef = new HandleRef(this, pointer); 
         }
 
         public Pix(int width, int height, int depth)
