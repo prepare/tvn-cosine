@@ -1,0 +1,6 @@
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.ocr\tvn-cosine.ocr.tesseract\tvn-cosine.ocr.tesseract\bin\Debug\tvn-cosine.ocr.tesseract.dll
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.ocr\tvn-cosine.ocr.tesseract\tvn-cosine.ocr.tesseract\bin\Debug\tvn-cosine.ocr.tesseract.pdb
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.ocr\tvn-cosine.ocr.tesseract\tvn-cosine.ocr.tesseract\bin\Debug\tvn-cosine.core.dll
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.ocr\tvn-cosine.ocr.tesseract\tvn-cosine.ocr.tesseract\bin\Debug\tvn-cosine.imaging.leptonica.dll
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.ocr\tvn-cosine.ocr.tesseract\tvn-cosine.ocr.tesseract\obj\Debug\tvn-cosine.ocr.tesseract.dll
+C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.ocr\tvn-cosine.ocr.tesseract\tvn-cosine.ocr.tesseract\obj\Debug\tvn-cosine.ocr.tesseract.pdb
