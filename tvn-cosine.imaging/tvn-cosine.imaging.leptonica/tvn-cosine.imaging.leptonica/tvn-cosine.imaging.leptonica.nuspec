@@ -18,6 +18,18 @@
 	  </dependencies>
   </metadata>
   <files>
-    <file src="lib\x86\jpeg.dll" target="lib\net40" />
+    <file src="lib\x86\jpeg.dll" target="lib\net452" />
+    <file src="lib\x86\leptonica-1.74.1.dll" target="lib\net452" />
+    <file src="lib\x86\libpng16.dll" target="lib\net452" />
+    <file src="lib\x86\tiff.dll" target="lib\net452" />
+    <file src="lib\x86\tiffxx.dll" target="lib\net452" />
+    <file src="lib\x86\zlib.dll" target="lib\net452" />
+    
+    <file src="lib\x64\jpeg.dll" target="lib\net452" />
+    <file src="lib\x64\leptonica-1.74.1.dll" target="lib\net452" />
+    <file src="lib\x64\libpng16.dll" target="lib\net452" />
+    <file src="lib\x64\tiff.dll" target="lib\net452" />
+    <file src="lib\x64\tiffxx.dll" target="lib\net452" />
+    <file src="lib\x64\zlib.dll" target="lib\net452" />
   </files>
 </package>
