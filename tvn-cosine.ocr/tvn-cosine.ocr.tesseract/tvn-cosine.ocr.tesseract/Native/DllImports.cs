@@ -37,7 +37,7 @@ namespace Tvn.Cosine.Ocr.Tesseract.Native
                 }
                 else
                 {
-                    path = string.Format("{0}\\{1}", path, "x84");
+                    path = string.Format("{0}\\{1}", path, "x86");
                 }
 
                 Architecture.LoadLibrary(string.Format("{0}\\{1}", path, zlibDllName));
