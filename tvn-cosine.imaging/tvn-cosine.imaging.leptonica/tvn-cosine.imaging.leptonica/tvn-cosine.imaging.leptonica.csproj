@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5212C569-BF3D-442B-88B3-F18CA3FBD6E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tvn.Cosine.Imaging.Leptonica</RootNamespace>
+    <AssemblyName>tvn-cosine.imaging.leptonica</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="tvn-cosine.core, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tvn-cosine.core.1.0.0.1\lib\net452\tvn-cosine.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Box.cs" />
+    <Compile Include="Boxa.cs" />
+    <Compile Include="BoxaBoxEnumerator.cs" />
+    <Compile Include="ColorCorrection\PixColorCorrection.cs" />
+    <Compile Include="DeskewRedSearch.cs" />
+    <Compile Include="DeskewRedSweep.cs" />
+    <Compile Include="Drawing\PixDrawing.cs" />
+    <Compile Include="Filter\PixFilter.cs" />
+    <Compile Include="FindSkewSweepReduction.cs" />
+    <Compile Include="GraphicPixelSetting.cs" />
+    <Compile Include="ImageFileFormat.cs" />
+    <Compile Include="InsertionType.cs" />
+    <Compile Include="Native\DllImports.cs" />
+    <Compile Include="Pix.cs" />
+    <Compile Include="Pixa.cs" />
+    <Compile Include="PixaPixEnumerator.cs" />
+    <Compile Include="PixColorMap.cs" />
+    <Compile Include="PixColorMapColorEnumerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resizing\PixResizing.cs" />
+    <Compile Include="RotateFlags.cs" />
+    <Compile Include="RotateInColorFlags.cs" />
+    <Compile Include="Rotation\PixRotation.cs" />
+    <Compile Include="ShearFlags.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
