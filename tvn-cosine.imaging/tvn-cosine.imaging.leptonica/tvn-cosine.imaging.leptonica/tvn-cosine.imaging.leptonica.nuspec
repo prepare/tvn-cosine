@@ -16,5 +16,9 @@
     <dependencies>
 		  <dependency id="tvn-cosine.core" version="1.0.0.5" />
 	  </dependencies>
-  </metadata> 
+  </metadata>
+  <files>
+    <file src="lib\x86\*.dll" target="lib\x86\net452" />
+    <file src="lib\x64\*.dll" target="lib\x64\net452" />
+  </files>
 </package>
