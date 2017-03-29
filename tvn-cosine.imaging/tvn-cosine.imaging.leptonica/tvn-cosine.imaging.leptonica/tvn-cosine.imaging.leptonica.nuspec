@@ -15,6 +15,6 @@
     <tags>tvn-cosine</tags>
     <dependencies>
 		  <dependency id="tvn-cosine.core" version="1.0.0.5" />
-	</dependencies>
+	  </dependencies>
   </metadata>
 </package>

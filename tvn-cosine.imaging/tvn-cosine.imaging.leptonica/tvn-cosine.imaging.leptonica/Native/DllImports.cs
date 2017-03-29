@@ -25,7 +25,7 @@ namespace Tvn.Cosine.Imaging.Leptonica.Native
         {
             if (!initialised)
             {
-                var path = string.Format("{0}\\Include", AppDomain.CurrentDomain.BaseDirectory);
+                var path = string.Format("{0}\\lib", AppDomain.CurrentDomain.BaseDirectory);
                 if (Architecture.is64BitProcess)
                 {
                     path = string.Format("{0}\\{1}", path, "x64");
