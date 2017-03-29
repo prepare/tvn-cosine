@@ -16,19 +16,5 @@
     <dependencies>
 		  <dependency id="tvn-cosine.core" version="1.0.0.5" />
 	</dependencies>
-	<files>
-		<file src="Include\x86\jpeg.dll" target="Include\x86\jpeg.dll" />
-		<file src="Include\x86\leptonica-1.74.1.dll" target="Include\x86\leptonica-1.74.1.dll" />
-		<file src="Include\x86\libpng16.dll" target="Include\x86\libpng16.dll" />
-		<file src="Include\x86\tiff.dll" target="Include\x86\tiff.dll" />
-		<file src="Include\x86\tiffxx.dll" target="Include\x86\tiffxx.dll" />
-		<file src="Include\x86\zlib.dll" target="Include\x86\zlib.dll" />
-		<file src="Include\x64\jpeg.dll" target="Include\x64\jpeg.dll" />
-		<file src="Include\x64\leptonica-1.74.1.dll" target="Include\x64\leptonica-1.74.1.dll" />
-		<file src="Include\x64\libpng16.dll" target="Include\x64\libpng16.dll" />
-		<file src="Include\x64\tiff.dll" target="Include\x64\tiff.dll" />
-		<file src="Include\x64\tiffxx.dll" target="Include\x64\tiffxx.dll" />
-		<file src="Include\x64\zlib.dll" target="Include\x64\zlib.dll" />
-	</files>
   </metadata>
 </package>
