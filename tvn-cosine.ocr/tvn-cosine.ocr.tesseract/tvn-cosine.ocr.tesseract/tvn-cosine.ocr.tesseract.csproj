@@ -77,20 +77,48 @@
     <None Include="tvn-cosine.ocr.tesseract.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\x64\jpeg.dll" />
-    <Content Include="lib\x64\leptonica-1.74.1.dll" />
-    <Content Include="lib\x64\libpng16.dll" />
-    <Content Include="lib\x64\tesseract305.dll" />
-    <Content Include="lib\x64\tiff.dll" />
-    <Content Include="lib\x64\tiffxx.dll" />
-    <Content Include="lib\x64\zlib.dll" />
-    <Content Include="lib\x86\jpeg.dll" />
-    <Content Include="lib\x86\leptonica-1.74.1.dll" />
-    <Content Include="lib\x86\libpng16.dll" />
-    <Content Include="lib\x86\tesseract305.dll" />
-    <Content Include="lib\x86\tiff.dll" />
-    <Content Include="lib\x86\tiffxx.dll" />
-    <Content Include="lib\x86\zlib.dll" />
+    <Content Include="lib\x64\jpeg.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x64\leptonica-1.74.1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x64\libpng16.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x64\tesseract305.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x64\tiff.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x64\tiffxx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x64\zlib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x86\jpeg.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x86\leptonica-1.74.1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x86\libpng16.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x86\tesseract305.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x86\tiff.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x86\tiffxx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\x86\zlib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
