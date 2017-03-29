@@ -9,38 +9,41 @@ namespace Tvn.Cosine.Text.Hashing
         private const int hashSize = 64;
         private const int hashIterationCount = 10000;
 
+        private readonly byte[] salt;
+        private readonly byte[] hash;
+         
         private TextHasher()
         {
-            Salt = new byte[saltSize];
-            Hash = new byte[hashSize];
+            salt = new byte[saltSize];
+            hash = new byte[hashSize];
         }
 
         public TextHasher(string input)
             : this()
         {
-            new RNGCryptoServiceProvider().GetBytes(Salt);
-            Hash = new Rfc2898DeriveBytes(input, Salt, hashIterationCount)
+            new RNGCryptoServiceProvider().GetBytes(salt);
+            hash = new Rfc2898DeriveBytes(input, salt, hashIterationCount)
                 .GetBytes(hashSize);
         }
 
         public TextHasher(byte[] salt, byte[] hash)
             : this()
         {
-            Array.Copy(salt, 0, Salt, 0, saltSize);
-            Array.Copy(hash, 0, Hash, 0, hashSize);
+            Array.Copy(salt, 0, this.salt, 0, saltSize);
+            Array.Copy(hash, 0, this.hash, 0, hashSize);
         }
 
-        public byte[] Salt { get; }
-        public byte[] Hash { get; }
+        public byte[] Salt { get { return (byte[])salt.Clone(); } }
+        public byte[] Hash { get { return (byte[])hash.Clone(); } }
 
         public bool Equals(string input)
         {
-            byte[] test = new Rfc2898DeriveBytes(input, Salt, hashIterationCount)
+            byte[] test = new Rfc2898DeriveBytes(input, salt, hashIterationCount)
                 .GetBytes(hashSize);
 
             for (int i = 0; i < hashSize; i++)
             {
-                if (test[i] != Hash[i])
+                if (test[i] != hash[i])
                 {
                     return false;
                 }
