@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using Tvn.Cosine.Imaging.Leptonica;
 
-namespace tvn_cosine.ocr.tesseract
+namespace Tvn.Cosine.Ocr.Tesseract
 {
     public class PageIterator : IDisposable, ICloneable
     {

@@ -1,4 +1,4 @@
-﻿namespace tvn_cosine.ocr.tesseract
+﻿namespace Tvn.Cosine.Ocr.Tesseract
 {
     /// <summary>
     /// The grapheme clusters within a line of text are laid out logically

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace tvn_cosine.ocr.tesseract
+namespace Tvn.Cosine.Ocr.Tesseract
 {
     public class TextRenderer : ResultRenderer
     {

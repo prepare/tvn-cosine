@@ -1,4 +1,4 @@
-﻿namespace tvn_cosine.ocr.tesseract
+﻿namespace Tvn.Cosine.Ocr.Tesseract
 {
     /// <summary>
     /// Possible types for a POLY_BLOCK or ColPartition.

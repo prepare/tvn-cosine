@@ -1,4 +1,4 @@
-﻿namespace tvn_cosine.ocr.tesseract
+﻿namespace Tvn.Cosine.Ocr.Tesseract
 {
     /// <summary>
     ///  Possible modes for page layout analysis. These *must* be kept in order

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 
-namespace tvn_cosine.ocr.tesseract
+namespace Tvn.Cosine.Ocr.Tesseract
 {
     public class PageIteratorEnumerator : IEnumerator<PageIterator>
     {

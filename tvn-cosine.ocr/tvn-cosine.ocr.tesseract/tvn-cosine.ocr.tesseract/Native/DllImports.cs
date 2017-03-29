@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tvn.Cosine;
 
-namespace tvn_cosine.ocr.tesseract.Native
+namespace Tvn.Cosine.Ocr.Tesseract.Native
 {
     public class DllImports
     {

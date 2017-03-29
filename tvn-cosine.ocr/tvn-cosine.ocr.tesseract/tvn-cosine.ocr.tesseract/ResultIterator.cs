@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace tvn_cosine.ocr.tesseract
+namespace Tvn.Cosine.Ocr.Tesseract
 {
     public class ResultIterator : PageIterator, IDisposable, ICloneable
     {
