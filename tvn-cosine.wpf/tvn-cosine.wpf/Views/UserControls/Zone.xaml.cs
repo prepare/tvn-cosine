@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using Tvn.Cosine.Geometry;
 using Tvn.Cosine.Imaging;
@@ -16,7 +17,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         {
             InitializeComponent();
         }
-        
+
         #region Order
         public int Order
         {
@@ -48,9 +49,9 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
         // Using a DependencyProperty as the backing store for ZoneType.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ZoneTypeProperty =
-            DependencyProperty.Register("ZoneType", 
-                typeof(string), 
-                typeof(Zone), 
+            DependencyProperty.Register("ZoneType",
+                typeof(string),
+                typeof(Zone),
                 new PropertyMetadata(null, ZoneType_PropertyChanged));
 
         private static void ZoneType_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -58,7 +59,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             var zone = d as Zone;
 
             zone.zoneType.Text = e.NewValue.ToString();
-        } 
+        }
         #endregion
 
         #region X
@@ -159,14 +160,13 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             var zone = d as Zone;
             if ((bool)e.NewValue)
             {
-                zone.rectangle.Opacity = 0.8;
+                zone.rectangle.Opacity = 0.6;
             }
             else
             {
                 zone.rectangle.Opacity = 0.4;
             }
         }
-
         #endregion 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace Tvn.Cosine.Wpf.Views.UserControls
 {
@@ -15,15 +16,18 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
         private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
-            Control designerItem = DataContext as Control;
-
-            if (designerItem != null)
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
-                double left = System.Windows.Controls.Canvas.GetLeft(designerItem);
-                double top = System.Windows.Controls.Canvas.GetTop(designerItem);
+                Control designerItem = DataContext as Control;
 
-                System.Windows.Controls.Canvas.SetLeft(designerItem, left + e.HorizontalChange);
-                System.Windows.Controls.Canvas.SetTop(designerItem, top + e.VerticalChange);
+                if (designerItem != null)
+                {
+                    double left = System.Windows.Controls.Canvas.GetLeft(designerItem);
+                    double top = System.Windows.Controls.Canvas.GetTop(designerItem);
+
+                    System.Windows.Controls.Canvas.SetLeft(designerItem, left + e.HorizontalChange);
+                    System.Windows.Controls.Canvas.SetTop(designerItem, top + e.VerticalChange);
+                }
             }
         }
     }
