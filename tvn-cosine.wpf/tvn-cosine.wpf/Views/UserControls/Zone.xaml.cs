@@ -15,7 +15,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
     {
         public Zone()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         #region Order

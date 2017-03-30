@@ -59,7 +59,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         private readonly double zoomSpeed = 0.001;
         private double zoom = 1;
 
-        private void ItemsControl_MouseWheel(object sender, MouseWheelEventArgs e)
+        private void itemsControl_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
@@ -102,6 +102,9 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
             canvas.itemsControl.ItemsSource = e.NewValue as ObservableCollection<Zone>;
         }
-        #endregion 
+        #endregion
+
+        #region Drag and Release 
+        #endregion
     }
 }
