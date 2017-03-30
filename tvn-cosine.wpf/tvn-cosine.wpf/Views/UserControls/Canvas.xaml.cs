@@ -13,6 +13,10 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
     /// </summary>
     public partial class Canvas : UserControl
     {
+        private Zone newZoneToDraw;
+        private Point startingPointToDraw;
+        private bool isCapturedToDraw;
+
         public Canvas()
         {
             InitializeComponent();
@@ -104,7 +108,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         }
         #endregion
 
-        #region Drag and Release  
+        #region CanvasDrawingMode  
         public CanvasDrawingMode CanvasDrawingMode
         {
             get { return (CanvasDrawingMode)GetValue(DrawingModeProperty); }
@@ -149,9 +153,6 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             Mouse.Capture(null);
         }
 
-        private Zone newZoneToDraw;
-        private Point startingPointToDraw;
-        private bool isCapturedToDraw;
         private void UserControl_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (CanvasDrawingMode > 0)
