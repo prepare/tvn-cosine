@@ -1,49 +1,98 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Tvn.Cosine.Geometry;
+using Tvn.Cosine.Imaging;
 
 namespace Tvn.Cosine.Wpf.Views.UserControls
 {
     /// <summary>
     /// Interaction logic for Zone.xaml
     /// </summary>
-    public partial class Zone : ContentControl
+    public partial class Zone : ContentControl, IPoint<double>, ISize<double>
     {
         public Zone()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
-        #region Fill 
-        public Brush Fill
+        #region X
+        public double Area
         {
-            get { return (Brush)GetValue(FillProperty); }
+            get { return Width * Height; }
+        }
+
+        public double X
+        {
+            get { return (double)GetValue(XProperty); }
+            set { SetValue(XProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for X.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty XProperty =
+            DependencyProperty.Register("X",
+                typeof(double),
+                typeof(Zone),
+                new PropertyMetadata(0d, x_PropertyChanged));
+
+        private static void x_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var zone = d as Zone;
+            System.Windows.Controls.Canvas.SetLeft(zone, (double)e.NewValue);
+        }
+        #endregion
+
+        #region Y
+        public double Y
+        {
+            get { return (double)GetValue(YProperty); }
+            set { SetValue(YProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Y.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty YProperty =
+            DependencyProperty.Register("Y",
+                typeof(double),
+                typeof(Zone),
+                new PropertyMetadata(0d, y_PropertyChanged));
+
+        private static void y_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var zone = d as Zone;
+            System.Windows.Controls.Canvas.SetTop(zone, (double)e.NewValue);
+        }
+        #endregion
+
+        #region Fill 
+        public IColor Fill
+        {
+            get { return (IColor)GetValue(FillProperty); }
             set { SetValue(FillProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Fill.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FillProperty =
-            DependencyProperty.Register("Fill", 
-                typeof(Brush), 
-                typeof(Zone), 
-                new PropertyMetadata(Brushes.Gray, fill_PropertyChanged));
+            DependencyProperty.Register("Fill",
+                typeof(IColor),
+                typeof(Zone),
+                new PropertyMetadata(null, fill_PropertyChanged));
 
         private static void fill_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var zone = d as Zone;
-            zone.rectangle.Fill = e.NewValue as Brush;
-        } 
+            var color = e.NewValue as IColor;
+
+            if (color != null)
+            {
+                var solidColorBrush = new SolidColorBrush();
+                solidColorBrush.Color = System.Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B);
+                zone.rectangle.Fill = solidColorBrush;
+            }
+            else
+            {
+                zone.rectangle.Fill = Brushes.Transparent;
+            }
+        }
         #endregion
 
         #region IsSelected

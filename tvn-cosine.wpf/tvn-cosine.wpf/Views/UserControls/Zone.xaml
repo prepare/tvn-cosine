@@ -4,9 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls" 
-             mc:Ignorable="d" 
-             Width="300" Height="300"  
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d">
     <ContentControl.Resources>
         <!-- MoveThumb Template -->
         <ControlTemplate x:Key="MoveThumbTemplate" TargetType="{x:Type local:MoveThumb}">
@@ -45,7 +43,7 @@
         </ControlTemplate>
     </ContentControl.Resources>
     <ContentControl.Style>
-        <Style TargetType="ContentControl">
+        <Style TargetType="{x:Type ContentControl}">
             <Setter Property="Template" Value="{StaticResource DesignerItemTemplate}" />
         </Style>
     </ContentControl.Style>

@@ -12,7 +12,11 @@ namespace Tvn.Cosine.Wpf.Views.Windows
             ApplicationName = "tvn-cosine Wpf Application";
             Zones = new ObservableCollection<Zone>();
             var zone = new Zone();
-            zone.Fill = Brushes.Red; 
+            zone.Fill = Tvn.Cosine.Imaging.Color.Pink;
+            zone.X = 430;
+            zone.Y = 150;
+            zone.Width = 300;
+            zone.Height = 430;
             Zones.Add(zone);
         }
 
