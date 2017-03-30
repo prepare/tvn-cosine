@@ -6,6 +6,8 @@
         Title="{Binding ApplicationName}"
         prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid> 
-        <UserControls:Canvas BackgroundImagePath="C:\Temp\68.jpg" Zones="{Binding Zones}" /> 
+        <UserControls:Canvas BackgroundImagePath="C:\Temp\68.jpg" 
+                             Zones="{Binding Zones}"
+                             CanvasDrawingMode="{Binding CanvasDrawingMode}"/> 
     </Grid>
 </Window>

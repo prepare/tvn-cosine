@@ -3,20 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls"  
+             xmlns:local="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls" 
+             MouseLeftButtonUp="UserControl_MouseLeftButtonUp"
+             PreviewMouseLeftButtonDown="UserControl_PreviewMouseLeftButtonDown"
              mc:Ignorable="d">
-    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                   HorizontalAlignment="Center" 
+                   x:Name="drawingModeText"
+                   FontFamily="Segoe UI" 
+                   FontSize="48" 
+                   FontWeight="Bold"/>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      Grid.Row="1"
                   CanContentScroll="True">
-        <ItemsControl x:Name="itemsControl"  
+            <ItemsControl x:Name="itemsControl"  
+                      PreviewMouseMove="itemsControl_PreviewMouseMove"
                       MouseWheel="itemsControl_MouseWheel">
-            <ItemsControl.Background>
-                <ImageBrush x:Name="itemsControlImageBrush" />
-            </ItemsControl.Background>
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Canvas />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
-    </ScrollViewer>
+                <ItemsControl.Background>
+                    <ImageBrush x:Name="itemsControlImageBrush" />
+                </ItemsControl.Background>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

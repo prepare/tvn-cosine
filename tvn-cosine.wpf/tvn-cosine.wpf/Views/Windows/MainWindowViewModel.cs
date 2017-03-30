@@ -32,6 +32,15 @@ namespace Tvn.Cosine.Wpf.Views.Windows
             zone2.Width = 20;
             zone2.Height = 50;
             Zones.Add(zone2);
+
+            CanvasDrawingMode = CanvasDrawingMode.TEXT;
+        }
+
+        private CanvasDrawingMode canvasDrawingMode;
+        public CanvasDrawingMode CanvasDrawingMode
+        {
+            get { return canvasDrawingMode; }
+            set { SetProperty(ref canvasDrawingMode, value); }
         }
 
         private string applicationName;

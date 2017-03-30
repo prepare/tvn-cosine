@@ -104,7 +104,82 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         }
         #endregion
 
-        #region Drag and Release 
+        #region Drag and Release  
+        public CanvasDrawingMode CanvasDrawingMode
+        {
+            get { return (CanvasDrawingMode)GetValue(DrawingModeProperty); }
+            set { SetValue(DrawingModeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DrawingMode.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DrawingModeProperty =
+            DependencyProperty.Register("CanvasDrawingMode",
+                typeof(CanvasDrawingMode),
+                typeof(Canvas),
+                new PropertyMetadata(CanvasDrawingMode.NONE, drawingMode_PropertyChanged));
+
+        private static void drawingMode_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var canvas = d as Canvas;
+            switch ((CanvasDrawingMode)e.NewValue)
+            {
+                case CanvasDrawingMode.HEADLINE:
+                    canvas.drawingModeText.Text = e.NewValue.ToString();
+                    break;
+                case CanvasDrawingMode.TEXT:
+                    canvas.drawingModeText.Text = e.NewValue.ToString();
+                    break;
+                case CanvasDrawingMode.PICTURE:
+                    canvas.drawingModeText.Text = e.NewValue.ToString();
+                    break;
+                case CanvasDrawingMode.DELETE:
+                    canvas.drawingModeText.Text = e.NewValue.ToString();
+                    break;
+                default:
+                    canvas.drawingModeText.Text = string.Empty;
+                    break;
+            }
+        }
         #endregion
+
+        private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            isCapturedToDraw = false;
+            CanvasDrawingMode = CanvasDrawingMode.NONE;
+            Mouse.Capture(null);
+        }
+
+        private Zone newZoneToDraw;
+        private Point startingPointToDraw;
+        private bool isCapturedToDraw;
+        private void UserControl_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (CanvasDrawingMode > 0)
+            {
+                isCapturedToDraw = true;
+                startingPointToDraw = Mouse.GetPosition(itemsControl);
+                newZoneToDraw = new Zone()
+                {
+                    X = startingPointToDraw.X,
+                    Y = startingPointToDraw.Y,
+                    FillColor = Imaging.Color.Red,
+                    Order = 0,
+                    ZoneType = CanvasDrawingMode.ToString()
+                };
+                Zones.Add(newZoneToDraw);
+            }
+        }
+
+        private void itemsControl_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if (isCapturedToDraw)
+            {
+                var point = Mouse.GetPosition(itemsControl);
+                newZoneToDraw.X = System.Math.Min(point.X, startingPointToDraw.X);
+                newZoneToDraw.Y = System.Math.Min(point.Y, startingPointToDraw.Y);
+                newZoneToDraw.Width = System.Math.Max(point.X, startingPointToDraw.X) - newZoneToDraw.X;
+                newZoneToDraw.Height = System.Math.Max(point.Y, startingPointToDraw.Y) - newZoneToDraw.Y;
+            }
+        }
     }
 }

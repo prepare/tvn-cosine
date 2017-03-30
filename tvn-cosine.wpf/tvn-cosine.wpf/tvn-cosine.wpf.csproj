@@ -100,6 +100,7 @@
     <Compile Include="Views\UserControls\Canvas.xaml.cs">
       <DependentUpon>Canvas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\CanvasDrawingMode.cs" />
     <Compile Include="Views\UserControls\MoveThumb.xaml.cs">
       <DependentUpon>MoveThumb.xaml</DependentUpon>
     </Compile>
