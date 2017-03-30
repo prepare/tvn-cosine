@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls" 
              mc:Ignorable="d">
+
     <ContentControl.Resources>
         <!-- MoveThumb Template -->
         <ControlTemplate x:Key="MoveThumbTemplate" TargetType="{x:Type local:MoveThumb}">
-            <Rectangle Fill="Transparent"/>
+            <Rectangle Fill="Transparent" />
         </ControlTemplate>
 
         <!-- ResizeDecorator Template -->
@@ -36,19 +37,22 @@
         <!-- Designer Item Template-->
         <ControlTemplate x:Key="DesignerItemTemplate" TargetType="ContentControl">
             <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
-                <local:MoveThumb Template="{StaticResource MoveThumbTemplate}" Cursor="SizeAll"/>
-                <Control Template="{StaticResource ResizeDecoratorTemplate}"/>
                 <ContentPresenter Content="{TemplateBinding ContentControl.Content}"/>
+                <Control Template="{StaticResource ResizeDecoratorTemplate}"/>
+                <local:MoveThumb Template="{StaticResource MoveThumbTemplate}" Cursor="SizeAll"/>
             </Grid>
         </ControlTemplate>
     </ContentControl.Resources>
+
     <ContentControl.Style>
         <Style TargetType="{x:Type ContentControl}">
             <Setter Property="Template" Value="{StaticResource DesignerItemTemplate}" />
         </Style>
     </ContentControl.Style>
+
     <Grid>
-        <Rectangle x:Name="rectangle" Opacity="0.4">
+        <Rectangle x:Name="rectangle"  
+                   Opacity="0.4">
         </Rectangle>
         <Grid VerticalAlignment="Bottom">
             <Border BorderBrush="LightGray" 

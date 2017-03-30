@@ -41,13 +41,13 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             {
                 var imageSource = new BitmapImage(new Uri(path, UriKind.Relative));
                 canvas.itemsControl.Width = imageSource.Width;
-                canvas.itemsControl.Height = imageSource.Height;
+                canvas.itemsControl.Height = imageSource.Height; 
                 canvas.itemsControlImageBrush.ImageSource = imageSource;
             }
             else
             {
                 canvas.itemsControl.Width = 0;
-                canvas.itemsControl.Height = 0; 
+                canvas.itemsControl.Height = 0;
                 canvas.itemsControlImageBrush.ImageSource = null;
             }
         }

@@ -1,6 +1,5 @@
 ﻿using Prism.Mvvm;
-using System.Collections.ObjectModel;
-using System.Windows.Media;
+using System.Collections.ObjectModel; 
 using Tvn.Cosine.Wpf.Views.UserControls;
 
 namespace Tvn.Cosine.Wpf.Views.Windows
@@ -11,13 +10,28 @@ namespace Tvn.Cosine.Wpf.Views.Windows
         {
             ApplicationName = "tvn-cosine Wpf Application";
             Zones = new ObservableCollection<Zone>();
+
+
             var zone = new Zone();
-            zone.Fill = Tvn.Cosine.Imaging.Color.Pink;
+            zone.FillColor = Tvn.Cosine.Imaging.Color.Pink;
+            zone.Order = 232;
+            zone.ZoneType = "Text";
             zone.X = 430;
             zone.Y = 150;
             zone.Width = 300;
             zone.Height = 430;
             Zones.Add(zone);
+
+
+            var zone2 = new Zone();
+            zone2.FillColor = Tvn.Cosine.Imaging.Color.Green;
+            zone2.Order = 2;
+            zone2.ZoneType = "Text";
+            zone2.X = 500;
+            zone2.Y = 200;
+            zone2.Width = 20;
+            zone2.Height = 50;
+            Zones.Add(zone2);
         }
 
         private string applicationName;

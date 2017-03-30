@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Tvn.Cosine.Geometry;
@@ -15,6 +16,50 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         {
             InitializeComponent();
         }
+        
+        #region Order
+        public int Order
+        {
+            get { return (int)GetValue(OrderProperty); }
+            set { SetValue(OrderProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Order.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OrderProperty =
+            DependencyProperty.Register("Order",
+                typeof(int),
+                typeof(Zone),
+                new PropertyMetadata(0, Order_PropertyChanged));
+
+        private static void Order_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var zone = d as Zone;
+            zone.zoneOrder.Text = e.NewValue.ToString();
+        }
+
+        #endregion
+
+        #region ZoneType 
+        public string ZoneType
+        {
+            get { return (string)GetValue(ZoneTypeProperty); }
+            set { SetValue(ZoneTypeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ZoneType.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ZoneTypeProperty =
+            DependencyProperty.Register("ZoneType", 
+                typeof(string), 
+                typeof(Zone), 
+                new PropertyMetadata(null, ZoneType_PropertyChanged));
+
+        private static void ZoneType_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var zone = d as Zone;
+
+            zone.zoneType.Text = e.NewValue.ToString();
+        } 
+        #endregion
 
         #region X
         public double Area
@@ -33,9 +78,9 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("X",
                 typeof(double),
                 typeof(Zone),
-                new PropertyMetadata(0d, x_PropertyChanged));
+                new PropertyMetadata(0d, X_PropertyChanged));
 
-        private static void x_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void X_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var zone = d as Zone;
             System.Windows.Controls.Canvas.SetLeft(zone, (double)e.NewValue);
@@ -54,30 +99,30 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("Y",
                 typeof(double),
                 typeof(Zone),
-                new PropertyMetadata(0d, y_PropertyChanged));
+                new PropertyMetadata(0d, Y_PropertyChanged));
 
-        private static void y_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void Y_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var zone = d as Zone;
             System.Windows.Controls.Canvas.SetTop(zone, (double)e.NewValue);
         }
         #endregion
 
-        #region Fill 
-        public IColor Fill
+        #region FillColor
+        public IColor FillColor
         {
-            get { return (IColor)GetValue(FillProperty); }
-            set { SetValue(FillProperty, value); }
+            get { return (IColor)GetValue(FillColorProperty); }
+            set { SetValue(FillColorProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Fill.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty FillProperty =
-            DependencyProperty.Register("Fill",
+        public static readonly DependencyProperty FillColorProperty =
+            DependencyProperty.Register("FillColor",
                 typeof(IColor),
                 typeof(Zone),
-                new PropertyMetadata(null, fill_PropertyChanged));
+                new PropertyMetadata(null, FillColor_PropertyChanged));
 
-        private static void fill_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void FillColor_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var zone = d as Zone;
             var color = e.NewValue as IColor;
@@ -107,9 +152,9 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("IsSelected",
                 typeof(bool),
                 typeof(Zone),
-                new PropertyMetadata(false, zone_PropertyChanged));
+                new PropertyMetadata(false, IsSelected_PropertyChanged));
 
-        private static void zone_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void IsSelected_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var zone = d as Zone;
             if ((bool)e.NewValue)

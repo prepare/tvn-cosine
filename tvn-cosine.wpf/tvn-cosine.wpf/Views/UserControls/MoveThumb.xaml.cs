@@ -13,7 +13,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             InitializeComponent();
         }
 
-        private void thumb_DragDelta(object sender, DragDeltaEventArgs e)
+        private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
             Control designerItem = DataContext as Control;
 

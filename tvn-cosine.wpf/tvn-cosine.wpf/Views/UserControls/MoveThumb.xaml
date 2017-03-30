@@ -1,4 +1,5 @@
 ﻿<Thumb x:Class="Tvn.Cosine.Wpf.Views.UserControls.MoveThumb"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
-    DragDelta="thumb_DragDelta"/>
+    xmlns:local="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls" 
+    DragDelta="MoveThumb_DragDelta" />
