@@ -33,7 +33,7 @@ namespace Tvn.Cosine.Wpf.Views.Windows
             zone2.Height = 50;
             Zones.Add(zone2);
 
-            CanvasDrawingMode = CanvasDrawingMode.TEXT;
+            CanvasDrawingMode = CanvasDrawingMode.DELETE;
         }
 
         private CanvasDrawingMode canvasDrawingMode;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -149,6 +150,27 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             isCapturedToDraw = false;
+            if (CanvasDrawingMode == CanvasDrawingMode.DELETE)
+            {
+                var area = new Rect(newZoneToDraw.X, 
+                                    newZoneToDraw.Y, 
+                                    newZoneToDraw.Width, 
+                                    newZoneToDraw.Height);
+
+                Zones.Remove(newZoneToDraw);
+                foreach (var zone in Zones.ToList())
+                {
+                    var zoneArea = new Rect(zone.X,
+                                        zone.Y,
+                                        zone.Width,
+                                        zone.Height);
+                    if (area.IntersectsWith(zoneArea))
+                    {
+                        Zones.Remove(zone);
+                    }
+                }
+            }
+
             CanvasDrawingMode = CanvasDrawingMode.NONE;
             Mouse.Capture(null);
         }
