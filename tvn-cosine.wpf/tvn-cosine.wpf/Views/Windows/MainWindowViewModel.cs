@@ -1,4 +1,7 @@
-﻿using Prism.Mvvm; 
+﻿using Prism.Mvvm;
+using System.Collections.ObjectModel;
+using System.Windows.Media;
+using Tvn.Cosine.Wpf.Views.UserControls;
 
 namespace Tvn.Cosine.Wpf.Views.Windows
 {
@@ -7,6 +10,10 @@ namespace Tvn.Cosine.Wpf.Views.Windows
         public MainWindowViewModel()
         {
             ApplicationName = "tvn-cosine Wpf Application";
+            Zones = new ObservableCollection<Zone>();
+            var zone = new Zone();
+            zone.Fill = Brushes.Red; 
+            Zones.Add(zone);
         }
 
         private string applicationName;
@@ -14,6 +21,13 @@ namespace Tvn.Cosine.Wpf.Views.Windows
         {
             get { return applicationName; }
             set { SetProperty(ref applicationName, value); }
+        }
+
+        private ObservableCollection<Zone> zones;
+        public ObservableCollection<Zone> Zones
+        {
+            get { return zones; }
+            set { SetProperty(ref zones, value); }
         }
     }
 }
