@@ -12,6 +12,11 @@
             <ItemsControl.Background>
                 <ImageBrush x:Name="itemsControlImageBrush" />
             </ItemsControl.Background>
-        </ItemsControl> 
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </ScrollViewer>
 </UserControl>
