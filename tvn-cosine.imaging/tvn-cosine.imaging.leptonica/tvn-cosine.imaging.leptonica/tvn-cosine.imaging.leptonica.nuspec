@@ -7,11 +7,11 @@
     <authors>tvn-cosine</authors>
     <owners>tvn-cosine</owners>
     <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
-    <projectUrl>https://github.com/tvn-cosine/tvn-cosine</projectUrl> 
+    <projectUrl>https://github.com/tvn-cosine/tvn-cosine/wiki/Leptonica-.net-Api</projectUrl> 
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>.net Leptonica wrapper.</description>
-    <summary>.net Leptonica wrapper.</summary>
-    <releaseNotes>.net Leptonica wrapper.</releaseNotes>
+    <description>a .net wrapper for Leptonica image manipulation.</description>
+    <summary>a .net wrapper for Leptonica image manipulation.</summary>
+    <releaseNotes>a .net wrapper for Leptonica image manipulation.</releaseNotes>
     <copyright>Copyright © tvn-cosine 2017</copyright>
     <tags>tvn-cosine</tags>
     <dependencies>
