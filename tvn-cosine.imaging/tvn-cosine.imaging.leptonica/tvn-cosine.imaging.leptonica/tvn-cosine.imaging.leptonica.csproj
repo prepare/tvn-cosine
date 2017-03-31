@@ -7,8 +7,8 @@
     <ProjectGuid>{5212C569-BF3D-442B-88B3-F18CA3FBD6E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tvn.Cosine.Imaging.Leptonica</RootNamespace>
-    <AssemblyName>tvn-cosine.imaging.leptonica</AssemblyName>
+    <RootNamespace>Leptonica</RootNamespace>
+    <AssemblyName>leptonica.net</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

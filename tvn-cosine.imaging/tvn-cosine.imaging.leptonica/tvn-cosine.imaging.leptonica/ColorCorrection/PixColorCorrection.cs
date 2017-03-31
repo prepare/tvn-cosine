@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tvn.Cosine.Imaging.Leptonica.ColorCorrection
+namespace Leptonica.ColorCorrection
 {
     public class PixColorCorrection
     {
