@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Architecture.cs" />
+    <Compile Include="Data\IZone.cs" />
     <Compile Include="Expressions\Associativity.cs" />
     <Compile Include="Expressions\ExpressionObject.cs" />
     <Compile Include="Expressions\Function.cs" />
