@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Windows;
 
-namespace Tvn.Cosine.Wpf
+namespace Tvn.Cosine.Wpf.Demo
 {
     /// <summary>
     /// Interaction logic for App.xaml

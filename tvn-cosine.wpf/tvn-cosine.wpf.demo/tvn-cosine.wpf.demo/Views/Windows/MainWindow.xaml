@@ -1,8 +1,8 @@
 ﻿<Window x:Class="Tvn.Cosine.Wpf.Demo.Views.Windows.MainWindow"
+        xmlns:UserControls="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls;assembly=tvn-cosine.wpf"  
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:prism="http://prismlibrary.com/"  
-        xmlns:UserControls="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls"                     
+        xmlns:prism="http://prismlibrary.com/"                     
         Title="{Binding ApplicationName}"   
         prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>

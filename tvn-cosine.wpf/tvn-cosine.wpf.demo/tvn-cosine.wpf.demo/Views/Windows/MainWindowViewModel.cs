@@ -4,7 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using Tvn.Cosine.Wpf.Views.UserControls;
 
-namespace Tvn.Cosine.Wpf.Views.Windows
+namespace Tvn.Cosine.Wpf.Demo.Views.Windows
 {
     public class MainWindowViewModel : BindableBase
     {

@@ -1,14 +1,9 @@
 ﻿using Prism.Unity;
-using System;
-using System.Collections.Generic;
 using Microsoft.Practices.Unity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using Tvn.Cosine.Wpf.Views.Windows;
+using Tvn.Cosine.Wpf.Demo.Views.Windows;
 
-namespace Tvn.Cosine.Wpf
+namespace Tvn.Cosine.Wpf.Demo
 {
     class Bootstrapper : UnityBootstrapper
     {
