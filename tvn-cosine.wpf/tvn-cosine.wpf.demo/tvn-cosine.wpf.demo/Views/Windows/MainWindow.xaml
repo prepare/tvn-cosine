@@ -11,27 +11,51 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Orientation="Vertical">
-            <Button Content="NONE" 
+        <StackPanel Grid.Column="0" 
+                    Orientation="Vertical">
+            <Button Content="" 
+                    FontFamily="Segoe UI Symbol"
+                    FontSize="30"
                     Margin="5,5,5,5"
+                    ToolTip="Remove selection"
                     Command="{Binding SetDrawingMode}" 
                     CommandParameter="0" />
-            <Button Content="HEADLINE" 
+            <Button Content="" 
+                    FontFamily="Segoe UI Symbol"
+                    ToolTip="Cut selected"
+                    FontSize="30"
+                    Margin="5,5,5,5"
+                    Command="{Binding CutZones}" 
+                    CommandParameter="8" />
+            <Button Content="" 
+                    FontFamily="Segoe UI Symbol"
+                    FontSize="30"
+                    ToolTip="Draw headline"
                     Margin="5,5,5,5"
                     Command="{Binding SetDrawingMode}" 
                     CommandParameter="1" />
-            <Button Content="TEXT" 
+            <Button Content="" 
+                    FontFamily="Segoe UI Symbol"
+                    ToolTip="Draw text"
+                    FontSize="30"
                     Margin="5,5,5,5"
                     Command="{Binding SetDrawingMode}" 
                     CommandParameter="2" />
-            <Button Content="PICTURE" 
+            <Button Content="" 
+                    FontFamily="Segoe UI Symbol"
+                    ToolTip="Draw picture"
+                    FontSize="30"
                     Margin="5,5,5,5"
                     Command="{Binding SetDrawingMode}" 
                     CommandParameter="4" />
-            <Button Content="DELETE" 
+            <Button Content="" 
+                    FontFamily="Segoe UI Symbol"
+                    ToolTip="Delete zones"
+                    FontSize="30"
                     Margin="5,5,5,5"
                     Command="{Binding SetDrawingMode}" 
                     CommandParameter="8" />
+
         </StackPanel>
 
         <Grid Grid.Column="1">
@@ -39,6 +63,10 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="500" />
+            </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" 
                    HorizontalAlignment="Center" 
@@ -47,10 +75,15 @@
                    FontSize="48" 
                    FontWeight="Bold"/>
 
-            <UserControls:Canvas BackgroundImagePath="C:\Temp\68.jpg" 
+            <UserControls:Canvas BackgroundImagePath="{Binding ImagePath}" 
                              Grid.Row="1"
+                             Grid.Column="0"
                              Zones="{Binding Zones}"
                              DrawingMode="{Binding CanvasDrawingMode, Mode=TwoWay}"/>
+
+            <Image Grid.Row="1"
+                   Grid.Column="1"
+                   Source="{Binding CutImagePath}" />
         </Grid>
     </Grid>
 </Window>

@@ -2,6 +2,7 @@
 using Microsoft.Practices.Unity;
 using System.Windows;
 using Tvn.Cosine.Wpf.Demo.Views.Windows;
+using Tvn.Cosine.Data;
 
 namespace Tvn.Cosine.Wpf.Demo
 {
@@ -19,7 +20,8 @@ namespace Tvn.Cosine.Wpf.Demo
 
         protected override void ConfigureContainer()
         {
-            base.ConfigureContainer();
+            Container.RegisterType(typeof(IZone), typeof(Wpf.Views.UserControls.Zone));
+            base.ConfigureContainer(); 
         }
     }
 }
