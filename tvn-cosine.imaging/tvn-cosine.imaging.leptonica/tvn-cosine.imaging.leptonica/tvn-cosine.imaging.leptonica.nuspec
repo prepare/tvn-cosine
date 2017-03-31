@@ -3,7 +3,7 @@
   <metadata>
     <id>leptonica.net</id>
     <title>leptonica.net</title>
-    <version>$version$</version>
+    <version>$version$</version> 
     <authors>tvn-cosine</authors>
     <owners>tvn-cosine</owners>
     <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
