@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Leptonica;
+using System;
 using System.Runtime.InteropServices;
-using Tvn.Cosine.Imaging.Leptonica;
 
 namespace Tesseract
 {

@@ -46,10 +46,6 @@
       <HintPath>..\packages\tvn-cosine.core.1.0.0.7\lib\net452\tvn-cosine.core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="tvn-cosine.imaging.leptonica, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\tvn-cosine.imaging.leptonica.1.0.0.8\lib\net452\tvn-cosine.imaging.leptonica.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoxTextRenderer.cs" />
