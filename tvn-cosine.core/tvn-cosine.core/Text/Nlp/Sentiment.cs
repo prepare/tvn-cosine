@@ -4,7 +4,7 @@ namespace Tvn.Cosine.Text.Nlp
 {
     public class Sentiment : IId, IName
     {
-        private Sentiment(uint id, string name)
+        public Sentiment(uint id, string name)
         {
             Id = id;
             Name = name;

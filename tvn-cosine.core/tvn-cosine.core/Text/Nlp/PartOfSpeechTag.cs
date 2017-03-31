@@ -4,7 +4,7 @@ namespace Tvn.Cosine.Text.Nlp
 {
     public class PartOfSpeechTag : IName, IDescription
     {
-        private PartOfSpeechTag(string name, string description)
+        public PartOfSpeechTag(string name, string description)
         {
             Name = name;
             Description = description;
