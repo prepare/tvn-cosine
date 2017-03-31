@@ -6,23 +6,10 @@
              xmlns:local="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls" 
              MouseLeftButtonUp="UserControl_MouseLeftButtonUp"
              PreviewMouseLeftButtonDown="UserControl_PreviewMouseLeftButtonDown"
-             mc:Ignorable="d">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0" 
-                   HorizontalAlignment="Center" 
-                   x:Name="drawingModeText"
-                   FontFamily="Segoe UI" 
-                   FontSize="48" 
-                   FontWeight="Bold"/>
-
+             mc:Ignorable="d"> 
         <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                      Grid.Row="1"
-                  CanContentScroll="True">
+                      Grid.Row="1" 
+                      CanContentScroll="True">
             <ItemsControl x:Name="itemsControl"  
                       PreviewMouseMove="itemsControl_PreviewMouseMove"
                       MouseWheel="itemsControl_MouseWheel">
@@ -35,6 +22,5 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-        </ScrollViewer>
-    </Grid>
+        </ScrollViewer> 
 </UserControl>

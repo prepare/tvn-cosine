@@ -11,7 +11,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
     /// <summary>
     /// Interaction logic for Zone.xaml
     /// </summary>
-    public partial class Zone : ContentControl, IPoint<double>, ISize<double>
+    public partial class Zone : ContentControl, IZone
     {
         public Zone()
         {

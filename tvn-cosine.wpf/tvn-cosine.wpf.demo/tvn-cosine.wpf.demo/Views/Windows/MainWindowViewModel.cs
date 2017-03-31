@@ -1,5 +1,7 @@
-﻿using Prism.Mvvm;
-using System.Collections.ObjectModel; 
+﻿using Prism.Commands;
+using Prism.Mvvm;
+using System;
+using System.Collections.ObjectModel;
 using Tvn.Cosine.Wpf.Views.UserControls;
 
 namespace Tvn.Cosine.Wpf.Views.Windows
@@ -10,7 +12,7 @@ namespace Tvn.Cosine.Wpf.Views.Windows
         {
             ApplicationName = "tvn-cosine Wpf Application";
             Zones = new ObservableCollection<Zone>();
-
+            SetDrawingMode = new DelegateCommand<object>(setDrawingMode);
 
             var zone = new Zone();
             zone.FillColor = Tvn.Cosine.Imaging.Color.Pink;
@@ -21,7 +23,6 @@ namespace Tvn.Cosine.Wpf.Views.Windows
             zone.Width = 300;
             zone.Height = 430;
             Zones.Add(zone);
-
 
             var zone2 = new Zone();
             zone2.FillColor = Tvn.Cosine.Imaging.Color.Green;
@@ -34,6 +35,26 @@ namespace Tvn.Cosine.Wpf.Views.Windows
             Zones.Add(zone2);
 
             CanvasDrawingMode = CanvasDrawingMode.DELETE;
+        }
+
+        public DelegateCommand<object> SetDrawingMode { get; }
+
+        private void setDrawingMode(object drawingMode)
+        {
+            if (drawingMode != null)
+            {
+                int id;
+                if (int.TryParse(drawingMode.ToString(), out id))
+                {
+                    if (Enum.IsDefined(typeof(CanvasDrawingMode), (int)id))
+                    {
+                        CanvasDrawingMode = (CanvasDrawingMode)id;
+                    }
+                }
+                return;
+            }
+
+            CanvasDrawingMode = CanvasDrawingMode.NONE;
         }
 
         private CanvasDrawingMode canvasDrawingMode;

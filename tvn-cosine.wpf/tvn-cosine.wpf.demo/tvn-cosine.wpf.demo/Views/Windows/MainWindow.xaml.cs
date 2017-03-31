@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 
-namespace Tvn.Cosine.Wpf.Views.Windows
+namespace Tvn.Cosine.Wpf.Demo.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for Window.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {

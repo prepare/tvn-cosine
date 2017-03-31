@@ -109,8 +109,8 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         }
         #endregion
 
-        #region CanvasDrawingMode  
-        public CanvasDrawingMode CanvasDrawingMode
+        #region DrawingMode  
+        public CanvasDrawingMode DrawingMode
         {
             get { return (CanvasDrawingMode)GetValue(DrawingModeProperty); }
             set { SetValue(DrawingModeProperty, value); }
@@ -118,66 +118,48 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
         // Using a DependencyProperty as the backing store for DrawingMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DrawingModeProperty =
-            DependencyProperty.Register("CanvasDrawingMode",
+            DependencyProperty.Register("DrawingMode",
                 typeof(CanvasDrawingMode),
                 typeof(Canvas),
-                new PropertyMetadata(CanvasDrawingMode.NONE, drawingMode_PropertyChanged));
-
-        private static void drawingMode_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var canvas = d as Canvas;
-            switch ((CanvasDrawingMode)e.NewValue)
-            {
-                case CanvasDrawingMode.HEADLINE:
-                    canvas.drawingModeText.Text = e.NewValue.ToString();
-                    break;
-                case CanvasDrawingMode.TEXT:
-                    canvas.drawingModeText.Text = e.NewValue.ToString();
-                    break;
-                case CanvasDrawingMode.PICTURE:
-                    canvas.drawingModeText.Text = e.NewValue.ToString();
-                    break;
-                case CanvasDrawingMode.DELETE:
-                    canvas.drawingModeText.Text = e.NewValue.ToString();
-                    break;
-                default:
-                    canvas.drawingModeText.Text = string.Empty;
-                    break;
-            }
-        }
+                new PropertyMetadata(CanvasDrawingMode.NONE)); 
         #endregion
 
         private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             isCapturedToDraw = false;
-            if (CanvasDrawingMode == CanvasDrawingMode.DELETE)
+            if (DrawingMode == CanvasDrawingMode.DELETE)
             {
-                var area = new Rect(newZoneToDraw.X, 
-                                    newZoneToDraw.Y, 
-                                    newZoneToDraw.Width, 
-                                    newZoneToDraw.Height);
-
-                Zones.Remove(newZoneToDraw);
-                foreach (var zone in Zones.ToList())
-                {
-                    var zoneArea = new Rect(zone.X,
-                                        zone.Y,
-                                        zone.Width,
-                                        zone.Height);
-                    if (area.IntersectsWith(zoneArea))
-                    {
-                        Zones.Remove(zone);
-                    }
-                }
+                deleteZones();
             }
 
-            CanvasDrawingMode = CanvasDrawingMode.NONE;
+            DrawingMode = CanvasDrawingMode.NONE;
             Mouse.Capture(null);
+        }
+
+        private void deleteZones()
+        {
+            var area = new Rect(newZoneToDraw.X,
+                                newZoneToDraw.Y,
+                                newZoneToDraw.Width,
+                                newZoneToDraw.Height);
+
+            Zones.Remove(newZoneToDraw);
+            foreach (var zone in Zones.ToList())
+            {
+                var zoneArea = new Rect(zone.X,
+                                    zone.Y,
+                                    zone.Width,
+                                    zone.Height);
+                if (area.IntersectsWith(zoneArea))
+                {
+                    Zones.Remove(zone);
+                }
+            }
         }
 
         private void UserControl_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (CanvasDrawingMode > 0)
+            if (DrawingMode > 0)
             {
                 isCapturedToDraw = true;
                 startingPointToDraw = Mouse.GetPosition(itemsControl);
@@ -187,7 +169,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                     Y = startingPointToDraw.Y,
                     FillColor = Imaging.Color.Red,
                     Order = 0,
-                    ZoneType = CanvasDrawingMode.ToString()
+                    ZoneType = DrawingMode.ToString()
                 };
                 Zones.Add(newZoneToDraw);
             }

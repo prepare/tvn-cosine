@@ -8,12 +8,12 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("tvn-cosine.wpf")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("wpf controls for the tvn-cosine project")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("tvn-cosine")]
 [assembly: AssemblyProduct("tvn-cosine.wpf")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © tvn-cosine 2017")]
+[assembly: AssemblyTrademark("tvn-cosine 2017")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

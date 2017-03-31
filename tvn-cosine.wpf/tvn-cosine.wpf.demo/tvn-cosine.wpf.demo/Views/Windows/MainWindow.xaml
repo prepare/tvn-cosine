@@ -1,0 +1,56 @@
+﻿<Window x:Class="Tvn.Cosine.Wpf.Demo.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"  
+        xmlns:UserControls="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls"                     
+        Title="{Binding ApplicationName}"   
+        prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <Button Content="NONE" 
+                    Margin="5,5,5,5"
+                    Command="{Binding SetDrawingMode}" 
+                    CommandParameter="0" />
+            <Button Content="HEADLINE" 
+                    Margin="5,5,5,5"
+                    Command="{Binding SetDrawingMode}" 
+                    CommandParameter="1" />
+            <Button Content="TEXT" 
+                    Margin="5,5,5,5"
+                    Command="{Binding SetDrawingMode}" 
+                    CommandParameter="2" />
+            <Button Content="PICTURE" 
+                    Margin="5,5,5,5"
+                    Command="{Binding SetDrawingMode}" 
+                    CommandParameter="4" />
+            <Button Content="DELETE" 
+                    Margin="5,5,5,5"
+                    Command="{Binding SetDrawingMode}" 
+                    CommandParameter="8" />
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" 
+                   HorizontalAlignment="Center" 
+                   Text="{Binding CanvasDrawingMode}"
+                   FontFamily="Segoe UI" 
+                   FontSize="48" 
+                   FontWeight="Bold"/>
+
+            <UserControls:Canvas BackgroundImagePath="C:\Temp\68.jpg" 
+                             Grid.Row="1"
+                             Zones="{Binding Zones}"
+                             DrawingMode="{Binding CanvasDrawingMode, Mode=TwoWay}"/>
+        </Grid>
+    </Grid>
+</Window>
