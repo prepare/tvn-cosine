@@ -3,11 +3,10 @@ using Tvn.Cosine.Data;
 
 namespace tvn_cosine.api.Models
 {
-    public class ExceptionModel : IDateCreated
+    public class ExceptionModel : ResponseBase, IDateCreated
     {
         public DateTime DateCreated { get; set; }
-        public string ExceptionMessage { get; set; }
-        public TimeSpan RequestDuration { get; set; }
+        public string ExceptionMessage { get; set; } 
 
         public override string ToString()
         {

@@ -177,7 +177,11 @@
     </Compile>
     <Compile Include="Models\ExceptionModel.cs" />
     <Compile Include="Models\ImageModel.cs" />
+    <Compile Include="Models\NlpResponseModel.cs" />
     <Compile Include="Models\OcrResponseModel.cs" />
+    <Compile Include="Models\PatternMatcherResponseModel.cs" />
+    <Compile Include="Models\ResponseBase.cs" />
+    <Compile Include="Models\TextObjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

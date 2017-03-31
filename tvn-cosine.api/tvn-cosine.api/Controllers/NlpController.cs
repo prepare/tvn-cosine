@@ -1,39 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using tvn_cosine.api.Models;
 
 namespace tvn_cosine.api.Controllers
 {
     public class NlpController : ApiController
     {
         // GET: api/Nlp
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(string.Format("Stanford Nlp Version: {0}", null));
         }
-
-        // GET: api/Nlp/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+         
         // POST: api/Nlp
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]TextObjectModel value)
         {
-        }
-
-        // PUT: api/Nlp/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Nlp/5
-        public void Delete(int id)
-        {
-        }
+            return Ok(string.Format("Stanford Nlp Version: {0}", null));
+        } 
     }
 }
