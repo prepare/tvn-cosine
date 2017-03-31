@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Tvn.Cosine.Data;
 using Tvn.Cosine.Geometry;
 using Tvn.Cosine.Imaging;
 
