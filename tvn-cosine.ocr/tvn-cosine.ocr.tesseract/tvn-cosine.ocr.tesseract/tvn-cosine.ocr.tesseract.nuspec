@@ -7,11 +7,11 @@
     <authors>tvn-cosine</authors>
     <owners>tvn-cosine</owners>
     <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
-    <projectUrl>https://github.com/tvn-cosine/ocr</projectUrl> 
+    <projectUrl>https://github.com/tvn-cosine/tvn-cosine/wiki/Tesseract-.net-Api</projectUrl> 
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>a .net wrapper for tesseract ocr</description>
-    <summary>a .net wrapper for tesseract ocr</summary>
-    <releaseNotes>a .net wrapper for tesseract ocr</releaseNotes>
+    <description>a .net wrapper for Tesseract Ocr.</description>
+    <summary>a .net wrapper for Tesseract Ocr.</summary>
+    <releaseNotes>a .net wrapper for Tesseract Ocr.</releaseNotes>
     <copyright>Copyright © tvn-cosine 2017</copyright>
     <tags>dotNet OCR tesseract</tags>
     <dependencies>

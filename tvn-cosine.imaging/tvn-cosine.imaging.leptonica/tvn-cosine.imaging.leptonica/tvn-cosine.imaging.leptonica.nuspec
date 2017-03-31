@@ -12,8 +12,8 @@
     <description>a .net wrapper for Leptonica image manipulation.</description>
     <summary>a .net wrapper for Leptonica image manipulation.</summary>
     <releaseNotes>a .net wrapper for Leptonica image manipulation.</releaseNotes>
-    <copyright>Copyright © tvn-cosine 2017</copyright>
-    <tags>tvn-cosine</tags>
+    <copyright>Copyright © tvn-cosine 2017</copyright> 
+    <tags>leptonica dotNet image manipulation</tags>
     <dependencies>
 		  <dependency id="tvn-cosine.core" version="1.0.0.5" />
 	  </dependencies>
