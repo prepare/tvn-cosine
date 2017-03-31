@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tvn.Cosine.Imaging.Leptonica.Rotation
+namespace Leptonica.Rotation
 {
     public class PixRotation
     {

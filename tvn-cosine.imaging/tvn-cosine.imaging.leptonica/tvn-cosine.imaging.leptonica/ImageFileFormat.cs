@@ -1,4 +1,4 @@
-namespace Tvn.Cosine.Imaging.Leptonica
+namespace Leptonica
 {
     /// <summary>
     /// Image file formats

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System; 
 using System.Runtime.InteropServices;
+using Tvn.Cosine;
 
-namespace Tvn.Cosine.Imaging.Leptonica.Native
+namespace Leptonica.Native
 {
     internal class DllImports
     {

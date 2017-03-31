@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace Tvn.Cosine.Imaging.Leptonica
+namespace Leptonica
 {
     public class Pixa : IDisposable, ICloneable, IEnumerable<Pix>
     {

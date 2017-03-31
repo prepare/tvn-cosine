@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using Tvn.Cosine.Geometry;
 
-namespace Tvn.Cosine.Imaging.Leptonica
+namespace Leptonica
 {
     public class Pix : IDisposable, ICloneable, ISize<int>
     {

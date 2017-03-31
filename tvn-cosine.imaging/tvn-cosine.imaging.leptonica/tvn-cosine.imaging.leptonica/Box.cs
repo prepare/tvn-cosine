@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using Tvn.Cosine.Geometry;
 
-namespace Tvn.Cosine.Imaging.Leptonica
+namespace Leptonica
 {
     public class Box : IPoint<int>, ISize<int>, System.ICloneable, System.IDisposable
     {

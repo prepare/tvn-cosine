@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>tvn-cosine.imaging.leptonica</id>
-    <title>tvn-cosine.imaging.leptonica</title>
+    <id>leptonica.net</id>
+    <title>leptonica.net</title>
     <version>$version$</version>
     <authors>tvn-cosine</authors>
     <owners>tvn-cosine</owners>
