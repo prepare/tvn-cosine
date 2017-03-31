@@ -8,7 +8,7 @@ using Tvn.Cosine;
 
 namespace Tesseract.Native
 {
-    public class DllImports
+    internal class DllImports
     {
         #region set up
         private const string zlibDllName = "zlib.dll";

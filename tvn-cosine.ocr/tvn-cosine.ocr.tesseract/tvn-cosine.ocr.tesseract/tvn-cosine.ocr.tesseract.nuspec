@@ -16,7 +16,7 @@
     <tags>dotNet OCR tesseract</tags>
     <dependencies>
 		<dependency id="tvn-cosine.core" version="1.0.0.5" />
-		<dependency id="tvn-cosine.imaging.leptonica" version="1.0.0.1" /> 
+		<dependency id="leptonica.net" version="1.0.1.9" /> 
 	</dependencies>
   </metadata>
   <files>
