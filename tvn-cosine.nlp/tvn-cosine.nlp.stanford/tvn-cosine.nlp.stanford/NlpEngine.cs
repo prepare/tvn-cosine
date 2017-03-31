@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.Generic;
+﻿using System.Collections.Generic; 
 using edu.stanford.nlp.pipeline;
 using edu.stanford.nlp.ling;
 using edu.stanford.nlp.util;
@@ -10,7 +9,7 @@ using Tvn.Cosine.Text.Nlp;
 
 namespace tvn_cosine.nlp.stanford
 {
-    public class NlpEngine
+    public class NlpEngine : INlpEngine
     {
         private readonly StanfordCoreNLP pipeline;
         private readonly string localModelPath;
@@ -30,7 +29,7 @@ namespace tvn_cosine.nlp.stanford
             }
         }
 
-        public Newsclip.Text.Nlp.Document Process(string text)
+        public Tvn.Cosine.Text.Nlp.Document Process(string text)
         {
             lock (syncLock)
             {
@@ -53,13 +52,12 @@ namespace tvn_cosine.nlp.stanford
                         var tokensSentence = getTokens((java.util.List)sentence.get(typeof(CoreAnnotations.TokensAnnotation)));
                         var ner = getNamedEntities(tokensSentence);
 
-                        for (int s = 0; s < score.Length; ++s)
+                        for (uint s = 0; s < score.Length; ++s)
                         {
-                            var sent = getSentimentObject(s);
-                            sentDic[sent] = score[s];
+                            sentDic[new Sentiment(s, s.ToString())] = score[s];
                         }
 
-                        sentences.Add(new Sentence(sentence.ToString(), tokensSentence, ner, new Sentiment(sentiment), sentDic));
+                        sentences.Add(new Sentence(sentence.ToString(), tokensSentence, ner, new Sentiment(0, sentiment), sentDic));
                         tokens.AddRange(tokensSentence);
                     }
                 }
@@ -119,7 +117,7 @@ namespace tvn_cosine.nlp.stanford
 
             if (!string.IsNullOrWhiteSpace(tempToken))
             {
-                returnValue.Add(new Token(tempToken.Trim(), new PartOfSpeechTag(prevPos), prevNamedEntity));
+                returnValue.Add(new Token(tempToken.Trim(), new PartOfSpeechTag(prevPos, string.Empty), prevNamedEntity));
             }
 
             return returnValue;
@@ -138,7 +136,7 @@ namespace tvn_cosine.nlp.stanford
                     var ner = (string)token.get(typeof(CoreAnnotations.NamedEntityTagAnnotation));
                     var lemma = token.get(typeof(CoreAnnotations.LemmaAnnotation));
 
-                    returnValue.Add(new Token(tokenText, new PartOfSpeechTag(pos), new NamedEntity(ner, "")));
+                    returnValue.Add(new Token(tokenText, new PartOfSpeechTag(pos, string.Empty), new NamedEntity(ner, string.Empty)));
                 }
             }
             return returnValue;
