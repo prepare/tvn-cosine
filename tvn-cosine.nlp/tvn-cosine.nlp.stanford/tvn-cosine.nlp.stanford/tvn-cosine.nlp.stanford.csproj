@@ -167,7 +167,9 @@
     <Content Include="lib\stanford-corenlp-3.7.0.dll" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CreateNuGetPackage.ps1" />
     <None Include="packages.config" />
+    <None Include="tvn-cosine.nlp.stanford.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
