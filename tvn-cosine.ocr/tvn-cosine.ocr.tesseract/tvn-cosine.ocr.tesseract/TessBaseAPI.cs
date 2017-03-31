@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using Tvn.Cosine.Imaging.Leptonica;
 
-namespace Tvn.Cosine.Ocr.Tesseract
+namespace Tesseract
 {
     /// <summary>
     /// Base class for all tesseract APIs.

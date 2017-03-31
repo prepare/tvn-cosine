@@ -1,4 +1,4 @@
-﻿namespace Tvn.Cosine.Ocr.Tesseract
+﻿namespace Tesseract
 {
     /// <summary>
     /// When Tesseract/Cube is initialized we can choose to instantiate/load/run

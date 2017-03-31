@@ -1,4 +1,4 @@
-﻿namespace Tvn.Cosine.Ocr.Tesseract
+﻿namespace Tesseract
 {
     /// <summary>
     /// The text lines are read in the given sequence.

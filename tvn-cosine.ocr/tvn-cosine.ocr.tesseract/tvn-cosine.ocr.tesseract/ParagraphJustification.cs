@@ -1,4 +1,4 @@
-﻿namespace Tvn.Cosine.Ocr.Tesseract
+﻿namespace Tesseract
 {
     /// <summary>
     /// Fully justified paragraphs (text aligned to both left and right

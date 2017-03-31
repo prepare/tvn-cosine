@@ -1,4 +1,4 @@
-﻿namespace Tvn.Cosine.Ocr.Tesseract
+﻿namespace Tesseract
 {
     /// <summary>
     /// enum of the elements of the page hierarchy, used in ResultIterator

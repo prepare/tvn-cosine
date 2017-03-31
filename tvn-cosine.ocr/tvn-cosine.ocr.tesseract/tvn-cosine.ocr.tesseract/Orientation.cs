@@ -1,4 +1,4 @@
-﻿namespace Tvn.Cosine.Ocr.Tesseract
+﻿namespace Tesseract
 {
     /// <summary>
     /// 

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>tvn-cosine.ocr.tesseract</id>
-    <title>tvn-cosine.ocr.tesseract</title>
+    <id>tesseract.net</id>
+    <title>tesseract.net</title>
     <version>$version$</version>
     <authors>tvn-cosine</authors>
     <owners>tvn-cosine</owners>

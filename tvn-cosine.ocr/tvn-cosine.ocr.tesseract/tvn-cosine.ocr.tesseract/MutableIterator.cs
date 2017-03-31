@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Tvn.Cosine.Ocr.Tesseract
+namespace Tesseract
 {
     public class MutableIterator : ResultIterator
     {
