@@ -60,7 +60,11 @@ namespace Leptonica
         }
          
         // PIX        * pixAffineSampled()
-        //
+        
+
+
+
+
         // Affine(3 pt) image transformation using interpolation
         //      (or area mapping) for anti-aliasing images that are
         //      2, 4, or 8 bpp gray, or colormapped, or 32 bpp RGB
@@ -70,23 +74,42 @@ namespace Leptonica
         // PIX        * pixAffineColor()
         // PIX        * pixAffinePtaGray()
         // PIX        * pixAffineGray()
-        //
+        
+
+
+
+
         // Affine transform including alpha(blend) component
         //PIX        * pixAffinePtaWithAlpha()
-        //
+
+
+
+
+
         // Affine coordinate transformation
         // l_int32     getAffineXformCoeffs()
         // l_int32     affineInvertXform()
         // l_int32     affineXformSampledPt()
         // l_int32     affineXformPt()
-        //
+     
+
+
+
+
         // Interpolation helper functions
         // l_int32     linearInterpolatePixelGray()
         // l_int32     linearInterpolatePixelColor()
-        //
+  
+
+
+
+
         // Gauss-jordan linear equation solver
         // l_int32     gaussjordan()
-        //
+  
+
+
+
         // Affine image transformation using a sequence of
         // shear/scale/translation operations
         // PIX        * pixAffineSequential()
