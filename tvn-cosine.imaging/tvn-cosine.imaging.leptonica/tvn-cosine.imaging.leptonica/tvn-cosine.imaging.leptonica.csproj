@@ -49,12 +49,12 @@
     <Compile Include="Boxa.cs" />
     <Compile Include="BoxaBoxEnumerator.cs" />
     <Compile Include="AdaptMap.cs" />
-    <Compile Include="ColorCorrection\PixColorCorrection.cs" />
+    <Compile Include="Convolve.cs" />
+    <Compile Include="Enhance.cs" />
     <Compile Include="DeskewRedSearch.cs" />
     <Compile Include="DeskewRedSweep.cs" />
-    <Compile Include="Drawing\PixDrawing.cs" />
+    <Compile Include="BoxFunc3.cs" />
     <Compile Include="EdgeFilterFlags.cs" />
-    <Compile Include="Filter\PixFilter.cs" />
     <Compile Include="FindSkewSweepReduction.cs" />
     <Compile Include="GraphicPixelSetting.cs" />
     <Compile Include="GrayscaleFillingFlags.cs" />
@@ -62,18 +62,22 @@
     <Compile Include="InsertionType.cs" />
     <Compile Include="Native\DllImports.cs" />
     <Compile Include="Pix.cs" />
+    <Compile Include="Pix2.cs" />
+    <Compile Include="Pix3.cs" />
+    <Compile Include="Pix5.cs" />
     <Compile Include="Pixa.cs" />
     <Compile Include="PixaPixEnumerator.cs" />
     <Compile Include="PixColorMap.cs" />
     <Compile Include="PixColorMapColorEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pta.cs" />
-    <Compile Include="Resizing\PixResizing.cs" />
+    <Compile Include="Rotate.cs" />
     <Compile Include="RotateFlags.cs" />
     <Compile Include="RotateInColorFlags.cs" />
     <Compile Include="IncolorFlags.cs" />
-    <Compile Include="Rotation\PixRotation.cs" />
+    <Compile Include="Scale.cs" />
     <Compile Include="ShearFlags.cs" />
+    <Compile Include="Skew.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\x64\jpeg.dll">

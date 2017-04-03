@@ -1,58 +1,10 @@
 ﻿using System;
 
-namespace Leptonica.Resizing
+namespace Leptonica
 {
-    public class PixResizing
-    {
-        /// <summary>
-        ///  This should be simple, but there are choices to be made.
-        ///  The box is defined relative to the pix coordinates.  However,
-        ///  if the box is not contained within the pix, we have two choices:
-        ///
-        ///      (1) clip the box to the pix
-        ///      (2) make a new pix equal to the full box dimensions,
-        ///          but let rasterop do the clipping and positioning
-        ///          of the src with respect to the dest
-        ///
-        ///  Choice(2) immediately brings up the problem of what pixel values
-        /// to use that were not taken from the src.For example, on a grayscale
-        /// image, do you want the pixels not taken from the src to be black
-        ///  or white or something else?  To implement choice 2, one needs to
-        /// specify the color of these extra pixels.
-        ///
-        ///  So we adopt (1), and clip the box first, if necessary,
-        ///  before making the dest pix and doing the rasterop.But there
-        ///  is another issue to consider.If you want to paste the
-        /// clipped pix back into pixs, it must be properly aligned, and
-        /// it is necessary to use the clipped box for alignment.
-        /// Accordingly, this function has a third (optional) argument, which is
-        ///  the input box clipped to the src pix.
-        /// </summary>
-        /// <param name="source">pixs</param>
-        /// <param name="box">box  requested clipping region; const</param>
-        /// <param name="pboxc">pboxc [optional] actual box of clipped region</param>
-        /// <returns> clipped pix, or NULL on error or if rectangle doesnt intersect pixs/returns>
-        public Pix ClipRectangle(Pix source, Box box, out Box pboxc)
-        {
-            if (source == null || box == null)
-            {
-                pboxc = null;
-                return null;
-            }
-
-            IntPtr pboxcPntr;
-            var pointer = Native.DllImports.pixClipRectangle(source.handleRef, box.handleRef, out pboxcPntr);
-            pboxc = new Box(pboxcPntr);
-            if (pointer != IntPtr.Zero)
-            {
-                return new Pix(pointer);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
+    public static class Scale
+    { 
+        //  Top-level scaling  
         /// <summary>
         ///  This function scales 32 bpp RGB; 2, 4 or 8 bpp palette color;
         ///  2, 4, 8 or 16 bpp gray; and binary images.
@@ -134,7 +86,7 @@ namespace Leptonica.Resizing
         /// <param name="scaleX">scalex</param>
         /// <param name="scaleY">scaley</param>
         /// <returns>pixd, or NULL on error</returns>
-        public Pix Scale(Pix source, float scaleX, float scaleY)
+        public static Pix pixScale(Pix source, float scaleX, float scaleY)
         {
             if (source == null)
             {
@@ -174,7 +126,7 @@ namespace Leptonica.Resizing
         /// <param name="sharpFraction"> sharpfract use 0.0 to skip sharpening</param>
         /// <param name="sharpWidth">sharpwidth halfwidth of low-pass filter; typ. 1 or 2</param>
         /// <returns>pixd, or NULL on error</returns>
-        public Pix ScaleGeneral(Pix source, float scaleX, float scaleY, float sharpFraction, int sharpWidth)
+        public static Pix pixScaleGeneral(Pix source, float scaleX, float scaleY, float sharpFraction, int sharpWidth)
         {
             if (source == null)
             {
@@ -199,7 +151,7 @@ namespace Leptonica.Resizing
         /// <param name="delWidth">delw  change in width, in pixels; 0 means no change</param>
         /// <param name="delHeight">delh  change in height, in pixels; 0 means no change</param>
         /// <returns>pixd, or NULL on error</returns>
-        public Pix ScaleToSizeRel(Pix source, int delWidth, int delHeight)
+        public static Pix pixScaleToSizeRel(Pix source, int delWidth, int delHeight)
         {
             if (source == null)
             {
@@ -231,7 +183,7 @@ namespace Leptonica.Resizing
         /// <param name="width"> wd  target width; use 0 if using height as target</param>
         /// <param name="height">hd  target height; use 0 if using width as target</param>
         /// <returns>pixd, or NULL on error</returns>
-        public Pix ScaleToSize(Pix source, int width, int height)
+        public static Pix pixScaleToSize(Pix source, int width, int height)
         {
             if (source == null)
             {
@@ -248,5 +200,80 @@ namespace Leptonica.Resizing
                 return null;
             }
         }
+
+
+
+        //         Linearly interpreted (usually up-) scaling
+        //               PIX      *pixScaleLI()     ***
+        //               PIX      *pixScaleColorLI()
+        //               PIX      *pixScaleColor2xLI()   ***
+        //               PIX      *pixScaleColor4xLI()   ***
+        //               PIX      *pixScaleGrayLI()
+        //               PIX      *pixScaleGray2xLI()
+        //               PIX      *pixScaleGray4xLI()
+        //
+        //         Scaling by closest pixel sampling
+        //               PIX      *pixScaleBySampling()
+        //               PIX      *pixScaleBySamplingToSize()
+        //               PIX      *pixScaleByIntSampling()
+        //
+        //         Fast integer factor subsampling RGB to gray and to binary
+        //               PIX      *pixScaleRGBToGrayFast()
+        //               PIX      *pixScaleRGBToBinaryFast()
+        //               PIX      *pixScaleGrayToBinaryFast()
+        //
+        //         Downscaling with (antialias) smoothing
+        //               PIX      *pixScaleSmooth() ***
+        //               PIX      *pixScaleRGBToGray2()   [special 2x reduction to gray]
+        //
+        //         Downscaling with (antialias) area mapping
+        //               PIX      *pixScaleAreaMap()     ***
+        //               PIX      *pixScaleAreaMap2()
+        //
+        //         Binary scaling by closest pixel sampling
+        //               PIX      *pixScaleBinary()
+        //
+        //         Scale-to-gray (1 bpp --> 8 bpp; arbitrary downscaling)
+        //               PIX      *pixScaleToGray()
+        //               PIX      *pixScaleToGrayFast()
+        //
+        //         Scale-to-gray (1 bpp --> 8 bpp; integer downscaling)
+        //               PIX      *pixScaleToGray2()
+        //               PIX      *pixScaleToGray3()
+        //               PIX      *pixScaleToGray4()
+        //               PIX      *pixScaleToGray6()
+        //               PIX      *pixScaleToGray8()
+        //               PIX      *pixScaleToGray16()
+        //
+        //         Scale-to-gray by mipmap(1 bpp --> 8 bpp, arbitrary reduction)
+        //               PIX      *pixScaleToGrayMipmap()
+        //
+        //         Grayscale scaling using mipmap
+        //               PIX      *pixScaleMipmap()
+        //
+        //         Replicated (integer) expansion (all depths)
+        //               PIX      *pixExpandReplicate()
+        //
+        //         Upscale 2x followed by binarization
+        //               PIX      *pixScaleGray2xLIThresh()
+        //               PIX      *pixScaleGray2xLIDither()
+        //
+        //         Upscale 4x followed by binarization
+        //               PIX      *pixScaleGray4xLIThresh()
+        //               PIX      *pixScaleGray4xLIDither()
+        //
+        //         Grayscale downscaling using min and max
+        //               PIX      *pixScaleGrayMinMax()
+        //               PIX      *pixScaleGrayMinMax2()
+        //
+        //         Grayscale downscaling using rank value
+        //               PIX      *pixScaleGrayRankCascade()
+        //               PIX      *pixScaleGrayRank2()
+        //
+        //         Helper function for transferring alpha with scaling
+        //               l_int32   pixScaleAndTransferAlpha()
+        //
+        //         RGB scaling including alpha (blend) component
+        //               PIX      *pixScaleWithAlpha()   *** 
     }
 }

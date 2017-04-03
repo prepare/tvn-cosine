@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Leptonica.ColorCorrection
+namespace Leptonica 
 {
-    public class PixColorCorrection
+    public static class Enhance
     {
         /// <summary>
         ///      (1) If fract > 0.0, it gives the fraction that the v-parameter,
@@ -19,7 +19,7 @@ namespace Leptonica.ColorCorrection
         /// <param name="source">pixs 32 bpp rgb</param>
         /// <param name="fraction">fract between -1.0 and 1.0</param>
         /// <returns>pixd, or NULL on error</returns>
-        public Pix ModifyBrightness(Pix destination, Pix source, float fraction)
+        public static Pix PixModifyBrightness(Pix destination, Pix source, float fraction)
         {
             //ensure pix is not null;
             if (source == null)
