@@ -565,7 +565,7 @@ namespace Leptonica.Native
 
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAffineSampled")]
-        internal static extern IntPtr pixAffineSampled(HandleRef pixs, IntPtr vc, int incolor);
+        internal static extern IntPtr pixAffineSampled(HandleRef pixs, [MarshalAs(UnmanagedType.LPArray)] float[] vc, InColorFlags incolor);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAffinePta")]
         internal static extern IntPtr pixAffinePta(HandleRef pixs, IntPtr ptad, IntPtr ptas, int incolor);

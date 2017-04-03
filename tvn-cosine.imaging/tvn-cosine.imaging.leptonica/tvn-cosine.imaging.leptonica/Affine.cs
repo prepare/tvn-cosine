@@ -58,13 +58,41 @@ namespace Leptonica
                 return null;
             }
         }
+
+        /// <summary>
+        ///  Notes:
+        ///       (1) Brings in either black or white pixels from the boundary.
+        ///       (2) Retains colormap, which you can do for a sampled transform..
+        ///       (3) For 8 or 32 bpp, much better quality is obtained by the
+        ///  somewhat slower pixAffine().  See that function
+        ///          for relative timings between sampled and interpolated.
+        /// </summary>
+        /// <param name="source">pixs all depths</param>
+        /// <param name="vc">vc  vector of 6 coefficients for affine transformation</param>
+        /// <param name="incolor">incolor L_BRING_IN_WHITE, L_BRING_IN_BLACK</param>
+        /// <returns>pixd, or NULL on error</returns>
+        public static Pix pixAffineSampled(Pix source, float[] vc, InColorFlags incolor)
+        {
+            if (source == null)
+            {
+                return null;
+            }
+
+            var pointer = Native.DllImports.pixAffineSampled(source.handleRef,
+              vc, incolor);
+
+            if (pointer != IntPtr.Zero)
+            {
+                return new Pix(pointer);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
          
-        // PIX        * pixAffineSampled()
-        
-
-
-
-
         // Affine(3 pt) image transformation using interpolation
         //      (or area mapping) for anti-aliasing images that are
         //      2, 4, or 8 bpp gray, or colormapped, or 32 bpp RGB
@@ -74,7 +102,7 @@ namespace Leptonica
         // PIX        * pixAffineColor()
         // PIX        * pixAffinePtaGray()
         // PIX        * pixAffineGray()
-        
+
 
 
 
@@ -91,7 +119,7 @@ namespace Leptonica
         // l_int32     affineInvertXform()
         // l_int32     affineXformSampledPt()
         // l_int32     affineXformPt()
-     
+
 
 
 
@@ -99,14 +127,14 @@ namespace Leptonica
         // Interpolation helper functions
         // l_int32     linearInterpolatePixelGray()
         // l_int32     linearInterpolatePixelColor()
-  
+
 
 
 
 
         // Gauss-jordan linear equation solver
         // l_int32     gaussjordan()
-  
+
 
 
 

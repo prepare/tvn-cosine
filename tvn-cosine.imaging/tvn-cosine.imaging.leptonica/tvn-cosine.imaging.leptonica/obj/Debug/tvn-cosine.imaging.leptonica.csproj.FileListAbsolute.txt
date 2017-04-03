@@ -32,4 +32,3 @@ C:\csource\tvn-cosine\tvn-cosine.imaging\tvn-cosine.imaging.leptonica\tvn-cosine
 C:\csource\tvn-cosine\tvn-cosine.imaging\tvn-cosine.imaging.leptonica\tvn-cosine.imaging.leptonica\bin\Debug\tvn-cosine.core.dll
 C:\csource\tvn-cosine\tvn-cosine.imaging\tvn-cosine.imaging.leptonica\tvn-cosine.imaging.leptonica\obj\Debug\leptonica.net.dll
 C:\csource\tvn-cosine\tvn-cosine.imaging\tvn-cosine.imaging.leptonica\tvn-cosine.imaging.leptonica\obj\Debug\leptonica.net.pdb
-C:\Users\theunis\Source\Repos\tvn-cosine\tvn-cosine.imaging\tvn-cosine.imaging.leptonica\tvn-cosine.imaging.leptonica\obj\Debug\tvn-cosine.imaging.leptonica.csprojResolveAssemblyReference.cache
