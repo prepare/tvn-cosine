@@ -78,9 +78,9 @@
                              Grid.Row="1"
                              Grid.Column="0"
                              Zones="{Binding Zones}" 
-                             VisualWidth="{Binding CanvasWidth, Mode=TwoWay}"
-                             VisualHeight="{Binding CanvasHeight, Mode=TwoWay}"
-                             DrawingMode="{Binding CanvasDrawingMode, Mode=TwoWay}" />
+                             CanvasWidth="{Binding CanvasWidth}"
+                             CanvasHeight="{Binding CanvasHeight}"
+                             DrawingMode="{Binding CanvasDrawingMode}" />
 
             <Image Grid.Row="1"
                    Grid.Column="1"

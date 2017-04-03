@@ -35,7 +35,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("BackgroundImagePath",
                 typeof(string),
                 typeof(Canvas),
-                new PropertyMetadata(null, backgroundImagePath_PropertChanged));
+                new FrameworkPropertyMetadata(null, backgroundImagePath_PropertChanged)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private static void backgroundImagePath_PropertChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -102,7 +106,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("Zones",
                 typeof(ObservableCollection<Zone>),
                 typeof(Canvas),
-                new PropertyMetadata(null, zones_PropertChanged));
+                new FrameworkPropertyMetadata(null, zones_PropertChanged)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private static void zones_PropertChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -124,7 +132,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("DrawingMode",
                 typeof(CanvasDrawingMode),
                 typeof(Canvas),
-                new PropertyMetadata(CanvasDrawingMode.NONE));
+                new FrameworkPropertyMetadata(CanvasDrawingMode.NONE)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
         #endregion
 
         #region Deleting of Zones
@@ -207,7 +219,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("CanvasWidth",
                 typeof(double),
                 typeof(Canvas),
-                new PropertyMetadata(0d));
+                new FrameworkPropertyMetadata(0d)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
         #endregion
 
         #region Canvas Height
@@ -222,7 +238,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("CanvasHeight",
                 typeof(double),
                 typeof(Canvas),
-                new PropertyMetadata(0d));
+                new FrameworkPropertyMetadata(0d)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {

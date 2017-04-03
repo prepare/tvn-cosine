@@ -31,7 +31,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("Order",
                 typeof(int),
                 typeof(Zone),
-                new PropertyMetadata(0, Order_PropertyChanged));
+                new FrameworkPropertyMetadata(0, Order_PropertyChanged)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private static void Order_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -53,7 +57,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("ZoneType",
                 typeof(string),
                 typeof(Zone),
-                new PropertyMetadata(null, ZoneType_PropertyChanged));
+                new FrameworkPropertyMetadata(null, ZoneType_PropertyChanged)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private static void ZoneType_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -80,7 +88,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("X",
                 typeof(double),
                 typeof(Zone),
-                new PropertyMetadata(0d, X_PropertyChanged));
+                new FrameworkPropertyMetadata(0d, X_PropertyChanged)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private static void X_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -101,7 +113,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("Y",
                 typeof(double),
                 typeof(Zone),
-                new PropertyMetadata(0d, Y_PropertyChanged));
+                new FrameworkPropertyMetadata(0d, Y_PropertyChanged)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private static void Y_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -122,7 +138,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("FillColor",
                 typeof(IColor),
                 typeof(Zone),
-                new PropertyMetadata(null, FillColor_PropertyChanged));
+                new FrameworkPropertyMetadata(null, FillColor_PropertyChanged)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private static void FillColor_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -154,7 +174,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("IsSelected",
                 typeof(bool),
                 typeof(Zone),
-                new PropertyMetadata(false, IsSelected_PropertyChanged));
+                new FrameworkPropertyMetadata(false, IsSelected_PropertyChanged)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                });
 
         private static void IsSelected_PropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
