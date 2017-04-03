@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls" 
-             MouseLeftButtonUp="UserControl_MouseLeftButtonUp"
+             PreviewMouseLeftButtonUp="UserControl_PreviewMouseLeftButtonUp"
              PreviewMouseLeftButtonDown="UserControl_PreviewMouseLeftButtonDown"
              mc:Ignorable="d"> 
         <ScrollViewer HorizontalScrollBarVisibility="Auto"

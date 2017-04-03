@@ -124,7 +124,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                 new PropertyMetadata(CanvasDrawingMode.NONE)); 
         #endregion
 
-        private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void UserControl_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             isCapturedToDraw = false;
             if (DrawingMode == CanvasDrawingMode.DELETE)
@@ -161,6 +161,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         {
             if (DrawingMode > 0)
             {
+                Mouse.Capture(itemsControl);
                 isCapturedToDraw = true;
                 startingPointToDraw = Mouse.GetPosition(itemsControl);
                 newZoneToDraw = new Zone()
