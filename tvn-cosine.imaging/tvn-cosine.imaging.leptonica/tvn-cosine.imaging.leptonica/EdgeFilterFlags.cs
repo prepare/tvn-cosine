@@ -1,6 +1,6 @@
 ﻿namespace Leptonica
 {
-    public enum EDGE_FILTER_FLAGS
+    public enum EdgeFilterFlags
     {
         /// <summary>
         /// Sobel edge filter 

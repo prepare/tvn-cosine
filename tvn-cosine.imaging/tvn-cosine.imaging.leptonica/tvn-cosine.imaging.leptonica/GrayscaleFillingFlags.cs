@@ -1,6 +1,6 @@
 ﻿namespace Leptonica
 {
-    public enum GRAYSCALE_FILLING_FLAG
+    public enum GrayscaleFillingFlags
     {
         /// <summary>
         /// fill white pixels (e.g, in fg map)  

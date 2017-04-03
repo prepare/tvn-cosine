@@ -667,7 +667,7 @@ namespace Leptonica
         /// <param name="ny">ny ditto for the number of vertical pixel tiles</param>
         /// <param name="filltype">filltype L_FILL_WHITE or L_FILL_BLACK</param>
         /// <returns>true if OK, false on error</returns>
-        public static bool FillMapHoles(Pix pix, int nx, int ny, GRAYSCALE_FILLING_FLAG filltype)
+        public static bool FillMapHoles(Pix pix, int nx, int ny, GrayscaleFillingFlags filltype)
         {
             //ensure pix is not null;
             if (pix == null)
@@ -1100,7 +1100,7 @@ namespace Leptonica
         /// <param name="ppixb">ppixb [optional] thresholded normalized image</param>
         /// <param name="ppixd">ppixd [optional] normalized image</param>
         /// <returns>true if OK, false on error</returns>
-        public static bool ThresholdSpreadNorm(Pix source, EDGE_FILTER_FLAGS filtertype, int edgethresh, int smoothx, int smoothy, float gamma, int minval, int maxval, int targetthresh, out Pix ppixth, out Pix ppixb, out Pix ppixd)
+        public static bool ThresholdSpreadNorm(Pix source, EdgeFilterFlags filtertype, int edgethresh, int smoothx, int smoothy, float gamma, int minval, int maxval, int targetthresh, out Pix ppixth, out Pix ppixb, out Pix ppixd)
         {
             //ensure pix is not null;
             if (source == null)

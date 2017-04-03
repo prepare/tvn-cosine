@@ -31,7 +31,7 @@ namespace Leptonica
         /// <param name="ptas">ptas  3 pts of initial coordinate space</param>
         /// <param name="incolor">incolor L_BRING_IN_WHITE, L_BRING_IN_BLACK</param>
         /// <returns>pixd, or NULL on error</returns>
-        public static Pix AffineSampledPta(Pix source, Pta ptad, Pta ptas, int incolor)
+        public static Pix AffineSampledPta(Pix source, Pta ptad, Pta ptas, IncolorFlags incolor)
         {
             if (source == null)
             {

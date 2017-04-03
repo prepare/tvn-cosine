@@ -53,11 +53,11 @@
     <Compile Include="DeskewRedSearch.cs" />
     <Compile Include="DeskewRedSweep.cs" />
     <Compile Include="Drawing\PixDrawing.cs" />
-    <Compile Include="EDGE_FILTER_FLAGS.cs" />
+    <Compile Include="EdgeFilterFlags.cs" />
     <Compile Include="Filter\PixFilter.cs" />
     <Compile Include="FindSkewSweepReduction.cs" />
     <Compile Include="GraphicPixelSetting.cs" />
-    <Compile Include="GRAYSCALE_FILLING_FLAG.cs" />
+    <Compile Include="GrayscaleFillingFlags.cs" />
     <Compile Include="ImageFileFormat.cs" />
     <Compile Include="InsertionType.cs" />
     <Compile Include="Native\DllImports.cs" />
@@ -71,6 +71,7 @@
     <Compile Include="Resizing\PixResizing.cs" />
     <Compile Include="RotateFlags.cs" />
     <Compile Include="RotateInColorFlags.cs" />
+    <Compile Include="IncolorFlags.cs" />
     <Compile Include="Rotation\PixRotation.cs" />
     <Compile Include="ShearFlags.cs" />
   </ItemGroup>

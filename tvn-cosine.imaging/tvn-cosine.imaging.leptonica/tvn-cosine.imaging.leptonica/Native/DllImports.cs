@@ -306,7 +306,7 @@ namespace Leptonica.Native
 
         /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFillMapHoles")]
-        internal static extern int pixFillMapHoles(HandleRef pix, int nx, int ny, GRAYSCALE_FILLING_FLAG filltype);
+        internal static extern int pixFillMapHoles(HandleRef pix, int nx, int ny, GrayscaleFillingFlags filltype);
 
         /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixExtendByReplication")]
@@ -342,7 +342,7 @@ namespace Leptonica.Native
 
         /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixThresholdSpreadNorm")]
-        internal static extern int pixThresholdSpreadNorm(HandleRef pixs, EDGE_FILTER_FLAGS filtertype, int edgethresh, int smoothx, int smoothy, float gamma, int minval, int maxval, int targetthresh, out IntPtr ppixth, out IntPtr ppixb, out IntPtr ppixd);
+        internal static extern int pixThresholdSpreadNorm(HandleRef pixs, EdgeFilterFlags filtertype, int edgethresh, int smoothx, int smoothy, float gamma, int minval, int maxval, int targetthresh, out IntPtr ppixth, out IntPtr ppixb, out IntPtr ppixd);
 
         /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixBackgroundNormFlex")]
@@ -369,7 +369,7 @@ namespace Leptonica.Native
         #region Affine
         /* DONE */ 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAffineSampledPta")]
-        internal static extern IntPtr pixAffineSampledPta(HandleRef pixs, HandleRef ptad, HandleRef ptas, int incolor);
+        internal static extern IntPtr pixAffineSampledPta(HandleRef pixs, HandleRef ptad, HandleRef ptas, IncolorFlags incolor);
 
 
         #endregion
