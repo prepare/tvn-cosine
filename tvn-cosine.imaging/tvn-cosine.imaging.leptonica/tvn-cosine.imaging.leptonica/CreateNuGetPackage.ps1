@@ -71,7 +71,7 @@ Write-Host " "
 Write-Host "########"
 Write-Host "Packing nuget into $localDirectory." 
 Write-Host "Packing $localDirectory\$projectName\$projectName.csproj"
-
+& $targetNugetExe restore "$localDirectory\$projectName.sln"
 & $targetNugetExe pack "$localDirectory\$projectName\$projectName.csproj" -build
 Write-Host "Package created..." 
 Write-Host "########"

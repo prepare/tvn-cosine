@@ -47,13 +47,16 @@
     <Compile Include="Box.cs" />
     <Compile Include="Boxa.cs" />
     <Compile Include="BoxaBoxEnumerator.cs" />
+    <Compile Include="ColorCorrection\AdaptMap.cs" />
     <Compile Include="ColorCorrection\PixColorCorrection.cs" />
     <Compile Include="DeskewRedSearch.cs" />
     <Compile Include="DeskewRedSweep.cs" />
     <Compile Include="Drawing\PixDrawing.cs" />
+    <Compile Include="EDGE_FILTER_FLAGS.cs" />
     <Compile Include="Filter\PixFilter.cs" />
     <Compile Include="FindSkewSweepReduction.cs" />
     <Compile Include="GraphicPixelSetting.cs" />
+    <Compile Include="GRAYSCALE_FILLING_FLAG.cs" />
     <Compile Include="ImageFileFormat.cs" />
     <Compile Include="InsertionType.cs" />
     <Compile Include="Native\DllImports.cs" />

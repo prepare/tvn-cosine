@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Leptonica
 {
-   public class BoxaBoxEnumerator : IEnumerator<Box>
+    public class BoxaBoxEnumerator : IEnumerator<Box>
     {
         private readonly Boxa boxa;
 
