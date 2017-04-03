@@ -72,7 +72,7 @@
                    Text="{Binding CanvasDrawingMode}"
                    FontFamily="Segoe UI" 
                    FontSize="48" 
-                   FontWeight="Bold"/>
+                   FontWeight="Bold" />
 
             <UserControls:Canvas BackgroundImagePath="{Binding ImagePath}" 
                              Grid.Row="1"
@@ -80,7 +80,7 @@
                              Zones="{Binding Zones}" 
                              VisualWidth="{Binding CanvasWidth, Mode=TwoWay}"
                              VisualHeight="{Binding CanvasHeight, Mode=TwoWay}"
-                             DrawingMode="{Binding CanvasDrawingMode, Mode=TwoWay}"/>
+                             DrawingMode="{Binding CanvasDrawingMode, Mode=TwoWay}" />
 
             <Image Grid.Row="1"
                    Grid.Column="1"

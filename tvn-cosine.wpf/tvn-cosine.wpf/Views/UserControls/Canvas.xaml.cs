@@ -56,8 +56,8 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                 canvas.itemsControlImageBrush.ImageSource = null;
             }
 
-            canvas.VisualWidth = canvas.itemsControl.Width;
-            canvas.VisualHeight = canvas.itemsControl.Height;
+            canvas.CanvasWidth = canvas.itemsControl.Width;
+            canvas.CanvasHeight = canvas.itemsControl.Height;
         }
         #endregion
 
@@ -195,7 +195,8 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         }
         #endregion
 
-        public double VisualWidth
+        #region Canvas Width  
+        public double CanvasWidth
         {
             get { return (double)GetValue(ParentVisualWidthProperty); }
             set { SetValue(ParentVisualWidthProperty, value); }
@@ -203,12 +204,14 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
         // Using a DependencyProperty as the backing store for ParentVisualWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ParentVisualWidthProperty =
-            DependencyProperty.Register("VisualWidth",
+            DependencyProperty.Register("CanvasWidth",
                 typeof(double),
                 typeof(Canvas),
                 new PropertyMetadata(0d));
-         
-        public double VisualHeight
+        #endregion
+
+        #region Canvas Height
+        public double CanvasHeight
         {
             get { return (double)GetValue(ParentVisualHeightProperty); }
             set { SetValue(ParentVisualHeightProperty, value); }
@@ -216,7 +219,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
         // Using a DependencyProperty as the backing store for ParentVisualHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ParentVisualHeightProperty =
-            DependencyProperty.Register("VisualHeight",
+            DependencyProperty.Register("CanvasHeight",
                 typeof(double),
                 typeof(Canvas),
                 new PropertyMetadata(0d));
@@ -225,8 +228,9 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         {
             var canvas = sender as Canvas;
 
-            canvas.VisualWidth = canvas.itemsControl.Width;
-            canvas.VisualHeight = canvas.itemsControl.Height;
+            canvas.CanvasWidth = canvas.itemsControl.Width;
+            canvas.CanvasHeight = canvas.itemsControl.Height;
         }
+        #endregion
     }
 }

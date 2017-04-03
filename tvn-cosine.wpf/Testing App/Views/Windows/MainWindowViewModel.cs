@@ -2,9 +2,7 @@
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Tvn.Cosine.Data;
+using System.Collections.ObjectModel; 
 using Tvn.Cosine.Wpf.Views.UserControls;
 
 namespace Testing_App.Views.Windows
