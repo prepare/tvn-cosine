@@ -369,7 +369,7 @@ namespace Leptonica.Native
         #region Affine
         /* DONE */ 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAffineSampledPta")]
-        internal static extern IntPtr pixAffineSampledPta(HandleRef pixs, HandleRef ptad, HandleRef ptas, IncolorFlags incolor);
+        internal static extern IntPtr pixAffineSampledPta(HandleRef pixs, HandleRef ptad, HandleRef ptas, InColorFlags incolor);
 
 
         #endregion

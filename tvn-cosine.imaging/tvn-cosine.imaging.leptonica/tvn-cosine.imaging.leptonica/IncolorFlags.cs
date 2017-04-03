@@ -1,6 +1,6 @@
 ﻿namespace Leptonica
 {
-    public enum IncolorFlags
+    public enum InColorFlags
     {
         /// <summary>
         /// bring in white pixels from the outside 

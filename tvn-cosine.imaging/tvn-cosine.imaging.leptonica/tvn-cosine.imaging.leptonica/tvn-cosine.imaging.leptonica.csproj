@@ -74,7 +74,7 @@
     <Compile Include="Rotate.cs" />
     <Compile Include="RotateFlags.cs" />
     <Compile Include="RotateInColorFlags.cs" />
-    <Compile Include="IncolorFlags.cs" />
+    <Compile Include="InColorFlags.cs" />
     <Compile Include="Scale.cs" />
     <Compile Include="ShearFlags.cs" />
     <Compile Include="Skew.cs" />
