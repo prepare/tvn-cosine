@@ -365,6 +365,14 @@ namespace Leptonica.Native
         internal static extern IntPtr pixLinearTRCTiled(HandleRef pixd, HandleRef pixs, int sx, int sy, HandleRef pixmin, HandleRef pixmax);
 
         #endregion
+
+        #region Affine
+        /* DONE */ 
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAffineSampledPta")]
+        internal static extern IntPtr pixAffineSampledPta(HandleRef pixs, HandleRef ptad, HandleRef ptas, int incolor);
+
+
+        #endregion
         #endregion
 
         #region Box
@@ -475,13 +483,86 @@ namespace Leptonica.Native
         internal static extern IntPtr pixaGetPix(HandleRef pixa, int index, InsertionType accesstype);
         #endregion
          
+        #region Pta
+        /* DONE */
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaCreate")]
+        internal static extern IntPtr ptaCreate(int n);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaRemovePt")]
+        internal static extern int ptaRemovePt(HandleRef pta, int index);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetPt")]
+        internal static extern int ptaGetPt(HandleRef pta, int index, out float px, out float py);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaAddPt")]
+        internal static extern int ptaAddPt(HandleRef pta, float x, float y);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaInsertPt")]
+        internal static extern int ptaInsertPt(HandleRef pta, int index, int x, int y);
+
+        /* DONE */
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaDestroy")]
+        internal static extern void ptaDestroy(ref IntPtr ppta);
+
+        /* DONE */
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaCopy")]
+        internal static extern IntPtr ptaCopy(HandleRef pta);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaCopyRange")]
+        internal static extern IntPtr ptaCopyRange(HandleRef ptas, int istart, int iend);
          
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaEmpty")]
+        internal static extern int ptaEmpty(HandleRef pta);
+
+        #endregion
+
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaClone")]
+        internal static extern IntPtr ptaClone(HandleRef pta);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaCreateFromNuma")]
+        internal static extern IntPtr ptaCreateFromNuma(HandleRef nax, IntPtr nay);
+         
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetRefcount")]
+        internal static extern int ptaGetRefcount(HandleRef pta);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaChangeRefcount")]
+        internal static extern int ptaChangeRefcount(HandleRef pta, int delta);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetCount")]
+        internal static extern int ptaGetCount(HandleRef pta);
+         
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetIPt")]
+        internal static extern int ptaGetIPt(HandleRef pta, int index, IntPtr px, IntPtr py);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaSetPt")]
+        internal static extern int ptaSetPt(HandleRef pta, int index, float x, float y);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetArrays")]
+        internal static extern int ptaGetArrays(HandleRef pta, IntPtr pnax, IntPtr pnay);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaRead")]
+        internal static extern IntPtr ptaRead(HandleRef filename);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaReadStream")]
+        internal static extern IntPtr ptaReadStream(HandleRef fp);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaReadMem")]
+        internal static extern IntPtr ptaReadMem(HandleRef data, IntPtr size);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaWrite")]
+        internal static extern int ptaWrite([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr pta, int type);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaWriteStream")]
+        internal static extern int ptaWriteStream(HandleRef fp, IntPtr pta, int type);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaWriteMem")]
+        internal static extern int ptaWriteMem(HandleRef pdata, IntPtr psize, IntPtr pta, int type);
 
 
 
 
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAffineSampledPta")]
-        internal static extern IntPtr pixAffineSampledPta(HandleRef pixs, IntPtr ptad, IntPtr ptas, int incolor);
+
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAffineSampled")]
         internal static extern IntPtr pixAffineSampled(HandleRef pixs, IntPtr vc, int incolor);
@@ -6010,75 +6091,6 @@ namespace Leptonica.Native
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_psWriteBoundingBox")]
         internal static extern void l_psWriteBoundingBox(int flag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaCreate")]
-        internal static extern IntPtr ptaCreate(int n);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaCreateFromNuma")]
-        internal static extern IntPtr ptaCreateFromNuma(HandleRef nax, IntPtr nay);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaDestroy")]
-        internal static extern void ptaDestroy(HandleRef ppta);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaCopy")]
-        internal static extern IntPtr ptaCopy(HandleRef pta);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaCopyRange")]
-        internal static extern IntPtr ptaCopyRange(HandleRef ptas, int istart, int iend);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaClone")]
-        internal static extern IntPtr ptaClone(HandleRef pta);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaEmpty")]
-        internal static extern int ptaEmpty(HandleRef pta);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaAddPt")]
-        internal static extern int ptaAddPt(HandleRef pta, float x, float y);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaInsertPt")]
-        internal static extern int ptaInsertPt(HandleRef pta, int index, int x, int y);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaRemovePt")]
-        internal static extern int ptaRemovePt(HandleRef pta, int index);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetRefcount")]
-        internal static extern int ptaGetRefcount(HandleRef pta);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaChangeRefcount")]
-        internal static extern int ptaChangeRefcount(HandleRef pta, int delta);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetCount")]
-        internal static extern int ptaGetCount(HandleRef pta);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetPt")]
-        internal static extern int ptaGetPt(HandleRef pta, int index, IntPtr px, IntPtr py);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetIPt")]
-        internal static extern int ptaGetIPt(HandleRef pta, int index, IntPtr px, IntPtr py);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaSetPt")]
-        internal static extern int ptaSetPt(HandleRef pta, int index, float x, float y);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaGetArrays")]
-        internal static extern int ptaGetArrays(HandleRef pta, IntPtr pnax, IntPtr pnay);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaRead")]
-        internal static extern IntPtr ptaRead(HandleRef filename);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaReadStream")]
-        internal static extern IntPtr ptaReadStream(HandleRef fp);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaReadMem")]
-        internal static extern IntPtr ptaReadMem(HandleRef data, IntPtr size);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaWrite")]
-        internal static extern int ptaWrite([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr pta, int type);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaWriteStream")]
-        internal static extern int ptaWriteStream(HandleRef fp, IntPtr pta, int type);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaWriteMem")]
-        internal static extern int ptaWriteMem(HandleRef pdata, IntPtr psize, IntPtr pta, int type);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ptaaCreate")]
         internal static extern IntPtr ptaaCreate(int n);

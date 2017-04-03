@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Leptonica.ColorCorrection
+namespace Leptonica 
 {
     /// <summary>
     /// local adaptive; mostly gray-to-gray in preparation for binarization
