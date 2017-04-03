@@ -55,6 +55,9 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                 canvas.itemsControl.Height = 0;
                 canvas.itemsControlImageBrush.ImageSource = null;
             }
+
+            canvas.VisualWidth = canvas.itemsControl.Width;
+            canvas.VisualHeight = canvas.itemsControl.Height;
         }
         #endregion
 
@@ -121,21 +124,10 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             DependencyProperty.Register("DrawingMode",
                 typeof(CanvasDrawingMode),
                 typeof(Canvas),
-                new PropertyMetadata(CanvasDrawingMode.NONE)); 
+                new PropertyMetadata(CanvasDrawingMode.NONE));
         #endregion
 
-        private void UserControl_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            isCapturedToDraw = false;
-            if (DrawingMode == CanvasDrawingMode.DELETE)
-            {
-                deleteZones();
-            }
-
-            DrawingMode = CanvasDrawingMode.NONE;
-            Mouse.Capture(null);
-        }
-
+        #region Deleting of Zones
         private void deleteZones()
         {
             var area = new Rect(newZoneToDraw.X,
@@ -155,6 +147,20 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                     Zones.Remove(zone);
                 }
             }
+        }
+        #endregion
+
+        #region Mouse Actions 
+        private void UserControl_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            isCapturedToDraw = false;
+            if (DrawingMode == CanvasDrawingMode.DELETE)
+            {
+                deleteZones();
+            }
+
+            DrawingMode = CanvasDrawingMode.NONE;
+            Mouse.Capture(null);
         }
 
         private void UserControl_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -186,6 +192,41 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                 newZoneToDraw.Width = System.Math.Max(point.X, startingPointToDraw.X) - newZoneToDraw.X;
                 newZoneToDraw.Height = System.Math.Max(point.Y, startingPointToDraw.Y) - newZoneToDraw.Y;
             }
+        }
+        #endregion
+
+        public double VisualWidth
+        {
+            get { return (double)GetValue(ParentVisualWidthProperty); }
+            set { SetValue(ParentVisualWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ParentVisualWidth.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ParentVisualWidthProperty =
+            DependencyProperty.Register("VisualWidth",
+                typeof(double),
+                typeof(Canvas),
+                new PropertyMetadata(0d));
+         
+        public double VisualHeight
+        {
+            get { return (double)GetValue(ParentVisualHeightProperty); }
+            set { SetValue(ParentVisualHeightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ParentVisualHeight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ParentVisualHeightProperty =
+            DependencyProperty.Register("VisualHeight",
+                typeof(double),
+                typeof(Canvas),
+                new PropertyMetadata(0d));
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var canvas = sender as Canvas;
+
+            canvas.VisualWidth = canvas.itemsControl.Width;
+            canvas.VisualHeight = canvas.itemsControl.Height;
         }
     }
 }

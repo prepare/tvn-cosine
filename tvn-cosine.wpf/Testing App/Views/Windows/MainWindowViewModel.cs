@@ -33,13 +33,15 @@ namespace Testing_App.Views.Windows
                 using (Boxa boxa = new Boxa(Zones.Count))
                 {
                     foreach (var zone in Zones)
-                    { 
-                        boxa.AddBox(new Box((int)zone.X, (int)zone.Y, (int)zone.ActualWidth, (int)zone.ActualHeight));
+                    {
+                        var _x = (zone.X / CanvasWidth) * pix.Width;
+                        var _y = (zone.Y / CanvasHeight) * pix.Height;
+
+                        var _width = (zone.Width / CanvasWidth) * pix.Width;
+                        var _height = (zone.Height / CanvasHeight) * pix.Height;
+                        boxa.AddBox(new Box((int)_x, (int)_y, (int)_width, (int)_height));
                     }
-
-                    int height = (int)(Zones.Max(z => z.Y + z.Height) - Zones.Min(z => z.Y));
-                    int width = (int)(Zones.Max(z => z.X + z.Width) - Zones.Min(z => z.X));
-
+                     
                     using (var newPix = new Pix(pix.Width, pix.Height, pix.Depth))
                     {
                         using (var mask = new Pix(pix.Width, pix.Height, 1))
@@ -109,6 +111,20 @@ namespace Testing_App.Views.Windows
         {
             get { return zones; }
             set { SetProperty(ref zones, value); }
+        }
+
+        private double canvasWidth;
+        public double CanvasWidth
+        {
+            get { return canvasWidth; }
+            set { SetProperty(ref canvasWidth, value); }
+        }
+
+        private double canvasHeight;
+        public double CanvasHeight
+        {
+            get { return canvasHeight; }
+            set { SetProperty(ref canvasHeight, value); }
         }
     }
 }

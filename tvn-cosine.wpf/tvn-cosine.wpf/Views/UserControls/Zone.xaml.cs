@@ -109,7 +109,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             System.Windows.Controls.Canvas.SetTop(zone, (double)e.NewValue);
         }
         #endregion
-
+         
         #region FillColor
         public IColor FillColor
         {
