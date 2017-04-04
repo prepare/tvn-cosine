@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -19,15 +20,45 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         private Point startingPointToDraw;
         private bool isCapturedToDraw;
 
-
         public Canvas()
         {
             InitializeComponent();
-            Zones = new ObservableCollection<Zone>();
-            itemsControl.ItemsSource = Zones;
+            __Zones = new ObservableCollection<Zone>();
+            itemsControl.ItemsSource = __Zones;
+            __Zones.CollectionChanged += __Zones_CollectionChanged;
+            __Zones_CollectionChanged(this, new System.Collections.Specialized.NotifyCollectionChangedEventArgs(System.Collections.Specialized.NotifyCollectionChangedAction.Reset));
         }
 
-        private ObservableCollection<Zone> Zones { get; }
+        ~Canvas()
+        {
+            __Zones.CollectionChanged -= __Zones_CollectionChanged;
+        }
+
+        private void __Zones_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            Zones = __Zones.ToList<IZone>();
+        }
+
+        #region Zones
+        private ObservableCollection<Zone> __Zones { get; }
+         
+        public ICollection<IZone> Zones
+        {
+            get { return (ICollection<IZone>)GetValue(ZonesProperty); }
+            set { SetValue(ZonesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Zones.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ZonesProperty =
+            DependencyProperty.Register("Zones", 
+                typeof(ICollection<IZone>), 
+                typeof(Canvas),
+                new FrameworkPropertyMetadata(null)
+                {
+                    BindsTwoWayByDefault = true,
+                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
+                }); 
+        #endregion
 
         #region BackgroundImagePath
         public string BackgroundImagePath
@@ -127,8 +158,8 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                                 newZoneToDraw.Width,
                                 newZoneToDraw.Height);
 
-            Zones.Remove(newZoneToDraw);
-            foreach (var zone in Zones.ToList())
+            __Zones.Remove(newZoneToDraw);
+            foreach (var zone in __Zones.ToList())
             {
                 var zoneArea = new Rect(zone.X,
                                     zone.Y,
@@ -136,7 +167,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                                     zone.Height);
                 if (area.IntersectsWith(zoneArea))
                 {
-                    Zones.Remove(zone);
+                    __Zones.Remove(zone);
                 }
             }
         }
@@ -170,13 +201,13 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                     Order = 0,
                     ZoneType = DrawingMode.ToString()
                 };
-                Zones.Add(newZoneToDraw);
+                __Zones.Add(newZoneToDraw);
             }
             else
             {
                 Mouse.Capture(itemsControl);
                 var point = Mouse.GetPosition(itemsControl);
-                foreach (var zone in Zones)
+                foreach (var zone in __Zones)
                 {
                     var zoneArea = new Rect(zone.X,
                                         zone.Y,
@@ -261,11 +292,11 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         {
             if (e.Key == Key.Delete)
             {
-                foreach (var zone in Zones.ToList())
+                foreach (var zone in __Zones.ToList())
                 {
                     if (zone.IsSelected)
                     {
-                        Zones.Remove(zone);
+                        __Zones.Remove(zone);
                     }
                 }
             }

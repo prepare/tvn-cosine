@@ -3,7 +3,7 @@
 namespace Tvn.Cosine.Data
 {
     public interface IZone : IPoint<double>, ISize<double>
-    {
-        bool IsSelected { get; set; }
+    { 
+        bool IsSelected { get; }
     }
 }
