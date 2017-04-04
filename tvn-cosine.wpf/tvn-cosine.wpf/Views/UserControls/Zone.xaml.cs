@@ -1,7 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Controls; 
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
-using Tvn.Cosine.Data; 
+using Tvn.Cosine.Data;
 using Tvn.Cosine.Imaging;
 
 namespace Tvn.Cosine.Wpf.Views.UserControls

@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Tvn.Cosine.Wpf.Views.UserControls" 
              PreviewMouseLeftButtonUp="UserControl_PreviewMouseLeftButtonUp"
              PreviewMouseLeftButtonDown="UserControl_PreviewMouseLeftButtonDown"
+             PreviewKeyUp="UserControl_PreviewKeyUp"
              SizeChanged="UserControl_SizeChanged"
              mc:Ignorable="d"> 
         <ScrollViewer HorizontalScrollBarVisibility="Auto"

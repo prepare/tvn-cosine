@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Tvn.Cosine.Data;
 
 namespace Tvn.Cosine.Wpf.Views.UserControls
 {
@@ -95,16 +96,16 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         #endregion
 
         #region Zones
-        public ObservableCollection<Zone> Zones
+        public ObservableCollection<IZone> Zones
         {
-            get { return (ObservableCollection<Zone>)GetValue(ZonesProperty); }
+            get { return (ObservableCollection<IZone>)GetValue(ZonesProperty); }
             set { SetValue(ZonesProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Zones.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ZonesProperty =
             DependencyProperty.Register("Zones",
-                typeof(ObservableCollection<Zone>),
+                typeof(ObservableCollection<IZone>),
                 typeof(Canvas),
                 new FrameworkPropertyMetadata(null, zones_PropertChanged)
                 {
@@ -192,6 +193,30 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                 };
                 Zones.Add(newZoneToDraw);
             }
+            else
+            {
+                Mouse.Capture(itemsControl);
+                var point = Mouse.GetPosition(itemsControl);
+                foreach (var zone in Zones)
+                {
+                    var zoneArea = new Rect(zone.X,
+                                        zone.Y,
+                                        zone.Width,
+                                        zone.Height);
+
+                    if (zoneArea.Contains(point))
+                    {
+                        zone.IsSelected = true;
+                    }
+                    else
+                    {
+                        if (!Keyboard.IsKeyDown(Key.LeftCtrl))
+                        {
+                            zone.IsSelected = false;
+                        }
+                    }
+                }
+            }
         }
 
         private void itemsControl_PreviewMouseMove(object sender, MouseEventArgs e)
@@ -252,5 +277,19 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             canvas.CanvasHeight = canvas.itemsControl.Height;
         }
         #endregion
+
+        private void UserControl_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                foreach (var zone in Zones.ToList())
+                {
+                    if (zone.IsSelected)
+                    {
+                        Zones.Remove(zone);
+                    }
+                }
+            }
+        }
     }
 }
