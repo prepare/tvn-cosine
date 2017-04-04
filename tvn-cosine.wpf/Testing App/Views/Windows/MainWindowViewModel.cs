@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
+using Tvn.Cosine.Data;
 using Tvn.Cosine.Wpf.Views.UserControls;
 
 namespace Testing_App.Views.Windows
@@ -11,8 +12,7 @@ namespace Testing_App.Views.Windows
         public MainWindowViewModel()
         {
             ApplicationName = "tvn-cosine Wpf Application";
-            ImagePath = @"C:\Temp\6.jpg";
-            Zones = new ObservableCollection<Zone>();
+            ImagePath = @"C:\Temp\6.jpg"; 
             SetDrawingMode = new DelegateCommand<object>(setDrawingMode); 
         }
 
@@ -64,8 +64,8 @@ namespace Testing_App.Views.Windows
             set { SetProperty(ref applicationName, value); }
         }
 
-        private ObservableCollection<Zone> zones;
-        public ObservableCollection<Zone> Zones
+        private ObservableCollection<IZone> zones;
+        public ObservableCollection<IZone> Zones
         {
             get { return zones; }
             set { SetProperty(ref zones, value); }

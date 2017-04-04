@@ -38,8 +38,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="tvn-cosine.core, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\tvn-cosine.core.1.0.1.1\lib\net452\tvn-cosine.core.dll</HintPath>
+    <Reference Include="tvn-cosine.core, Version=1.0.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tvn-cosine.core.1.0.1.4\lib\net452\tvn-cosine.core.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

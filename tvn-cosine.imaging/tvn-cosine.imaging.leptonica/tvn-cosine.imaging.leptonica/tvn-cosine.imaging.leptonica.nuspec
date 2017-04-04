@@ -15,7 +15,7 @@
     <copyright>Copyright © tvn-cosine 2017</copyright> 
     <tags>leptonica dotNet image manipulation</tags>
     <dependencies>
-		  <dependency id="tvn-cosine.core" version="1.0.0.5" />
+		  <dependency id="tvn-cosine.core" version="1.0.1.4" />
 	  </dependencies>
   </metadata>
   <files>

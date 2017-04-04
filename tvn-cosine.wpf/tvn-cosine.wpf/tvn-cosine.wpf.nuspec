@@ -13,7 +13,9 @@
     <summary>wpf controls for the tvn-cosine project</summary>
     <releaseNotes>wpf controls for the tvn-cosine project</releaseNotes>
     <copyright>Copyright © tvn-cosine 2017</copyright>
-    <tags>tvn-cosine</tags>
-    <dependencies />
+    <tags>tvn-cosine</tags> 
+    <dependencies>
+      <dependency id="tvn-cosine.core" version="1.0.1.4" />
+    </dependencies>
   </metadata>
 </package>

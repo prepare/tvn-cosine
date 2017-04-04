@@ -19,10 +19,15 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         private Point startingPointToDraw;
         private bool isCapturedToDraw;
 
+
         public Canvas()
         {
             InitializeComponent();
+            Zones = new ObservableCollection<Zone>();
+            itemsControl.ItemsSource = Zones;
         }
+
+        private ObservableCollection<Zone> Zones { get; }
 
         #region BackgroundImagePath
         public string BackgroundImagePath
@@ -92,32 +97,6 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                     itemsControl.RenderTransform = new ScaleTransform(zoom, zoom); // transform Canvas size 
                 }
             }
-        }
-        #endregion
-
-        #region Zones
-        public ObservableCollection<IZone> Zones
-        {
-            get { return (ObservableCollection<IZone>)GetValue(ZonesProperty); }
-            set { SetValue(ZonesProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Zones.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ZonesProperty =
-            DependencyProperty.Register("Zones",
-                typeof(ObservableCollection<IZone>),
-                typeof(Canvas),
-                new FrameworkPropertyMetadata(null, zones_PropertChanged)
-                {
-                    BindsTwoWayByDefault = true,
-                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
-                });
-
-        private static void zones_PropertChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var canvas = d as Canvas;
-
-            canvas.itemsControl.ItemsSource = e.NewValue as ObservableCollection<Zone>;
         }
         #endregion
 
@@ -206,7 +185,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
                     if (zoneArea.Contains(point))
                     {
-                        zone.IsSelected = true;
+                        zone.IsSelected = !zone.IsSelected;
                     }
                     else
                     {

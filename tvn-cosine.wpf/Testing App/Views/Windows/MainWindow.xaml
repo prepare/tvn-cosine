@@ -76,8 +76,7 @@
 
             <UserControls:Canvas BackgroundImagePath="{Binding ImagePath}" 
                              Grid.Row="1"
-                             Grid.Column="0"
-                             Zones="{Binding Zones}" 
+                             Grid.Column="0" 
                              CanvasWidth="{Binding CanvasWidth}"
                              CanvasHeight="{Binding CanvasHeight}"
                              DrawingMode="{Binding CanvasDrawingMode}" />
