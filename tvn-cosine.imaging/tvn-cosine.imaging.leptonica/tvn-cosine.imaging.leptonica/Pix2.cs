@@ -2,6 +2,9 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// Pix2.c
+    /// </summary>
     public static class Pix2
     { 
         /// <summary>

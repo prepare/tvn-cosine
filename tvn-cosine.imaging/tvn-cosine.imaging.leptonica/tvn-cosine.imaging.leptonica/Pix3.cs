@@ -2,6 +2,9 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// Pix3.c
+    /// </summary>
     public static class Pix3
     {
         // Masked operations
@@ -71,7 +74,7 @@ namespace Leptonica
         /// would be faster to generate an 8 bpp version of pixm,
         ///          using pixConvert1To8(pixm, 0, 255), and then use a
         /// general combine operation
-        /// d = (d & ~m) | (s & m)
+        /// d = (d  ~m) | (s  m)
         /// on a word-by-word basis.Not always.The word-by-word
         ///combine takes a time that is independent of the mask data.
         ///
@@ -117,12 +120,12 @@ namespace Leptonica
         ///
         ///             Pix* pixm8 = pixConvert1To8(NULL, pixm, 0, 255);
         ///             Pix* pixt = pixAnd(NULL, pixs, pixm8);
-        ///             pixRasterop(pixd, x, y, wmin, hmin, PIX_DST & PIX_NOT(PIX_SRC),
+        ///             pixRasterop(pixd, x, y, wmin, hmin, PIX_DST  PIX_NOT(PIX_SRC),
         ///                         pixm8, 0, 0);
         ///             pixRasterop(pixd, x, y, wmin, hmin, PIX_SRC | PIX_DST,
         /// pixt, 0, 0);
-        ///             pixDestroy(&pixt);
-        ///             pixDestroy(&pixm8);
+        ///             pixDestroy( pixt);
+        ///             pixDestroy( pixm8);
         /// </summary>
         /// <param name="destination">pixd 1 bpp, 8 bpp gray or 32 bpp rgb</param>
         /// <param name="source">pixs 1 bpp, 8 bpp gray or 32 bpp rgb</param>
@@ -154,7 +157,7 @@ namespace Leptonica
         ///       (6) Implementation detail 1:
         ///           For painting with val == 0 or val == maxval, you can use rasterop.
         ///           If val == 0, invert the mask so that it's 0 over the region
-        ///           into which you want to write, and use PIX_SRC & PIX_DST to
+        ///           into which you want to write, and use PIX_SRC  PIX_DST to
         ///           clear those pixels.To write with val = maxval(all 1's),
         ///  use PIX_SRC | PIX_DST to set all bits under the mask.
         ///  (7) Implementation detail 2:

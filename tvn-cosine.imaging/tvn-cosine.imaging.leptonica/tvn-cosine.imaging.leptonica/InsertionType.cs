@@ -1,5 +1,8 @@
 ﻿namespace Leptonica
 {
+    /// <summary>
+    /// InsertionType
+    /// </summary>
     public enum InsertionType
     {
         /// <summary>

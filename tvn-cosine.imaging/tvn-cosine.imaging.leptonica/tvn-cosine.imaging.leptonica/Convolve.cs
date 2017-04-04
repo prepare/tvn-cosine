@@ -2,6 +2,9 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// convolve.c
+    /// </summary>
     public static class Convolve
     { 
         // Top level grayscale or color block convolution 

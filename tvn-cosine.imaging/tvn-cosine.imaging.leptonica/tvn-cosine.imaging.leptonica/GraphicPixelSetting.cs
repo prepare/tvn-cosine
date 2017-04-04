@@ -1,5 +1,8 @@
 ﻿namespace Leptonica
 {
+    /// <summary>
+    /// GraphicPixelSetting
+    /// </summary>
     public enum GraphicPixelSetting
     {
         /// <summary>

@@ -1,5 +1,8 @@
 ﻿namespace Leptonica
 {
+    /// <summary>
+    /// GrayscaleFillingFlags
+    /// </summary>
     public enum GrayscaleFillingFlags
     {
         /// <summary>

@@ -6,22 +6,39 @@ using Tvn.Cosine.Imaging;
 
 namespace Leptonica
 {
+    /// <summary>
+    /// PixColorMap.
+    /// </summary>
     public class PixColorMap : IDisposable, ICloneable, IEnumerable<Color>
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public readonly HandleRef handleRef;
 
         #region ctors
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer"></param>
         public PixColorMap(IntPtr pointer)
         {
             handleRef = new HandleRef(this, pointer);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="depth"></param>
         public PixColorMap(int depth)
             : this(Native.DllImports.pixcmapCreate(depth))
         { }
         #endregion
 
         #region Properties
+        /// <summary>
+        /// 
+        /// </summary>
         public int Depth
         {
             get
@@ -30,6 +47,9 @@ namespace Leptonica
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int Count
         {
             get
@@ -40,7 +60,10 @@ namespace Leptonica
         #endregion
 
         #region IEnumerable Support 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<Color> GetEnumerator()
         {
             return new PixColorMapColorEnumerator(this);
@@ -53,6 +76,10 @@ namespace Leptonica
         #endregion
 
         #region ICloneable Support
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public object Clone()
         {
             var pixcmap = Native.DllImports.pixcmapCopy(handleRef);
@@ -62,7 +89,10 @@ namespace Leptonica
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -79,6 +109,9 @@ namespace Leptonica
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         ~PixColorMap()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
@@ -86,6 +119,9 @@ namespace Leptonica
         }
 
         // This code added to correctly implement the disposable pattern.
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.

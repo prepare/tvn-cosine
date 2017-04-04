@@ -2,8 +2,11 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// scale.c
+    /// </summary>
     public static class Scale
-    { 
+    {
         //  Top-level scaling  
         /// <summary>
         ///  This function scales 32 bpp RGB; 2, 4 or 8 bpp palette color;
@@ -45,7 +48,7 @@ namespace Leptonica
         /// it strengthens edge pixels that are weak due to anti-aliasing.
         ///
         /// The default sharpening factors are:
-        ///      * for scaling factors < 0.7:   sharpfract = 0.2    sharpwidth = 1
+        ///      * for scaling factors smaller  0.7:   sharpfract = 0.2    sharpwidth = 1
         /// * for scaling factors >= 0.7:  sharpfract = 0.4    sharpwidth = 2
         /// The cases where the sharpening halfwidth is 1 or 2 have special
         ///  implementations and are about twice as fast as the general case.
@@ -110,8 +113,8 @@ namespace Leptonica
         ///          cases are added.
         ///      (3) The actual sharpening factors used depend on the maximum
         /// of the two scale factors(maxscale):
-        ///            maxscale <= 0.2:        no sharpening
-        ///            0.2 < maxscale< 1.4:   uses the input parameters
+        ///            maxscale smaller = 0.2:        no sharpening
+        ///            0.2 smaller maxscale smaller  1.4:   uses the input parameters
         ///            maxscale >= 1.4:        no sharpening
         ///      (4) To avoid sharpening for grayscale and color images with
         /// scaling factors between 0.2 and 1.4, call this function

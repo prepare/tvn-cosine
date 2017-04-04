@@ -2,6 +2,9 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// Pix5.c
+    /// </summary>
     public static class Pix5
     { 
         //    Extract rectangular region
@@ -38,7 +41,7 @@ namespace Leptonica
         /// <param name="source">pixs</param>
         /// <param name="box">box  requested clipping region; const</param>
         /// <param name="pboxc">pboxc [optional] actual box of clipped region</param>
-        /// <returns> clipped pix, or NULL on error or if rectangle doesnt intersect pixs/returns>
+        /// <returns> clipped pix, or NULL on error or if rectangle doesnt intersect pixs</returns>
         public static Pix pixClipRectangle(Pix source, Box box, out Box pboxc)
         {
             if (source == null || box == null)

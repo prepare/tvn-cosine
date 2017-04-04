@@ -3,7 +3,7 @@
 namespace Leptonica 
 {
     /// <summary>
-    /// local adaptive; mostly gray-to-gray in preparation for binarization
+    /// adaptmap.c local adaptive; mostly gray-to-gray in preparation for binarization
     /// </summary>
     public static class AdaptMap
     {
@@ -316,28 +316,28 @@ namespace Leptonica
         /// <param name="ppixg">ppixg 16 bpp array of inverted G background value</param>
         /// <param name="ppixb">ppixb 16 bpp array of inverted B background value</param>
         /// <returns>true if OK, false on error</returns>
-        public static bool pixBackgroundNormRGBArrays(Pix source, Pix mask, Pix grayscale, int sx, int sy, int thresh, int mincount, int bgval, int smoothx, int smoothy, out Pix ppixr, out Pix ppixg, out Pix ppixb)
+        public static bool pixBackgroundNormRGBArrays(Pix pixs, Pix pixim, Pix pixg, int sx, int sy, int thresh, int mincount, int bgval, int smoothx, int smoothy, out Pix ppixr, out Pix ppixg, out Pix ppixb)
         {
             //ensure pix is not null;
-            if (source == null)
+            if (pixs == null)
             {
                 ppixr = null;
                 ppixg = null;
                 ppixb = null;
                 return false;
             }
-            if (mask == null)
+            if (pixim == null)
             {
-                mask = new Pix(IntPtr.Zero);
+                pixim = new Pix(IntPtr.Zero);
             }
-            if (grayscale == null)
+            if (pixg == null)
             {
-                grayscale = new Pix(IntPtr.Zero);
+                pixg = new Pix(IntPtr.Zero);
             }
 
             IntPtr ppixrPointer, ppixgPointer, ppixbPointer;
-            var result = Native.DllImports.pixBackgroundNormRGBArrays(source.handleRef, mask.handleRef,
-                grayscale.handleRef, sx, sy, thresh, mincount, bgval, smoothx, smoothy,
+            var result = Native.DllImports.pixBackgroundNormRGBArrays(pixs.handleRef, pixim.handleRef,
+                pixg.handleRef, sx, sy, thresh, mincount, bgval, smoothx, smoothy,
                 out ppixrPointer, out ppixgPointer, out ppixbPointer);
 
             if (result != 1)
@@ -783,7 +783,8 @@ namespace Leptonica
         /// <param name="source">pixs 8 bpp</param>
         /// <param name="mask">pixim [optional] 1 bpp 'image' mask; can be null</param>
         /// <param name="sx">sx, sy src tile size, in pixels</param>
-        /// <param name="sy">thresh threshold for determining foreground</param>
+        /// <param name="sy">sx, sy src tile size, in pixels</param>
+        /// <param name="thresh">thresh threshold for determining foreground</param>
         /// <param name="destination">ppixd 8 bpp grayscale map</param> 
         /// <returns>true if success, false on error</returns>
         public static bool pixGetForegroundGrayMap(Pix source, Pix mask, int sx, int sy, int thresh, out Pix destination)
@@ -795,7 +796,7 @@ namespace Leptonica
         //Generate inverted background map for each component
         /// <summary>
         /// Notes:
-        ///     (1) bgval should typically be > 120 and< 240
+        ///     (1) bgval should typically be bigger than 120 and smaller than 240
         ///     (2) pixd is a normalization image; the original image is
         ///       multiplied by pixd and the result is divided by 256.
         /// </summary>
@@ -1100,10 +1101,10 @@ namespace Leptonica
         /// <param name="ppixb">ppixb [optional] thresholded normalized image</param>
         /// <param name="ppixd">ppixd [optional] normalized image</param>
         /// <returns>true if OK, false on error</returns>
-        public static bool pixThresholdSpreadNorm(Pix source, EdgeFilterFlags filtertype, int edgethresh, int smoothx, int smoothy, float gamma, int minval, int maxval, int targetthresh, out Pix ppixth, out Pix ppixb, out Pix ppixd)
+        public static bool pixThresholdSpreadNorm(Pix pixs, EdgeFilterFlags filtertype, int edgethresh, int smoothx, int smoothy, float gamma, int minval, int maxval, int targetthresh, out Pix ppixth, out Pix ppixb, out Pix ppixd)
         {
             //ensure pix is not null;
-            if (source == null)
+            if (pixs == null)
             {
                 ppixth = null;
                 ppixb = null;
@@ -1112,7 +1113,7 @@ namespace Leptonica
             }
 
             IntPtr ppixthPointer, ppixbPointer, ppixdPointer;
-            var result = Native.DllImports.pixThresholdSpreadNorm(source.handleRef, filtertype,
+            var result = Native.DllImports.pixThresholdSpreadNorm(pixs.handleRef, filtertype,
                 edgethresh, smoothx, smoothy, gamma, minval, maxval, targetthresh,
                 out ppixthPointer, out ppixbPointer, out ppixdPointer);
 
@@ -1215,19 +1216,19 @@ namespace Leptonica
         /// <param name="smoothx">smoothx, smoothy half-width of convolution kernel applied to min and max arrays: use 0 for no smoothing</param>
         /// <param name="smoothy">smoothx, smoothy half-width of convolution kernel applied to min and max arrays: use 0 for no smoothing</param>
         /// <returns>pixd always</returns>
-        public static Pix pixContrastNorm(Pix destination, Pix source, int sx, int sy, int mindiff, int smoothx, int smoothy)
+        public static Pix pixContrastNorm(Pix pixd, Pix pix, int sx, int sy, int mindiff, int smoothx, int smoothy)
         {
             //ensure pix is not null;
-            if (source == null)
+            if (pix == null)
             {
                 return null;
             }
-            if (destination == null)
+            if (pixd == null)
             {
-                destination = new Pix(IntPtr.Zero);
+                pixd = new Pix(IntPtr.Zero);
             }
 
-            var result = Native.DllImports.pixContrastNorm(destination.handleRef, source.handleRef, sx, sy, mindiff, smoothx, smoothy);
+            var result = Native.DllImports.pixContrastNorm(pixd.handleRef, pix.handleRef, sx, sy, mindiff, smoothx, smoothy);
 
             if (result != IntPtr.Zero)
             {
@@ -1339,10 +1340,10 @@ namespace Leptonica
         /// <param name="pixmin">pixmin pix of min values in tiles</param>
         /// <param name="pixmax">pixmax pix of max values in tiles</param>
         /// <returns>pixd always</returns>
-        public static Pix pixLinearTRCTiled(Pix destination, Pix source, int sx, int sy, Pix pixmin, Pix pixmax)
+        public static Pix pixLinearTRCTiled(Pix pixd, Pix pixs, int sx, int sy, Pix pixmin, Pix pixmax)
         {
             //ensure pix is not null;
-            if (source == null)
+            if (pixs == null)
             {
                 return null;
             }
@@ -1354,12 +1355,12 @@ namespace Leptonica
             {
                 return null;
             }
-            if (destination == null)
+            if (pixd == null)
             {
-                destination = new Pix(IntPtr.Zero);
+                pixd = new Pix(IntPtr.Zero);
             }
 
-            var result = Native.DllImports.pixLinearTRCTiled(destination.handleRef, source.handleRef, sx, sy, pixmin.handleRef, pixmax.handleRef);
+            var result = Native.DllImports.pixLinearTRCTiled(pixd.handleRef, pixs.handleRef, sx, sy, pixmin.handleRef, pixmax.handleRef);
 
             if (result != IntPtr.Zero)
             {

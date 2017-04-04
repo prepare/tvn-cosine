@@ -4,20 +4,40 @@ using Tvn.Cosine.Geometry;
 
 namespace Leptonica
 {
+    /// <summary>
+    /// Pix.h
+    /// </summary>
     public class Pix : IDisposable, ICloneable, ISize<int>
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public readonly HandleRef handleRef; 
 
         #region ctors
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer"></param>
         public Pix(IntPtr pointer)
         {
             handleRef = new HandleRef(this, pointer); 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="depth"></param>
         public Pix(int width, int height, int depth)
             : this(Native.DllImports.pixCreate(width, height, depth))
         { }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
         public Pix(string fileName)
             : this(Native.DllImports.pixRead(fileName))
         {
@@ -234,6 +254,12 @@ namespace Leptonica
         #endregion
 
         #region Methods
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="format"></param>
+        /// <returns></returns>
         public bool Save(string fileName, ImageFileFormat format)
         {
             if (!Enum.IsDefined(typeof(ImageFileFormat), format))
@@ -246,6 +272,10 @@ namespace Leptonica
         #endregion
          
         #region ICloneable Support
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public object Clone()
         {
             var pixd = Native.DllImports.pixCopy(IntPtr.Zero, handleRef);
@@ -255,7 +285,10 @@ namespace Leptonica
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -271,7 +304,9 @@ namespace Leptonica
                 disposedValue = true;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         ~Pix()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
@@ -279,6 +314,9 @@ namespace Leptonica
         }
 
         // This code added to correctly implement the disposable pattern.
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.

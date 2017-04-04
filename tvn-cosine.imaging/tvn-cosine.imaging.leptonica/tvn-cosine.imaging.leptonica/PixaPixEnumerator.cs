@@ -4,22 +4,36 @@ using System.Collections.Generic;
 
 namespace Leptonica
 {
+    /// <summary>
+    /// Pixa Pix enumerator.
+    /// </summary>
     public class PixaPixEnumerator : IEnumerator<Pix>, IDisposable
     {
         private readonly Pixa pixa;
 
         private int position = -1;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pixa"></param>
         public PixaPixEnumerator(Pixa pixa)
         {
             this.pixa = pixa;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool MoveNext()
         {
             position++;
             return (position < pixa.Count);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Reset()
         {
             position = -1;
@@ -33,6 +47,9 @@ namespace Leptonica
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Pix Current
         {
             get
@@ -47,7 +64,10 @@ namespace Leptonica
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -62,6 +82,9 @@ namespace Leptonica
         }
 
         // This code added to correctly implement the disposable pattern.
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.

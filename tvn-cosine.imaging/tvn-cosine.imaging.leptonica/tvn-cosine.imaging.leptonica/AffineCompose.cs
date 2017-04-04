@@ -2,6 +2,9 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// affinecompose.c
+    /// </summary>
     public static class AffineCompose
     {
         // Composable coordinate transforms 

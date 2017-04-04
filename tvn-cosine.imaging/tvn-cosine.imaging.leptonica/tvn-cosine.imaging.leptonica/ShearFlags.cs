@@ -1,5 +1,8 @@
 ﻿namespace Leptonica
 {
+    /// <summary>
+    /// ShearFlags
+    /// </summary>
     public enum ShearFlags
     {
         /// <summary>

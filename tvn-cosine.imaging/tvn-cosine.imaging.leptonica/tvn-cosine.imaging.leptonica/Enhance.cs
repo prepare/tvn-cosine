@@ -2,12 +2,15 @@
 
 namespace Leptonica 
 {
+    /// <summary>
+    /// enhance.c
+    /// </summary>
     public static class Enhance
     {
         /// <summary>
         ///      (1) If fract > 0.0, it gives the fraction that the v-parameter,
         ///          which is max(r, g, b), is moved from its initial value toward 255.
-        ///          If fract< 0.0, it gives the fraction that the v-parameter
+        ///          If fract smaller  0.0, it gives the fraction that the v-parameter
         ///          is moved from its initial value toward 0.
         ///          The limiting values for fract = -1.0(1.0) thus set the
         /// v-parameter to 0 (255).

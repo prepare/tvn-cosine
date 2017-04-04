@@ -2,6 +2,9 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// bilinear.c
+    /// </summary>
     public static class Bilinear
     {
         // Bilinear (4 pt) image transformation using a sampled (to nearest integer) transform on each dest point

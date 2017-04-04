@@ -1,5 +1,8 @@
 ﻿namespace Leptonica
 {
+    /// <summary>
+    /// InColorFlags
+    /// </summary>
     public enum InColorFlags
     {
         /// <summary>

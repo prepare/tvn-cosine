@@ -1,5 +1,8 @@
 ﻿namespace Leptonica
 {
+    /// <summary>
+    /// RotateFlags
+    /// </summary>
     public enum RotateFlags
     {
         /// <summary>

@@ -3,6 +3,9 @@ using Tvn.Cosine.Imaging;
 
 namespace Leptonica
 {
+    /// <summary>
+    /// boxfunc3.c
+    /// </summary>
     public static class BoxFunc3
     {
         // Boxa/Boxaa painting into pix

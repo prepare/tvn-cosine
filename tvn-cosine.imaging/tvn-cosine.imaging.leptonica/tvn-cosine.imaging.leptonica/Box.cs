@@ -3,22 +3,42 @@ using Tvn.Cosine.Geometry;
 
 namespace Leptonica
 {
+    /// <summary>
+    /// box.h
+    /// </summary>
     public class Box : IPoint<int>, ISize<int>, System.ICloneable, System.IDisposable
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public readonly HandleRef handleRef;
 
         #region ctors
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer"></param>
         public Box(System.IntPtr pointer)
         {
             handleRef = new HandleRef(this, pointer);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public Box(int x, int y, int width, int height)
             : this(Native.DllImports.boxCreate(x, y, width, height))
         { }
         #endregion
 
         #region Properties  
+        /// <summary>
+        /// 
+        /// </summary>
         public int X
         {
             get
@@ -33,6 +53,9 @@ namespace Leptonica
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int Y
         {
             get
@@ -47,6 +70,9 @@ namespace Leptonica
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int Width
         {
             get
@@ -61,6 +87,9 @@ namespace Leptonica
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public int Height
         {
             get
@@ -75,7 +104,9 @@ namespace Leptonica
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int Area
         {
             get
@@ -86,6 +117,10 @@ namespace Leptonica
         #endregion
 
         #region ICloneable Support
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public object Clone()
         {
             var box = Native.DllImports.boxCopy(handleRef);
@@ -95,7 +130,10 @@ namespace Leptonica
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -112,6 +150,9 @@ namespace Leptonica
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         ~Box()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
@@ -119,6 +160,9 @@ namespace Leptonica
         }
 
         // This code added to correctly implement the disposable pattern.
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.

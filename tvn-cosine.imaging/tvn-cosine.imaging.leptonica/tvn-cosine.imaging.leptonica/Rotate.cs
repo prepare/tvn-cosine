@@ -2,6 +2,9 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// Rotate.c
+    /// </summary>
     public static class Rotate
     {
         /* 

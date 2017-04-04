@@ -2,6 +2,9 @@
 
 namespace Leptonica
 {
+    /// <summary>
+    /// skew.c
+    /// </summary>
     public static class Skew
     { 
         // Top-level angle-finding interface 
@@ -69,17 +72,17 @@ namespace Leptonica
         /// <param name="pangle">pangle   [optional] angle required to deskew,in degrees; use NULL to skip</param>
         /// <param name="pconf">pconf    [optional] conf value is ratio of max/min scores; use NULL to skip</param>
         /// <returns>pixd deskewed pix, or NULL on error</returns>
-        public static Pix pixFindSkewAndDeskew(Pix pix, DeskewRedSearch redsearch, out float radiance, out float confidence)
+        public static Pix pixFindSkewAndDeskew(Pix pix, DeskewRedSearch redsearch, out float pangle, out float pconf)
         {
             //ensure pix is not null;
             if (pix == null)
             {
-                radiance = 0;
-                confidence = 0;
+                pangle = 0;
+                pconf = 0;
                 return null;
             }
 
-            var pointer = Native.DllImports.pixFindSkewAndDeskew(pix.handleRef, redsearch, out radiance, out confidence);
+            var pointer = Native.DllImports.pixFindSkewAndDeskew(pix.handleRef, redsearch, out pangle, out pconf);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);

@@ -4,23 +4,38 @@ using System.Collections.Generic;
 using Tvn.Cosine.Imaging;
 
 namespace Leptonica
-{ 
+{
+    /// <summary>
+    /// PixColorMapColorEnumerator.
+    /// </summary>
     public class PixColorMapColorEnumerator : IEnumerator<Color>, IDisposable
     {
         private readonly PixColorMap pixColorMap;
 
         private int position = -1;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pixColorMap"></param>
         public PixColorMapColorEnumerator(PixColorMap pixColorMap)
         {
             this.pixColorMap = pixColorMap;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool MoveNext()
         {
             position++;
             return (position < pixColorMap.Count);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Reset()
         {
             position = -1;
@@ -34,6 +49,9 @@ namespace Leptonica
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Color Current
         {
             get
@@ -49,7 +67,10 @@ namespace Leptonica
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -64,6 +85,9 @@ namespace Leptonica
         }
 
         // This code added to correctly implement the disposable pattern.
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.

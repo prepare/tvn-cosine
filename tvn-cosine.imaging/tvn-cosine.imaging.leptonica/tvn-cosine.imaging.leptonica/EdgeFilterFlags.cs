@@ -1,5 +1,8 @@
 ﻿namespace Leptonica
 {
+    /// <summary>
+    /// EdgeFilterFlags
+    /// </summary>
     public enum EdgeFilterFlags
     {
         /// <summary>
