@@ -23,43 +23,60 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         public Canvas()
         {
             InitializeComponent();
-            __Zones = new ObservableCollection<Zone>();
-            itemsControl.ItemsSource = __Zones;
-            __Zones.CollectionChanged += __Zones_CollectionChanged;
-            __Zones_CollectionChanged(this, new System.Collections.Specialized.NotifyCollectionChangedEventArgs(System.Collections.Specialized.NotifyCollectionChangedAction.Reset));
+            Zones = new ObservableCollection<Zone>();
+            itemsControl.ItemsSource = Zones;
         }
 
-        ~Canvas()
+        public ObservableCollection<Zone> Zones { get; }
+
+        public ICollection<IZone> IZones
         {
-            __Zones.CollectionChanged -= __Zones_CollectionChanged;
+            get
+            {
+                return Zones.ToList<IZone>();
+            }
         }
 
-        private void __Zones_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        public void AddZones(ICollection<IZone> zones)
         {
-            Zones = __Zones.ToList<IZone>();
-        }
-
-        #region Zones
-        private ObservableCollection<Zone> __Zones { get; }
-
-        public ICollection<IZone> Zones
-        {
-            get { return (ICollection<IZone>)GetValue(ZonesProperty); }
-            set { SetValue(ZonesProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Zones.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ZonesProperty =
-            DependencyProperty.Register("Zones",
-                typeof(ICollection<IZone>),
-                typeof(Canvas),
-                new FrameworkPropertyMetadata(null)
+            if (zones != null)
+            {
+                foreach (var zone in zones)
                 {
-                    BindsTwoWayByDefault = true,
-                    DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
-                });
+                    Zones.Add(new Zone()
+                    {
+                        X = zone.X,
+                        Y = zone.Y,
+                        Width = zone.Width,
+                        Height = zone.Height,
+                        CanvasHeight = CanvasHeight,
+                        CanvasWidth = CanvasWidth,
+                        ZoneType = zone.ZoneType,
+                        Order = zone.Order,
+                        FillColor = zone.FillColor
+                    });
+                }
+            }
+        }
 
-        #endregion
+        public void ClearZones()
+        {
+            Zones.Clear();
+        }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var canvas = sender as Canvas;
+
+            canvas.CanvasWidth = canvas.itemsControl.Width;
+            canvas.CanvasHeight = canvas.itemsControl.Height;
+
+            foreach (var zone in canvas.Zones)
+            {
+                zone.CanvasHeight = CanvasHeight;
+                zone.CanvasWidth = CanvasWidth;
+            }
+        }
 
         #region BackgroundImagePath
         public string BackgroundImagePath
@@ -132,7 +149,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         }
         #endregion
 
-        #region DrawingMode  
+        #region Drawing Mode  
         public CanvasDrawingMode DrawingMode
         {
             get { return (CanvasDrawingMode)GetValue(DrawingModeProperty); }
@@ -159,8 +176,8 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                                 newZoneToDraw.Width,
                                 newZoneToDraw.Height);
 
-            __Zones.Remove(newZoneToDraw);
-            foreach (var zone in __Zones.ToList())
+            Zones.Remove(newZoneToDraw);
+            foreach (var zone in Zones.ToList())
             {
                 var zoneArea = new Rect(zone.X,
                                     zone.Y,
@@ -168,7 +185,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                                     zone.Height);
                 if (area.IntersectsWith(zoneArea))
                 {
-                    __Zones.Remove(zone);
+                    Zones.Remove(zone);
                 }
             }
         }
@@ -202,13 +219,12 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                     Order = 0,
                     ZoneType = DrawingMode.ToString()
                 };
-                __Zones.Add(newZoneToDraw);
+                Zones.Add(newZoneToDraw);
             }
             else
             {
-                Mouse.Capture(itemsControl);
                 var point = Mouse.GetPosition(itemsControl);
-                foreach (var zone in __Zones)
+                foreach (var zone in Zones)
                 {
                     var zoneArea = new Rect(zone.X,
                                         zone.Y,
@@ -246,12 +262,12 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         #region Canvas Width  
         public double CanvasWidth
         {
-            get { return (double)GetValue(ParentVisualWidthProperty); }
-            set { SetValue(ParentVisualWidthProperty, value); }
+            get { return (double)GetValue(CanvasWidthProperty); }
+            set { SetValue(CanvasWidthProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ParentVisualWidth.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ParentVisualWidthProperty =
+        public static readonly DependencyProperty CanvasWidthProperty =
             DependencyProperty.Register("CanvasWidth",
                 typeof(double),
                 typeof(Canvas),
@@ -265,12 +281,12 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         #region Canvas Height
         public double CanvasHeight
         {
-            get { return (double)GetValue(ParentVisualHeightProperty); }
-            set { SetValue(ParentVisualHeightProperty, value); }
+            get { return (double)GetValue(CanvasHeightProperty); }
+            set { SetValue(CanvasHeightProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ParentVisualHeight.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ParentVisualHeightProperty =
+        public static readonly DependencyProperty CanvasHeightProperty =
             DependencyProperty.Register("CanvasHeight",
                 typeof(double),
                 typeof(Canvas),
@@ -280,24 +296,17 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                     DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
                 });
 
-        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            var canvas = sender as Canvas;
-
-            canvas.CanvasWidth = canvas.itemsControl.Width;
-            canvas.CanvasHeight = canvas.itemsControl.Height;
-        }
         #endregion
 
         private void UserControl_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Delete)
             {
-                foreach (var zone in __Zones.ToList())
+                foreach (var zone in Zones.ToList())
                 {
                     if (zone.IsSelected)
                     {
-                        __Zones.Remove(zone);
+                        Zones.Remove(zone);
                     }
                 }
             }

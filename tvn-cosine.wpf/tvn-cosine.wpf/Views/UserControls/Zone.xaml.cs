@@ -14,8 +14,24 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
     {
         public Zone()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            this.SizeChanged += Zone_SizeChanged;
         }
+
+        private void Zone_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            XProportional = X / CanvasWidth;
+            YProportional = Y / CanvasHeight;
+            XProportional = Width / CanvasWidth;
+            XProportional = Height / CanvasHeight;
+        }
+
+        public double XProportional { get; private set; }
+        public double YProportional { get; private set; }
+        public double WidthProportional { get; private set; }
+        public double HeightProportional { get; private set; }
+        public double CanvasWidth { get; set; }
+        public double CanvasHeight { get; set; }
 
         #region Order
         public int Order
@@ -123,7 +139,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             System.Windows.Controls.Canvas.SetTop(zone, (double)e.NewValue);
         }
         #endregion
-         
+
         #region FillColor
         public IColor FillColor
         {
