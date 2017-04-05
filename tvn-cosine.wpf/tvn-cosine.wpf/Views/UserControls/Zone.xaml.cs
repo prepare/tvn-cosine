@@ -112,6 +112,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         {
             var zone = d as Zone;
             System.Windows.Controls.Canvas.SetLeft(zone, (double)e.NewValue);
+            zone.Zone_SizeChanged(zone, null);
         }
         #endregion
 
@@ -137,6 +138,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         {
             var zone = d as Zone;
             System.Windows.Controls.Canvas.SetTop(zone, (double)e.NewValue);
+            zone.Zone_SizeChanged(zone, null);
         }
         #endregion
 

@@ -16,7 +16,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
         private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
-            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            if (Keyboard.IsKeyDown(Key.LeftShift))
             {
                 Control designerItem = DataContext as Control;
 
