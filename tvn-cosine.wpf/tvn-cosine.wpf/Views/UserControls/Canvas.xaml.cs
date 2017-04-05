@@ -41,23 +41,33 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
 
         #region Zones
         private ObservableCollection<Zone> __Zones { get; }
-         
+
         public ICollection<IZone> Zones
         {
             get { return (ICollection<IZone>)GetValue(ZonesProperty); }
-            set { SetValue(ZonesProperty, value); }
+            set
+            {
+                __Zones.Clear();
+
+                foreach (var zone in e.NewValue as ICollection<IZone>)
+                {
+                    canvas.__Zones.Add(new Zone());
+                }
+                SetValue(ZonesProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for Zones.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ZonesProperty =
-            DependencyProperty.Register("Zones", 
-                typeof(ICollection<IZone>), 
+            DependencyProperty.Register("Zones",
+                typeof(ICollection<IZone>),
                 typeof(Canvas),
                 new FrameworkPropertyMetadata(null)
                 {
                     BindsTwoWayByDefault = true,
                     DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
-                }); 
+                });
+
         #endregion
 
         #region BackgroundImagePath
