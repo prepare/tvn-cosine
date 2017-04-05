@@ -45,16 +45,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         public ICollection<IZone> Zones
         {
             get { return (ICollection<IZone>)GetValue(ZonesProperty); }
-            set
-            {
-                __Zones.Clear();
-
-                foreach (var zone in e.NewValue as ICollection<IZone>)
-                {
-                    canvas.__Zones.Add(new Zone());
-                }
-                SetValue(ZonesProperty, value);
-            }
+            set { SetValue(ZonesProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Zones.  This enables animation, styling, binding, etc...
