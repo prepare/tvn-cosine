@@ -48,6 +48,7 @@
     <Compile Include="Affine.cs" />
     <Compile Include="AffineCompose.cs" />
     <Compile Include="Bilinear.cs" />
+    <Compile Include="Binarize.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="Boxa.cs" />
     <Compile Include="BoxaBoxEnumerator.cs" />
