@@ -51,6 +51,7 @@
     <Compile Include="Binarize.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="Boxa.cs" />
+    <Compile Include="Boxaa.cs" />
     <Compile Include="BoxaBoxEnumerator.cs" />
     <Compile Include="AdaptMap.cs" />
     <Compile Include="Convolve.cs" />
@@ -65,6 +66,8 @@
     <Compile Include="ImageFileFormat.cs" />
     <Compile Include="InsertionType.cs" />
     <Compile Include="Native\DllImports.cs" />
+    <Compile Include="Numa.cs" />
+    <Compile Include="Numaa.cs" />
     <Compile Include="Pix.cs" />
     <Compile Include="Pix2.cs" />
     <Compile Include="Pix3.cs" />
