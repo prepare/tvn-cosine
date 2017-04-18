@@ -355,21 +355,21 @@ namespace Leptonica.Native
 
         #endregion
 
-        #region baseline.c
+        #region baseline.c - DONE
         // Locate text baselines in an image
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindBaselines")]
-        internal static extern IntPtr pixFindBaselines(HandleRef pixs, IntPtr ppta, int debug);
+        internal static extern IntPtr pixFindBaselines(HandleRef pixs, out IntPtr ppta, int debug);
 
         // Projective transform to remove local skew
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixDeskewLocal")]
-        internal static extern IntPtr pixDeskewLocal(HandleRef pixs, int nslices, int redsweep, int redsearch, float sweeprange, float sweepdelta, float minbsdelta);
+        internal static extern IntPtr pixDeskewLocal(HandleRef pixs, int nslices, DeskewRedSweep redsweep, DeskewRedSearch redsearch, float sweeprange, float sweepdelta, float minbsdelta);
 
         // Determine local skew
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGetLocalSkewTransform")]
-        internal static extern int pixGetLocalSkewTransform(HandleRef pixs, int nslices, int redsweep, int redsearch, float sweeprange, float sweepdelta, float minbsdelta, IntPtr pptas, IntPtr pptad);
+        internal static extern int pixGetLocalSkewTransform(HandleRef pixs, int nslices, DeskewRedSweep redsweep, DeskewRedSearch redsearch, float sweeprange, float sweepdelta, float minbsdelta, out IntPtr pptas, out IntPtr pptad);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGetLocalSkewAngles")]
-        internal static extern IntPtr pixGetLocalSkewAngles(HandleRef pixs, int nslices, int redsweep, int redsearch, float sweeprange, float sweepdelta, float minbsdelta, IntPtr pa, IntPtr pb);
+        internal static extern IntPtr pixGetLocalSkewAngles(HandleRef pixs, int nslices, DeskewRedSweep redsweep, DeskewRedSearch redsearch, float sweeprange, float sweepdelta, float minbsdelta, out float pa, out float pb);
 
         #endregion
 
