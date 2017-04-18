@@ -47,7 +47,7 @@ namespace Leptonica.Native
         }
         #endregion
 
-        #region adaptmap.c
+        #region adaptmap.c - DONE
 
         /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixCleanBackgroundToWhite")]
@@ -159,7 +159,7 @@ namespace Leptonica.Native
 
         #endregion
 
-        #region affine.c 
+        #region affine.c - DONE
         /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAffineSampledPta")]
         internal static extern IntPtr pixAffineSampledPta(HandleRef pixs, HandleRef ptad, HandleRef ptas, InColorFlags incolor);
@@ -229,7 +229,7 @@ namespace Leptonica.Native
         internal static extern IntPtr pixAffineSequential(HandleRef pixs, HandleRef ptad, HandleRef ptas, int bw, int bh);
         #endregion
 
-        #region affinecompose.c
+        #region affinecompose.c - DONE
         /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "createMatrix2dTranslate")]
         internal static extern float[] createMatrix2dTranslate(float transx, float transy);
@@ -344,14 +344,14 @@ namespace Leptonica.Native
 
         #endregion
 
-        #region bardecode.c
+        #region bardecode.c - DONE
         // Dispatcher
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "barcodeDispatchDecoder")]
-        internal static extern IntPtr barcodeDispatchDecoder(HandleRef barstr, int format, int debugflag);
+        internal static extern IntPtr barcodeDispatchDecoder([MarshalAs(UnmanagedType.AnsiBStr)] string barstr, BarcodeFormats format, int debugflag);
 
         // Format Determination
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "barcodeFormatIsSupported")]
-        internal static extern int barcodeFormatIsSupported(int format);
+        internal static extern int barcodeFormatIsSupported(BarcodeFormats format);
 
         #endregion
 
@@ -425,7 +425,7 @@ namespace Leptonica.Native
         internal static extern IntPtr makeRangeKernel(float range_stdev);
         #endregion
 
-        #region bilinear.c
+        #region bilinear.c - DONE
         /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixBilinearSampledPta")]
         internal static extern IntPtr pixBilinearSampledPta(HandleRef pixs, HandleRef ptad, HandleRef ptas, InColorFlags incolor);
@@ -2554,7 +2554,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fhmtautogen2")]
         internal static extern int fhmtautogen2(HandleRef sela, int fileindex, IntPtr filename);
         #endregion
-         
+
         #region dnafunc1.c
 
         // Rearrangements
@@ -3321,7 +3321,7 @@ namespace Leptonica.Native
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fpixRenderContours")]
         internal static extern IntPtr fpixRenderContours(HandleRef fpixs, float incr, float proxim);
-         
+
         // Boundary pt generation on 1 bpp images
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGeneratePtaBoundary")]
         internal static extern IntPtr pixGeneratePtaBoundary(HandleRef pixs, int width);
@@ -3423,7 +3423,7 @@ namespace Leptonica.Native
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeGrayQuantColormapArb")]
         internal static extern int makeGrayQuantColormapArb(HandleRef pixs, IntPtr tab, int outdepth, IntPtr pcmap);
-      
+
         // Thresholding from 32 bpp rgb to 1 bpp (really color quantization, but it's better placed in this file)
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGenerateMaskByBand32")]
         internal static extern IntPtr pixGenerateMaskByBand32(HandleRef pixs, uint refval, int delm, int delp, float fractm, float fractp);
@@ -4434,7 +4434,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "genConstrainedNumaInRange")]
         internal static extern IntPtr genConstrainedNumaInRange(int first, int last, int nmax, int use_pairs);
         #endregion
-         
+
         #region pageseg.c
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGetRegionsBinary")]
         internal static extern int pixGetRegionsBinary(HandleRef pixs, IntPtr ppixhm, IntPtr ppixtm, IntPtr ppixtb, IntPtr pixadb);
@@ -4649,7 +4649,7 @@ namespace Leptonica.Native
         internal static extern void l_pdfSetDateAndVersion(int flag);
 
         #endregion
-         
+
         #region pix1.c 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixCreate")]
         internal static extern IntPtr pixCreate(int width, int height, int depth);
@@ -4674,7 +4674,7 @@ namespace Leptonica.Native
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixCopy")]
         internal static extern IntPtr pixCopy(IntPtr pixd, HandleRef pixs); // Create a deep copy of data
-         
+
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixResizeImageData")]
         internal static extern int pixResizeImageData(HandleRef pixd, IntPtr pixs);
 
@@ -4689,7 +4689,7 @@ namespace Leptonica.Native
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSwapAndDestroy")]
         internal static extern int pixSwapAndDestroy(Pix ppixd, HandleRef ppixs);
-         
+
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGetWidth")]
         internal static extern int pixGetWidth(HandleRef pix);
 
@@ -5722,7 +5722,7 @@ namespace Leptonica.Native
         internal static extern IntPtr pixaRotateOrth(HandleRef pixas, int rotation);
 
         #endregion
-         
+
         #region pixafunc2.c 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixaDisplay")]
         internal static extern IntPtr pixaDisplay(HandleRef pixa, int w, int h);
@@ -6960,7 +6960,7 @@ namespace Leptonica.Native
         internal static extern IntPtr numaQuantizeCrossingsByWindow(HandleRef nas, float ratio, IntPtr pwidth, IntPtr pfirstloc, IntPtr pnac, int debugflag);
 
         #endregion
-         
+
         #region rotate.c
         // General rotation about image center 
         /* DONE */
@@ -7008,6 +7008,814 @@ namespace Leptonica.Native
         // Faster color rotation about the image center
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateAMColorFast")]
         internal static extern IntPtr pixRotateAMColorFast(HandleRef pixs, float angle, uint colorval);
+        #endregion
+
+        #region recogbasic.c 
+        // Character/index lookup 
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_convertCharstrToInt")]
+        internal static extern int l_convertCharstrToInt(HandleRef str, IntPtr pval);
+        #endregion
+
+        #region recogtrain.c 
+        // Training on labeled data     
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixaAccumulateSamples")]
+        internal static extern int pixaAccumulateSamples(HandleRef pixa, IntPtr pta, IntPtr ppixd, IntPtr px, IntPtr py);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "recogRemoveOutliers1")]
+        internal static extern IntPtr recogRemoveOutliers1(HandleRef pixas, float minscore, float minfract, IntPtr ppixarem, IntPtr pnarem);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "recogRemoveOutliers2")]
+        internal static extern IntPtr recogRemoveOutliers2(HandleRef pixas, IntPtr ppixarem, IntPtr ppixadb);
+
+        // Making a boot digit recognizer
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "recogMakeBootDigitTemplates")]
+        internal static extern IntPtr recogMakeBootDigitTemplates(int debug);
+
+        #endregion
+
+        #region rop.c
+
+        // General rasterop
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasterop")]
+        internal static extern int pixRasterop(HandleRef pixd, int dx, int dy, int dw, int dh, int op, IntPtr pixs, int sx, int sy);
+
+        // In-place full band translation
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasteropVip")]
+        internal static extern int pixRasteropVip(HandleRef pixd, int bx, int bw, int vshift, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasteropHip")]
+        internal static extern int pixRasteropHip(HandleRef pixd, int by, int bh, int hshift, int incolor);
+
+        // Full image translation (general and in-place)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixTranslate")]
+        internal static extern IntPtr pixTranslate(HandleRef pixd, IntPtr pixs, int hshift, int vshift, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasteropIP")]
+        internal static extern int pixRasteropIP(HandleRef pixd, int hshift, int vshift, int incolor);
+
+        // Full image rasterop with no translation
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasteropFullImage")]
+        internal static extern int pixRasteropFullImage(HandleRef pixd, IntPtr pixs, int op);
+
+        #endregion
+
+        #region ropiplow.c 
+        // Low level in-place full height vertical block transfer 
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rasteropVipLow")]
+        internal static extern void rasteropVipLow(HandleRef data, int pixw, int pixh, int depth, int wpl, int x, int w, int shift);
+
+        // Low level in-place full width horizontal block transfer
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rasteropHipLow")]
+        internal static extern void rasteropHipLow(HandleRef data, int pixh, int depth, int wpl, int y, int h, int shift);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shiftDataHorizontalLow")]
+        internal static extern void shiftDataHorizontalLow(HandleRef datad, int wpld, IntPtr datas, int wpls, int shift);
+
+        #endregion
+
+        #region roplow.c
+
+        // Low level dest-only
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rasteropUniLow")]
+        internal static extern void rasteropUniLow(HandleRef datad, int dpixw, int dpixh, int depth, int dwpl, int dx, int dy, int dw, int dh, int op);
+
+        // Low level src and dest
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rasteropLow")]
+        internal static extern void rasteropLow(HandleRef datad, int dpixw, int dpixh, int depth, int dwpl, int dx, int dy, int dw, int dh, int op, IntPtr datas, int spixw, int spixh, int swpl, int sx, int sy);
+
+        #endregion
+
+        #region rotateamlow.c 
+        // 32 bpp grayscale rotation about image center
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMColorLow")]
+        internal static extern void rotateAMColorLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, uint colorval);
+
+        // 8 bpp grayscale rotation about image center
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMGrayLow")]
+        internal static extern void rotateAMGrayLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, byte grayval);
+
+        // 32 bpp grayscale rotation about UL corner of image
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMColorCornerLow")]
+        internal static extern void rotateAMColorCornerLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, uint colorval);
+
+        // 8 bpp grayscale rotation about UL corner of image
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMGrayCornerLow")]
+        internal static extern void rotateAMGrayCornerLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, byte grayval);
+
+        // Fast RGB color rotation about center:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMColorFastLow")]
+        internal static extern void rotateAMColorFastLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, uint colorval);
+
+        #endregion
+
+        #region rotateorth.c 
+        // Top-level rotation by multiples of 90 degrees
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateOrth")]
+        internal static extern IntPtr pixRotateOrth(HandleRef pixs, int quads);
+
+        // 180-degree rotation
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotate180")]
+        internal static extern IntPtr pixRotate180(HandleRef pixd, IntPtr pixs);
+
+        // 90-degree rotation (both directions)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotate90")]
+        internal static extern IntPtr pixRotate90(HandleRef pixs, int direction);
+
+        // Left-right flip
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFlipLR")]
+        internal static extern IntPtr pixFlipLR(HandleRef pixd, IntPtr pixs);
+
+        // Top-bottom flip
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFlipTB")]
+        internal static extern IntPtr pixFlipTB(HandleRef pixd, IntPtr pixs);
+
+        #endregion
+
+        #region rotateshear.c 
+        // Shear rotation about arbitrary point using 2 and 3 shears 
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateShear")]
+        internal static extern IntPtr pixRotateShear(HandleRef pixs, int xcen, int ycen, float angle, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotate2Shear")]
+        internal static extern IntPtr pixRotate2Shear(HandleRef pixs, int xcen, int ycen, float angle, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotate3Shear")]
+        internal static extern IntPtr pixRotate3Shear(HandleRef pixs, int xcen, int ycen, float angle, int incolor);
+
+        // Shear rotation in-place about arbitrary point using 3 shears
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateShearIP")]
+        internal static extern int pixRotateShearIP(HandleRef pixs, int xcen, int ycen, float angle, int incolor);
+
+        // Shear rotation around the image center
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateShearCenter")]
+        internal static extern IntPtr pixRotateShearCenter(HandleRef pixs, float angle, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateShearCenterIP")]
+        internal static extern int pixRotateShearCenterIP(HandleRef pixs, float angle, int incolor);
+
+        #endregion
+
+        #region runlength.c 
+        // Label pixels by membership in runs
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixStrokeWidthTransform")]
+        internal static extern IntPtr pixStrokeWidthTransform(HandleRef pixs, int color, int depth, int nangles);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRunlengthTransform")]
+        internal static extern IntPtr pixRunlengthTransform(HandleRef pixs, int color, int direction, int depth);
+
+        // Find runs along horizontal and vertical lines
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindHorizontalRuns")]
+        internal static extern int pixFindHorizontalRuns(HandleRef pix, int y, IntPtr xstart, IntPtr xend, IntPtr pn);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindVerticalRuns")]
+        internal static extern int pixFindVerticalRuns(HandleRef pix, int x, IntPtr ystart, IntPtr yend, IntPtr pn);
+
+        // Find max runs along horizontal and vertical lines
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindMaxRuns")]
+        internal static extern IntPtr pixFindMaxRuns(HandleRef pix, int direction, IntPtr pnastart);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindMaxHorizontalRunOnLine")]
+        internal static extern int pixFindMaxHorizontalRunOnLine(HandleRef pix, int y, IntPtr pxstart, IntPtr psize);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindMaxVerticalRunOnLine")]
+        internal static extern int pixFindMaxVerticalRunOnLine(HandleRef pix, int x, IntPtr pystart, IntPtr psize);
+
+        // Compute runlength-to-membership transform on a line
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "runlengthMembershipOnLine")]
+        internal static extern int runlengthMembershipOnLine(HandleRef buffer, int size, int depth, IntPtr start, IntPtr end, int n);
+
+        // Make byte position LUT
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeMSBitLocTab")]
+        internal static extern IntPtr makeMSBitLocTab(int bitval);
+        #endregion
+
+        #region sarray1.c 
+        // Create/Destroy/Copy
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCreate")]
+        internal static extern IntPtr sarrayCreate(int n);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCreateInitialized")]
+        internal static extern IntPtr sarrayCreateInitialized(int n, IntPtr initstr);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCreateWordsFromString")]
+        internal static extern IntPtr sarrayCreateWordsFromString(HandleRef str);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCreateLinesFromString")]
+        internal static extern IntPtr sarrayCreateLinesFromString(HandleRef str, int blankflag);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayDestroy")]
+        internal static extern void sarrayDestroy(HandleRef psa);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCopy")]
+        internal static extern IntPtr sarrayCopy(HandleRef sa);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayClone")]
+        internal static extern IntPtr sarrayClone(HandleRef sa);
+
+        // Add/Remove string
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayAddString")]
+        internal static extern int sarrayAddString(HandleRef sa, IntPtr str, int copyflag);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayRemoveString")]
+        internal static extern IntPtr sarrayRemoveString(HandleRef sa, int index);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayReplaceString")]
+        internal static extern int sarrayReplaceString(HandleRef sa, int index, IntPtr newstr, int copyflag);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayClear")]
+        internal static extern int sarrayClear(HandleRef sa);
+
+        // Accessors
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGetCount")]
+        internal static extern int sarrayGetCount(HandleRef sa);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGetArray")]
+        internal static extern IntPtr sarrayGetArray(HandleRef sa, IntPtr pnalloc, IntPtr pn);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGetString")]
+        internal static extern IntPtr sarrayGetString(HandleRef sa, int index, int copyflag);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGetRefcount")]
+        internal static extern int sarrayGetRefcount(HandleRef sa);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayChangeRefcount")]
+        internal static extern int sarrayChangeRefcount(HandleRef sa, int delta);
+
+        // Conversion back to string
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayToString")]
+        internal static extern IntPtr sarrayToString(HandleRef sa, int addnlflag);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayToStringRange")]
+        internal static extern IntPtr sarrayToStringRange(HandleRef sa, int first, int nstrings, int addnlflag);
+
+        // Join 2 sarrays
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayJoin")]
+        internal static extern int sarrayJoin(HandleRef sa1, IntPtr sa2);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayAppendRange")]
+        internal static extern int sarrayAppendRange(HandleRef sa1, IntPtr sa2, int start, int end);
+
+        // Pad an sarray to be the same size as another sarray
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayPadToSameSize")]
+        internal static extern int sarrayPadToSameSize(HandleRef sa1, IntPtr sa2, IntPtr padstring);
+
+        // Convert word sarray to (formatted) line sarray
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayConvertWordsToLines")]
+        internal static extern IntPtr sarrayConvertWordsToLines(HandleRef sa, int linesize);
+
+        // Split string on separator list
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySplitString")]
+        internal static extern int sarraySplitString(HandleRef sa, IntPtr str, IntPtr separators);
+
+        // Filter sarray
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySelectBySubstring")]
+        internal static extern IntPtr sarraySelectBySubstring(HandleRef sain, IntPtr substr);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySelectByRange")]
+        internal static extern IntPtr sarraySelectByRange(HandleRef sain, int first, int last);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayParseRange")]
+        internal static extern int sarrayParseRange(HandleRef sa, int start, IntPtr pactualstart, IntPtr pend, IntPtr pnewstart, IntPtr substr, int loc);
+
+        // Serialize for I/O
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayRead")]
+        internal static extern IntPtr sarrayRead(HandleRef filename);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayReadStream")]
+        internal static extern IntPtr sarrayReadStream(HandleRef fp);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayReadMem")]
+        internal static extern IntPtr sarrayReadMem(HandleRef data, IntPtr size);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayWrite")]
+        internal static extern int sarrayWrite([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr sa);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayWriteStream")]
+        internal static extern int sarrayWriteStream(HandleRef fp, IntPtr sa);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayWriteMem")]
+        internal static extern int sarrayWriteMem(HandleRef pdata, IntPtr psize, IntPtr sa);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayAppend")]
+        internal static extern int sarrayAppend([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr sa);
+
+        // Directory filenames
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getNumberedPathnamesInDirectory")]
+        internal static extern IntPtr getNumberedPathnamesInDirectory(HandleRef dirname, IntPtr substr, int numpre, int numpost, int maxnum);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getSortedPathnamesInDirectory")]
+        internal static extern IntPtr getSortedPathnamesInDirectory(HandleRef dirname, IntPtr substr, int first, int nfiles);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "convertSortedToNumberedPathnames")]
+        internal static extern IntPtr convertSortedToNumberedPathnames(HandleRef sa, int numpre, int numpost, int maxnum);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getFilenamesInDirectory")]
+        internal static extern IntPtr getFilenamesInDirectory(HandleRef dirname);
+
+        #endregion
+
+        #region sarray2.c 
+        // Sort
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySort")]
+        internal static extern IntPtr sarraySort(HandleRef saout, IntPtr sain, int sortorder);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySortByIndex")]
+        internal static extern IntPtr sarraySortByIndex(HandleRef sain, IntPtr naindex);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "stringCompareLexical")]
+        internal static extern int stringCompareLexical(HandleRef str1, IntPtr str2);
+
+        // Set operations using aset (rbtree)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayUnionByAset")]
+        internal static extern IntPtr sarrayUnionByAset(HandleRef sa1, IntPtr sa2);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayRemoveDupsByAset")]
+        internal static extern IntPtr sarrayRemoveDupsByAset(HandleRef sas);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayIntersectionByAset")]
+        internal static extern IntPtr sarrayIntersectionByAset(HandleRef sa1, IntPtr sa2);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_asetCreateFromSarray")]
+        internal static extern IntPtr l_asetCreateFromSarray(HandleRef sa);
+
+        // Set operations using hashing (dnahash)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayRemoveDupsByHash")]
+        internal static extern int sarrayRemoveDupsByHash(HandleRef sas, IntPtr psad, IntPtr pdahash);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayIntersectionByHash")]
+        internal static extern IntPtr sarrayIntersectionByHash(HandleRef sa1, IntPtr sa2);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayFindStringByHash")]
+        internal static extern int sarrayFindStringByHash(HandleRef sa, IntPtr dahash, IntPtr str, IntPtr pindex);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_dnaHashCreateFromSarray")]
+        internal static extern IntPtr l_dnaHashCreateFromSarray(HandleRef sa);
+
+        // Miscellaneous operations
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGenerateIntegers")]
+        internal static extern IntPtr sarrayGenerateIntegers(int n);
+
+        #endregion
+
+        #region scalelow.c 
+        // Color (interpolated) scaling: general case
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleColorLILow")]
+        internal static extern void scaleColorLILow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
+
+        // Grayscale (interpolated) scaling: general case
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGrayLILow")]
+        internal static extern void scaleGrayLILow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
+
+        // Color (interpolated) scaling: 2x upscaling
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleColor2xLILow")]
+        internal static extern void scaleColor2xLILow(HandleRef datad, int wpld, IntPtr datas, int ws, int hs, int wpls);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleColor2xLILineLow")]
+        internal static extern void scaleColor2xLILineLow(HandleRef lined, int wpld, IntPtr lines, int ws, int wpls, int lastlineflag);
+
+        // Grayscale (interpolated) scaling: 2x upscaling
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGray2xLILow")]
+        internal static extern void scaleGray2xLILow(HandleRef datad, int wpld, IntPtr datas, int ws, int hs, int wpls);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGray2xLILineLow")]
+        internal static extern void scaleGray2xLILineLow(HandleRef lined, int wpld, IntPtr lines, int ws, int wpls, int lastlineflag);
+
+        // Grayscale (interpolated) scaling: 4x upscaling
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGray4xLILow")]
+        internal static extern void scaleGray4xLILow(HandleRef datad, int wpld, IntPtr datas, int ws, int hs, int wpls);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGray4xLILineLow")]
+        internal static extern void scaleGray4xLILineLow(HandleRef lined, int wpld, IntPtr lines, int ws, int wpls, int lastlineflag);
+
+        // Grayscale and color scaling by closest pixel sampling
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleBySamplingLow")]
+        internal static extern int scaleBySamplingLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int d, int wpls);
+
+        // Color and grayscale downsampling with (antialias) lowpass filter
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleSmoothLow")]
+        internal static extern int scaleSmoothLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int d, int wpls, int size);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleRGBToGray2Low")]
+        internal static extern void scaleRGBToGray2Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, float rwt, float gwt, float bwt);
+
+        // Color and grayscale downsampling with (antialias) area mapping
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleColorAreaMapLow")]
+        internal static extern void scaleColorAreaMapLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGrayAreaMapLow")]
+        internal static extern void scaleGrayAreaMapLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleAreaMapLow2")]
+        internal static extern void scaleAreaMapLow2(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int d, int wpls);
+
+        // Binary scaling by closest pixel sampling
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleBinaryLow")]
+        internal static extern int scaleBinaryLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
+
+        // Scale-to-gray 2x
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray2Low")]
+        internal static extern void scaleToGray2Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr sumtab, IntPtr valtab);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeSumTabSG2")]
+        internal static extern IntPtr makeSumTabSG2(HandleRef ptr);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG2")]
+        internal static extern IntPtr makeValTabSG2(HandleRef ptr);
+
+        // Scale-to-gray 3x
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray3Low")]
+        internal static extern void scaleToGray3Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr sumtab, IntPtr valtab);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeSumTabSG3")]
+        internal static extern IntPtr makeSumTabSG3(HandleRef ptr);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG3")]
+        internal static extern IntPtr makeValTabSG3(HandleRef ptr);
+
+        // Scale-to-gray 4x
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray4Low")]
+        internal static extern void scaleToGray4Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr sumtab, IntPtr valtab);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeSumTabSG4")]
+        internal static extern IntPtr makeSumTabSG4(HandleRef ptr);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG4")]
+        internal static extern IntPtr makeValTabSG4(HandleRef ptr);
+
+        // Scale-to-gray 6x
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray6Low")]
+        internal static extern void scaleToGray6Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr tab8, IntPtr valtab);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG6")]
+        internal static extern IntPtr makeValTabSG6(HandleRef ptr);
+
+        // Scale-to-gray 8x
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray8Low")]
+        internal static extern void scaleToGray8Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr tab8, IntPtr valtab);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG8")]
+        internal static extern IntPtr makeValTabSG8(HandleRef ptr);
+
+        // Scale-to-gray 16x
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray16Low")]
+        internal static extern void scaleToGray16Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr tab8);
+
+        // Grayscale mipmap
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleMipmapLow")]
+        internal static extern int scaleMipmapLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas1, int wpls1, IntPtr datas2, int wpls2, float red);
+
+        #endregion
+
+        #region seedfill.c 
+        // Binary seedfill (source: Luc Vincent)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillBinary")]
+        internal static extern IntPtr pixSeedfillBinary(HandleRef pixd, IntPtr pixs, IntPtr pixm, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillBinaryRestricted")]
+        internal static extern IntPtr pixSeedfillBinaryRestricted(HandleRef pixd, IntPtr pixs, IntPtr pixm, int connectivity, int xmax, int ymax);
+
+        // Applications of binary seedfill to find and fill holes, remove c.c. touching the border and fill bg from border:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHolesByFilling")]
+        internal static extern IntPtr pixHolesByFilling(HandleRef pixs, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFillClosedBorders")]
+        internal static extern IntPtr pixFillClosedBorders(HandleRef pixs, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixExtractBorderConnComps")]
+        internal static extern IntPtr pixExtractBorderConnComps(HandleRef pixs, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRemoveBorderConnComps")]
+        internal static extern IntPtr pixRemoveBorderConnComps(HandleRef pixs, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFillBgFromBorder")]
+        internal static extern IntPtr pixFillBgFromBorder(HandleRef pixs, int connectivity);
+
+        // Hole-filling of components to bounding rectangle
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFillHolesToBoundingRect")]
+        internal static extern IntPtr pixFillHolesToBoundingRect(HandleRef pixs, int minsize, float maxhfract, float minfgfract);
+
+        // Gray seedfill (source: Luc Vincent:fast-hybrid-grayscale-reconstruction)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGray")]
+        internal static extern int pixSeedfillGray(HandleRef pixs, IntPtr pixm, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGrayInv")]
+        internal static extern int pixSeedfillGrayInv(HandleRef pixs, IntPtr pixm, int connectivity);
+
+        // Gray seedfill (source: Luc Vincent: sequential-reconstruction algorithm)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGraySimple")]
+        internal static extern int pixSeedfillGraySimple(HandleRef pixs, IntPtr pixm, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGrayInvSimple")]
+        internal static extern int pixSeedfillGrayInvSimple(HandleRef pixs, IntPtr pixm, int connectivity);
+
+        // Gray seedfill variations
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGrayBasin")]
+        internal static extern IntPtr pixSeedfillGrayBasin(HandleRef pixb, IntPtr pixm, int delta, int connectivity);
+
+        // Distance function (source: Luc Vincent)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixDistanceFunction")]
+        internal static extern IntPtr pixDistanceFunction(HandleRef pixs, int connectivity, int outdepth, int boundcond);
+
+        // Seed spread (based on distance function)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedspread")]
+        internal static extern IntPtr pixSeedspread(HandleRef pixs, int connectivity);
+
+        // Local extrema:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixLocalExtrema")]
+        internal static extern int pixLocalExtrema(HandleRef pixs, int maxmin, int minmax, IntPtr ppixmin, IntPtr ppixmax);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSelectedLocalExtrema")]
+        internal static extern int pixSelectedLocalExtrema(HandleRef pixs, int mindist, IntPtr ppixmin, IntPtr ppixmax);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindEqualValues")]
+        internal static extern IntPtr pixFindEqualValues(HandleRef pixs1, IntPtr pixs2);
+
+        // Selection of minima in mask of connected components
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSelectMinInConnComp")]
+        internal static extern int pixSelectMinInConnComp(HandleRef pixs, IntPtr pixm, IntPtr ppta, IntPtr pnav);
+
+        // Removal of seeded connected components from a mask
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRemoveSeededComponents")]
+        internal static extern IntPtr pixRemoveSeededComponents(HandleRef pixd, IntPtr pixs, IntPtr pixm, int connectivity, int bordersize);
+
+        #endregion
+
+        #region seedfillow.c 
+        // Seedfill: Gray seedfill (source: Luc Vincent:fast-hybrid-grayscale-reconstruction)
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillBinaryLow")]
+        internal static extern void seedfillBinaryLow(HandleRef datas, int hs, int wpls, IntPtr datam, int hm, int wplm, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillGrayLow")]
+        internal static extern void seedfillGrayLow(HandleRef datas, int w, int h, int wpls, IntPtr datam, int wplm, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillGrayInvLow")]
+        internal static extern void seedfillGrayInvLow(HandleRef datas, int w, int h, int wpls, IntPtr datam, int wplm, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillGrayLowSimple")]
+        internal static extern void seedfillGrayLowSimple(HandleRef datas, int w, int h, int wpls, IntPtr datam, int wplm, int connectivity);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillGrayInvLowSimple")]
+        internal static extern void seedfillGrayInvLowSimple(HandleRef datas, int w, int h, int wpls, IntPtr datam, int wplm, int connectivity);
+
+        // Distance function:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "distanceFunctionLow")]
+        internal static extern void distanceFunctionLow(HandleRef datad, int w, int h, int d, int wpld, int connectivity);
+
+        // Seed spread:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedspreadLow")]
+        internal static extern void seedspreadLow(HandleRef datad, int w, int h, int wpld, IntPtr datat, int wplt, int connectivity);
+
+        #endregion
+
+        #region sel1.c 
+        // Create/destroy/copy:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaCreate")]
+        internal static extern IntPtr selaCreate(int n);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaDestroy")]
+        internal static extern void selaDestroy(HandleRef psela);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreate")]
+        internal static extern IntPtr selCreate(int height, int width, IntPtr name);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selDestroy")]
+        internal static extern void selDestroy(HandleRef psel);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCopy")]
+        internal static extern IntPtr selCopy(HandleRef sel);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateBrick")]
+        internal static extern IntPtr selCreateBrick(int h, int w, int cy, int cx, int type);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateComb")]
+        internal static extern IntPtr selCreateComb(int factor1, int factor2, int direction);
+
+        // Helper proc:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "create2dIntArray")]
+        internal static extern IntPtr create2dIntArray(int sy, int sx);
+
+        // Extension of sela:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddSel")]
+        internal static extern int selaAddSel(HandleRef sela, IntPtr sel, IntPtr selname, int copyflag);
+
+        // Accessors:
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetCount")]
+        internal static extern int selaGetCount(HandleRef sela);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetSel")]
+        internal static extern IntPtr selaGetSel(HandleRef sela, int i);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selGetName")]
+        internal static extern IntPtr selGetName(HandleRef sel);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selSetName")]
+        internal static extern int selSetName(HandleRef sel, IntPtr name);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaFindSelByName")]
+        internal static extern int selaFindSelByName(HandleRef sela, IntPtr name, IntPtr pindex, IntPtr psel);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selGetElement")]
+        internal static extern int selGetElement(HandleRef sel, int row, int col, IntPtr ptype);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selSetElement")]
+        internal static extern int selSetElement(HandleRef sel, int row, int col, int type);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selGetParameters")]
+        internal static extern int selGetParameters(HandleRef sel, IntPtr psy, IntPtr psx, IntPtr pcy, IntPtr pcx);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selSetOrigin")]
+        internal static extern int selSetOrigin(HandleRef sel, int cy, int cx);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selGetTypeAtOrigin")]
+        internal static extern int selGetTypeAtOrigin(HandleRef sel, IntPtr ptype);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetBrickName")]
+        internal static extern IntPtr selaGetBrickName(HandleRef sela, int hsize, int vsize);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetCombName")]
+        internal static extern IntPtr selaGetCombName(HandleRef sela, int size, int direction);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getCompositeParameters")]
+        internal static extern int getCompositeParameters(int size, IntPtr psize1, IntPtr psize2, IntPtr pnameh1, IntPtr pnameh2, IntPtr pnamev1, IntPtr pnamev2);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetSelnames")]
+        internal static extern IntPtr selaGetSelnames(HandleRef sela);
+
+        // Max translations for erosion and hmt
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selFindMaxTranslations")]
+        internal static extern int selFindMaxTranslations(HandleRef sel, IntPtr pxp, IntPtr pyp, IntPtr pxn, IntPtr pyn);
+
+        // Rotation by multiples of 90 degrees
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selRotateOrth")]
+        internal static extern IntPtr selRotateOrth(HandleRef sel, int quads);
+
+        // Sela and Sel serialized I/O
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaRead")]
+        internal static extern IntPtr selaRead(HandleRef fname);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaReadStream")]
+        internal static extern IntPtr selaReadStream(HandleRef fp);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selRead")]
+        internal static extern IntPtr selRead(HandleRef fname);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selReadStream")]
+        internal static extern IntPtr selReadStream(HandleRef fp);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaWrite")]
+        internal static extern int selaWrite(HandleRef fname, IntPtr sela);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaWriteStream")]
+        internal static extern int selaWriteStream(HandleRef fp, IntPtr sela);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selWrite")]
+        internal static extern int selWrite(HandleRef fname, IntPtr sel);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selWriteStream")]
+        internal static extern int selWriteStream(HandleRef fp, IntPtr sel);
+
+        // Building custom hit-miss sels from compiled strings
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateFromString")]
+        internal static extern IntPtr selCreateFromString(HandleRef text, int h, int w, IntPtr name);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selPrintToString")]
+        internal static extern IntPtr selPrintToString(HandleRef sel);
+
+        // Building custom hit-miss sels from a simple file format
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaCreateFromFile")]
+        internal static extern IntPtr selaCreateFromFile([MarshalAs(UnmanagedType.AnsiBStr)] string filename);
+
+        // Making hit-only sels from Pta and Pix
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateFromPta")]
+        internal static extern IntPtr selCreateFromPta(HandleRef pta, int cy, int cx, IntPtr name);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateFromPix")]
+        internal static extern IntPtr selCreateFromPix(HandleRef pix, int cy, int cx, IntPtr name);
+
+        // Making hit-miss sels from Pix and image files
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selReadFromColorImage")]
+        internal static extern IntPtr selReadFromColorImage(HandleRef pathname);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateFromColorPix")]
+        internal static extern IntPtr selCreateFromColorPix(HandleRef pixs, IntPtr selname);
+
+        // Printable display of sel
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selDisplayInPix")]
+        internal static extern IntPtr selDisplayInPix(HandleRef sel, int size, int gthick);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaDisplayInPix")]
+        internal static extern IntPtr selaDisplayInPix(HandleRef sela, int size, int gthick, int spacing, int ncols);
+
+        #endregion
+
+        #region sel2.c 
+        // Basic brick structuring elements
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddBasic")]
+        internal static extern IntPtr selaAddBasic(HandleRef sela);
+        //          Linear horizontal and vertical
+        //          Square
+        //          Diagonals
+
+        // Simple hit-miss structuring elements
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddHitMiss")]
+        internal static extern IntPtr selaAddHitMiss(HandleRef sela);
+        //          Isolated foreground pixel
+        //          Horizontal and vertical edges
+        //          Slanted edge
+        //          Corners
+
+        // Structuring elements for comparing with DWA operations
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddDwaLinear")]
+        internal static extern IntPtr selaAddDwaLinear(HandleRef sela);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddDwaCombs")]
+        internal static extern IntPtr selaAddDwaCombs(HandleRef sela);
+
+        // Structuring elements for the intersection of lines
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddCrossJunctions")]
+        internal static extern IntPtr selaAddCrossJunctions(HandleRef sela, float hlsize, float mdist, int norient, int debugflag);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddTJunctions")]
+        internal static extern IntPtr selaAddTJunctions(HandleRef sela, float hlsize, float mdist, int norient, int debugflag);
+
+        // Structuring elements for connectivity-preserving thinning operations
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sela4ccThin")]
+        internal static extern IntPtr sela4ccThin(HandleRef sela);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sela8ccThin")]
+        internal static extern IntPtr sela8ccThin(HandleRef sela);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sela4and8ccThin")]
+        internal static extern IntPtr sela4and8ccThin(HandleRef sela);
+
+        #endregion
+
+        #region selgen.c 
+        // Generate a subsampled structuring element
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGenerateSelWithRuns")]
+        internal static extern IntPtr pixGenerateSelWithRuns(HandleRef pixs, int nhlines, int nvlines, int distance, int minlength, int toppix, int botpix, int leftpix, int rightpix, IntPtr ppixe);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGenerateSelRandom")]
+        internal static extern IntPtr pixGenerateSelRandom(HandleRef pixs, float hitfract, float missfract, int distance, int toppix, int botpix, int leftpix, int rightpix, IntPtr ppixe);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGenerateSelBoundary")]
+        internal static extern IntPtr pixGenerateSelBoundary(HandleRef pixs, int hitdist, int missdist, int hitskip, int missskip, int topflag, int botflag, int leftflag, int rightflag, IntPtr ppixe);
+
+        // Accumulate data on runs along lines
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGetRunCentersOnLine")]
+        internal static extern IntPtr pixGetRunCentersOnLine(HandleRef pixs, int x, int y, int minlength);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGetRunsOnLine")]
+        internal static extern IntPtr pixGetRunsOnLine(HandleRef pixs, int x1, int y1, int x2, int y2);
+
+        // Subsample boundary pixels in relatively ordered way
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSubsampleBoundaryPixels")]
+        internal static extern IntPtr pixSubsampleBoundaryPixels(HandleRef pixs, int skip);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "adjacentOnPixelInRaster")]
+        internal static extern int adjacentOnPixelInRaster(HandleRef pixs, int x, int y, IntPtr pxa, IntPtr pya);
+
+        // Display generated sel with originating image
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixDisplayHitMissSel")]
+        internal static extern IntPtr pixDisplayHitMissSel(HandleRef pixs, IntPtr sel, int scalefactor, uint hitcolor, uint misscolor);
+
+        #endregion
+
+        #region shear.c 
+        // About arbitrary lines
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShear")]
+        internal static extern IntPtr pixHShear(HandleRef pixd, IntPtr pixs, int yloc, float radang, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShear")]
+        internal static extern IntPtr pixVShear(HandleRef pixd, IntPtr pixs, int xloc, float radang, int incolor);
+
+        // About special 'points': UL corner and center
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShearCorner")]
+        internal static extern IntPtr pixHShearCorner(HandleRef pixd, IntPtr pixs, float radang, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShearCorner")]
+        internal static extern IntPtr pixVShearCorner(HandleRef pixd, IntPtr pixs, float radang, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShearCenter")]
+        internal static extern IntPtr pixHShearCenter(HandleRef pixd, IntPtr pixs, float radang, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShearCenter")]
+        internal static extern IntPtr pixVShearCenter(HandleRef pixd, IntPtr pixs, float radang, int incolor);
+
+        // In place about arbitrary lines
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShearIP")]
+        internal static extern int pixHShearIP(HandleRef pixs, int yloc, float radang, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShearIP")]
+        internal static extern int pixVShearIP(HandleRef pixs, int xloc, float radang, int incolor);
+
+        // Linear interpolated shear about arbitrary lines
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShearLI")]
+        internal static extern IntPtr pixHShearLI(HandleRef pixs, int yloc, float radang, int incolor);
+
+        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShearLI")]
+        internal static extern IntPtr pixVShearLI(HandleRef pixs, int xloc, float radang, int incolor);
+
         #endregion
 
         #region scale.c
@@ -7210,671 +8018,8 @@ namespace Leptonica.Native
 
         #endregion
 
-         
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_convertCharstrToInt")]
-        internal static extern int l_convertCharstrToInt(HandleRef str, IntPtr pval);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixaAccumulateSamples")]
-        internal static extern int pixaAccumulateSamples(HandleRef pixa, IntPtr pta, IntPtr ppixd, IntPtr px, IntPtr py);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "recogRemoveOutliers1")]
-        internal static extern IntPtr recogRemoveOutliers1(HandleRef pixas, float minscore, float minfract, IntPtr ppixarem, IntPtr pnarem);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "recogRemoveOutliers2")]
-        internal static extern IntPtr recogRemoveOutliers2(HandleRef pixas, IntPtr ppixarem, IntPtr ppixadb);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "recogMakeBootDigitTemplates")]
-        internal static extern IntPtr recogMakeBootDigitTemplates(int debug);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasterop")]
-        internal static extern int pixRasterop(HandleRef pixd, int dx, int dy, int dw, int dh, int op, IntPtr pixs, int sx, int sy);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasteropVip")]
-        internal static extern int pixRasteropVip(HandleRef pixd, int bx, int bw, int vshift, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasteropHip")]
-        internal static extern int pixRasteropHip(HandleRef pixd, int by, int bh, int hshift, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixTranslate")]
-        internal static extern IntPtr pixTranslate(HandleRef pixd, IntPtr pixs, int hshift, int vshift, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasteropIP")]
-        internal static extern int pixRasteropIP(HandleRef pixd, int hshift, int vshift, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRasteropFullImage")]
-        internal static extern int pixRasteropFullImage(HandleRef pixd, IntPtr pixs, int op);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rasteropVipLow")]
-        internal static extern void rasteropVipLow(HandleRef data, int pixw, int pixh, int depth, int wpl, int x, int w, int shift);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rasteropHipLow")]
-        internal static extern void rasteropHipLow(HandleRef data, int pixh, int depth, int wpl, int y, int h, int shift);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shiftDataHorizontalLow")]
-        internal static extern void shiftDataHorizontalLow(HandleRef datad, int wpld, IntPtr datas, int wpls, int shift);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rasteropUniLow")]
-        internal static extern void rasteropUniLow(HandleRef datad, int dpixw, int dpixh, int depth, int dwpl, int dx, int dy, int dw, int dh, int op);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rasteropLow")]
-        internal static extern void rasteropLow(HandleRef datad, int dpixw, int dpixh, int depth, int dwpl, int dx, int dy, int dw, int dh, int op, IntPtr datas, int spixw, int spixh, int swpl, int sx, int sy);
-
-
-
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMColorLow")]
-        internal static extern void rotateAMColorLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, uint colorval);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMGrayLow")]
-        internal static extern void rotateAMGrayLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, byte grayval);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMColorCornerLow")]
-        internal static extern void rotateAMColorCornerLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, uint colorval);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMGrayCornerLow")]
-        internal static extern void rotateAMGrayCornerLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, byte grayval);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rotateAMColorFastLow")]
-        internal static extern void rotateAMColorFastLow(HandleRef datad, int w, int h, int wpld, IntPtr datas, int wpls, float angle, uint colorval);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateOrth")]
-        internal static extern IntPtr pixRotateOrth(HandleRef pixs, int quads);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotate180")]
-        internal static extern IntPtr pixRotate180(HandleRef pixd, IntPtr pixs);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotate90")]
-        internal static extern IntPtr pixRotate90(HandleRef pixs, int direction);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFlipLR")]
-        internal static extern IntPtr pixFlipLR(HandleRef pixd, IntPtr pixs);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFlipTB")]
-        internal static extern IntPtr pixFlipTB(HandleRef pixd, IntPtr pixs);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateShear")]
-        internal static extern IntPtr pixRotateShear(HandleRef pixs, int xcen, int ycen, float angle, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotate2Shear")]
-        internal static extern IntPtr pixRotate2Shear(HandleRef pixs, int xcen, int ycen, float angle, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotate3Shear")]
-        internal static extern IntPtr pixRotate3Shear(HandleRef pixs, int xcen, int ycen, float angle, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateShearIP")]
-        internal static extern int pixRotateShearIP(HandleRef pixs, int xcen, int ycen, float angle, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateShearCenter")]
-        internal static extern IntPtr pixRotateShearCenter(HandleRef pixs, float angle, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRotateShearCenterIP")]
-        internal static extern int pixRotateShearCenterIP(HandleRef pixs, float angle, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixStrokeWidthTransform")]
-        internal static extern IntPtr pixStrokeWidthTransform(HandleRef pixs, int color, int depth, int nangles);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRunlengthTransform")]
-        internal static extern IntPtr pixRunlengthTransform(HandleRef pixs, int color, int direction, int depth);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindHorizontalRuns")]
-        internal static extern int pixFindHorizontalRuns(HandleRef pix, int y, IntPtr xstart, IntPtr xend, IntPtr pn);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindVerticalRuns")]
-        internal static extern int pixFindVerticalRuns(HandleRef pix, int x, IntPtr ystart, IntPtr yend, IntPtr pn);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindMaxRuns")]
-        internal static extern IntPtr pixFindMaxRuns(HandleRef pix, int direction, IntPtr pnastart);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindMaxHorizontalRunOnLine")]
-        internal static extern int pixFindMaxHorizontalRunOnLine(HandleRef pix, int y, IntPtr pxstart, IntPtr psize);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindMaxVerticalRunOnLine")]
-        internal static extern int pixFindMaxVerticalRunOnLine(HandleRef pix, int x, IntPtr pystart, IntPtr psize);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "runlengthMembershipOnLine")]
-        internal static extern int runlengthMembershipOnLine(HandleRef buffer, int size, int depth, IntPtr start, IntPtr end, int n);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeMSBitLocTab")]
-        internal static extern IntPtr makeMSBitLocTab(int bitval);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCreate")]
-        internal static extern IntPtr sarrayCreate(int n);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCreateInitialized")]
-        internal static extern IntPtr sarrayCreateInitialized(int n, IntPtr initstr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCreateWordsFromString")]
-        internal static extern IntPtr sarrayCreateWordsFromString(HandleRef str);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCreateLinesFromString")]
-        internal static extern IntPtr sarrayCreateLinesFromString(HandleRef str, int blankflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayDestroy")]
-        internal static extern void sarrayDestroy(HandleRef psa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayCopy")]
-        internal static extern IntPtr sarrayCopy(HandleRef sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayClone")]
-        internal static extern IntPtr sarrayClone(HandleRef sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayAddString")]
-        internal static extern int sarrayAddString(HandleRef sa, IntPtr str, int copyflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayRemoveString")]
-        internal static extern IntPtr sarrayRemoveString(HandleRef sa, int index);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayReplaceString")]
-        internal static extern int sarrayReplaceString(HandleRef sa, int index, IntPtr newstr, int copyflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayClear")]
-        internal static extern int sarrayClear(HandleRef sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGetCount")]
-        internal static extern int sarrayGetCount(HandleRef sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGetArray")]
-        internal static extern IntPtr sarrayGetArray(HandleRef sa, IntPtr pnalloc, IntPtr pn);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGetString")]
-        internal static extern IntPtr sarrayGetString(HandleRef sa, int index, int copyflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGetRefcount")]
-        internal static extern int sarrayGetRefcount(HandleRef sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayChangeRefcount")]
-        internal static extern int sarrayChangeRefcount(HandleRef sa, int delta);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayToString")]
-        internal static extern IntPtr sarrayToString(HandleRef sa, int addnlflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayToStringRange")]
-        internal static extern IntPtr sarrayToStringRange(HandleRef sa, int first, int nstrings, int addnlflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayJoin")]
-        internal static extern int sarrayJoin(HandleRef sa1, IntPtr sa2);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayAppendRange")]
-        internal static extern int sarrayAppendRange(HandleRef sa1, IntPtr sa2, int start, int end);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayPadToSameSize")]
-        internal static extern int sarrayPadToSameSize(HandleRef sa1, IntPtr sa2, IntPtr padstring);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayConvertWordsToLines")]
-        internal static extern IntPtr sarrayConvertWordsToLines(HandleRef sa, int linesize);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySplitString")]
-        internal static extern int sarraySplitString(HandleRef sa, IntPtr str, IntPtr separators);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySelectBySubstring")]
-        internal static extern IntPtr sarraySelectBySubstring(HandleRef sain, IntPtr substr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySelectByRange")]
-        internal static extern IntPtr sarraySelectByRange(HandleRef sain, int first, int last);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayParseRange")]
-        internal static extern int sarrayParseRange(HandleRef sa, int start, IntPtr pactualstart, IntPtr pend, IntPtr pnewstart, IntPtr substr, int loc);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayRead")]
-        internal static extern IntPtr sarrayRead(HandleRef filename);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayReadStream")]
-        internal static extern IntPtr sarrayReadStream(HandleRef fp);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayReadMem")]
-        internal static extern IntPtr sarrayReadMem(HandleRef data, IntPtr size);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayWrite")]
-        internal static extern int sarrayWrite([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayWriteStream")]
-        internal static extern int sarrayWriteStream(HandleRef fp, IntPtr sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayWriteMem")]
-        internal static extern int sarrayWriteMem(HandleRef pdata, IntPtr psize, IntPtr sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayAppend")]
-        internal static extern int sarrayAppend([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getNumberedPathnamesInDirectory")]
-        internal static extern IntPtr getNumberedPathnamesInDirectory(HandleRef dirname, IntPtr substr, int numpre, int numpost, int maxnum);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getSortedPathnamesInDirectory")]
-        internal static extern IntPtr getSortedPathnamesInDirectory(HandleRef dirname, IntPtr substr, int first, int nfiles);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "convertSortedToNumberedPathnames")]
-        internal static extern IntPtr convertSortedToNumberedPathnames(HandleRef sa, int numpre, int numpost, int maxnum);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getFilenamesInDirectory")]
-        internal static extern IntPtr getFilenamesInDirectory(HandleRef dirname);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySort")]
-        internal static extern IntPtr sarraySort(HandleRef saout, IntPtr sain, int sortorder);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarraySortByIndex")]
-        internal static extern IntPtr sarraySortByIndex(HandleRef sain, IntPtr naindex);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "stringCompareLexical")]
-        internal static extern int stringCompareLexical(HandleRef str1, IntPtr str2);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayUnionByAset")]
-        internal static extern IntPtr sarrayUnionByAset(HandleRef sa1, IntPtr sa2);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayRemoveDupsByAset")]
-        internal static extern IntPtr sarrayRemoveDupsByAset(HandleRef sas);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayIntersectionByAset")]
-        internal static extern IntPtr sarrayIntersectionByAset(HandleRef sa1, IntPtr sa2);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_asetCreateFromSarray")]
-        internal static extern IntPtr l_asetCreateFromSarray(HandleRef sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayRemoveDupsByHash")]
-        internal static extern int sarrayRemoveDupsByHash(HandleRef sas, IntPtr psad, IntPtr pdahash);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayIntersectionByHash")]
-        internal static extern IntPtr sarrayIntersectionByHash(HandleRef sa1, IntPtr sa2);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayFindStringByHash")]
-        internal static extern int sarrayFindStringByHash(HandleRef sa, IntPtr dahash, IntPtr str, IntPtr pindex);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_dnaHashCreateFromSarray")]
-        internal static extern IntPtr l_dnaHashCreateFromSarray(HandleRef sa);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sarrayGenerateIntegers")]
-        internal static extern IntPtr sarrayGenerateIntegers(int n);
-
-
-
-
-
-
-
-
-
-
-
-
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleColorLILow")]
-        internal static extern void scaleColorLILow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGrayLILow")]
-        internal static extern void scaleGrayLILow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleColor2xLILow")]
-        internal static extern void scaleColor2xLILow(HandleRef datad, int wpld, IntPtr datas, int ws, int hs, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleColor2xLILineLow")]
-        internal static extern void scaleColor2xLILineLow(HandleRef lined, int wpld, IntPtr lines, int ws, int wpls, int lastlineflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGray2xLILow")]
-        internal static extern void scaleGray2xLILow(HandleRef datad, int wpld, IntPtr datas, int ws, int hs, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGray2xLILineLow")]
-        internal static extern void scaleGray2xLILineLow(HandleRef lined, int wpld, IntPtr lines, int ws, int wpls, int lastlineflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGray4xLILow")]
-        internal static extern void scaleGray4xLILow(HandleRef datad, int wpld, IntPtr datas, int ws, int hs, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGray4xLILineLow")]
-        internal static extern void scaleGray4xLILineLow(HandleRef lined, int wpld, IntPtr lines, int ws, int wpls, int lastlineflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleBySamplingLow")]
-        internal static extern int scaleBySamplingLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int d, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleSmoothLow")]
-        internal static extern int scaleSmoothLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int d, int wpls, int size);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleRGBToGray2Low")]
-        internal static extern void scaleRGBToGray2Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, float rwt, float gwt, float bwt);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleColorAreaMapLow")]
-        internal static extern void scaleColorAreaMapLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleGrayAreaMapLow")]
-        internal static extern void scaleGrayAreaMapLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleAreaMapLow2")]
-        internal static extern void scaleAreaMapLow2(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int d, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleBinaryLow")]
-        internal static extern int scaleBinaryLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int ws, int hs, int wpls);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray2Low")]
-        internal static extern void scaleToGray2Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr sumtab, IntPtr valtab);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeSumTabSG2")]
-        internal static extern IntPtr makeSumTabSG2(HandleRef ptr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG2")]
-        internal static extern IntPtr makeValTabSG2(HandleRef ptr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray3Low")]
-        internal static extern void scaleToGray3Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr sumtab, IntPtr valtab);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeSumTabSG3")]
-        internal static extern IntPtr makeSumTabSG3(HandleRef ptr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG3")]
-        internal static extern IntPtr makeValTabSG3(HandleRef ptr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray4Low")]
-        internal static extern void scaleToGray4Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr sumtab, IntPtr valtab);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeSumTabSG4")]
-        internal static extern IntPtr makeSumTabSG4(HandleRef ptr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG4")]
-        internal static extern IntPtr makeValTabSG4(HandleRef ptr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray6Low")]
-        internal static extern void scaleToGray6Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr tab8, IntPtr valtab);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG6")]
-        internal static extern IntPtr makeValTabSG6(HandleRef ptr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray8Low")]
-        internal static extern void scaleToGray8Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr tab8, IntPtr valtab);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeValTabSG8")]
-        internal static extern IntPtr makeValTabSG8(HandleRef ptr);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleToGray16Low")]
-        internal static extern void scaleToGray16Low(HandleRef datad, int wd, int hd, int wpld, IntPtr datas, int wpls, IntPtr tab8);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "scaleMipmapLow")]
-        internal static extern int scaleMipmapLow(HandleRef datad, int wd, int hd, int wpld, IntPtr datas1, int wpls1, IntPtr datas2, int wpls2, float red);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillBinary")]
-        internal static extern IntPtr pixSeedfillBinary(HandleRef pixd, IntPtr pixs, IntPtr pixm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillBinaryRestricted")]
-        internal static extern IntPtr pixSeedfillBinaryRestricted(HandleRef pixd, IntPtr pixs, IntPtr pixm, int connectivity, int xmax, int ymax);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHolesByFilling")]
-        internal static extern IntPtr pixHolesByFilling(HandleRef pixs, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFillClosedBorders")]
-        internal static extern IntPtr pixFillClosedBorders(HandleRef pixs, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixExtractBorderConnComps")]
-        internal static extern IntPtr pixExtractBorderConnComps(HandleRef pixs, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRemoveBorderConnComps")]
-        internal static extern IntPtr pixRemoveBorderConnComps(HandleRef pixs, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFillBgFromBorder")]
-        internal static extern IntPtr pixFillBgFromBorder(HandleRef pixs, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFillHolesToBoundingRect")]
-        internal static extern IntPtr pixFillHolesToBoundingRect(HandleRef pixs, int minsize, float maxhfract, float minfgfract);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGray")]
-        internal static extern int pixSeedfillGray(HandleRef pixs, IntPtr pixm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGrayInv")]
-        internal static extern int pixSeedfillGrayInv(HandleRef pixs, IntPtr pixm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGraySimple")]
-        internal static extern int pixSeedfillGraySimple(HandleRef pixs, IntPtr pixm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGrayInvSimple")]
-        internal static extern int pixSeedfillGrayInvSimple(HandleRef pixs, IntPtr pixm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedfillGrayBasin")]
-        internal static extern IntPtr pixSeedfillGrayBasin(HandleRef pixb, IntPtr pixm, int delta, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixDistanceFunction")]
-        internal static extern IntPtr pixDistanceFunction(HandleRef pixs, int connectivity, int outdepth, int boundcond);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSeedspread")]
-        internal static extern IntPtr pixSeedspread(HandleRef pixs, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixLocalExtrema")]
-        internal static extern int pixLocalExtrema(HandleRef pixs, int maxmin, int minmax, IntPtr ppixmin, IntPtr ppixmax);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSelectedLocalExtrema")]
-        internal static extern int pixSelectedLocalExtrema(HandleRef pixs, int mindist, IntPtr ppixmin, IntPtr ppixmax);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindEqualValues")]
-        internal static extern IntPtr pixFindEqualValues(HandleRef pixs1, IntPtr pixs2);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSelectMinInConnComp")]
-        internal static extern int pixSelectMinInConnComp(HandleRef pixs, IntPtr pixm, IntPtr ppta, IntPtr pnav);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRemoveSeededComponents")]
-        internal static extern IntPtr pixRemoveSeededComponents(HandleRef pixd, IntPtr pixs, IntPtr pixm, int connectivity, int bordersize);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillBinaryLow")]
-        internal static extern void seedfillBinaryLow(HandleRef datas, int hs, int wpls, IntPtr datam, int hm, int wplm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillGrayLow")]
-        internal static extern void seedfillGrayLow(HandleRef datas, int w, int h, int wpls, IntPtr datam, int wplm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillGrayInvLow")]
-        internal static extern void seedfillGrayInvLow(HandleRef datas, int w, int h, int wpls, IntPtr datam, int wplm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillGrayLowSimple")]
-        internal static extern void seedfillGrayLowSimple(HandleRef datas, int w, int h, int wpls, IntPtr datam, int wplm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedfillGrayInvLowSimple")]
-        internal static extern void seedfillGrayInvLowSimple(HandleRef datas, int w, int h, int wpls, IntPtr datam, int wplm, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "distanceFunctionLow")]
-        internal static extern void distanceFunctionLow(HandleRef datad, int w, int h, int d, int wpld, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "seedspreadLow")]
-        internal static extern void seedspreadLow(HandleRef datad, int w, int h, int wpld, IntPtr datat, int wplt, int connectivity);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaCreate")]
-        internal static extern IntPtr selaCreate(int n);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaDestroy")]
-        internal static extern void selaDestroy(HandleRef psela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreate")]
-        internal static extern IntPtr selCreate(int height, int width, IntPtr name);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selDestroy")]
-        internal static extern void selDestroy(HandleRef psel);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCopy")]
-        internal static extern IntPtr selCopy(HandleRef sel);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateBrick")]
-        internal static extern IntPtr selCreateBrick(int h, int w, int cy, int cx, int type);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateComb")]
-        internal static extern IntPtr selCreateComb(int factor1, int factor2, int direction);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "create2dIntArray")]
-        internal static extern IntPtr create2dIntArray(int sy, int sx);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddSel")]
-        internal static extern int selaAddSel(HandleRef sela, IntPtr sel, IntPtr selname, int copyflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetCount")]
-        internal static extern int selaGetCount(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetSel")]
-        internal static extern IntPtr selaGetSel(HandleRef sela, int i);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selGetName")]
-        internal static extern IntPtr selGetName(HandleRef sel);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selSetName")]
-        internal static extern int selSetName(HandleRef sel, IntPtr name);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaFindSelByName")]
-        internal static extern int selaFindSelByName(HandleRef sela, IntPtr name, IntPtr pindex, IntPtr psel);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selGetElement")]
-        internal static extern int selGetElement(HandleRef sel, int row, int col, IntPtr ptype);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selSetElement")]
-        internal static extern int selSetElement(HandleRef sel, int row, int col, int type);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selGetParameters")]
-        internal static extern int selGetParameters(HandleRef sel, IntPtr psy, IntPtr psx, IntPtr pcy, IntPtr pcx);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selSetOrigin")]
-        internal static extern int selSetOrigin(HandleRef sel, int cy, int cx);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selGetTypeAtOrigin")]
-        internal static extern int selGetTypeAtOrigin(HandleRef sel, IntPtr ptype);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetBrickName")]
-        internal static extern IntPtr selaGetBrickName(HandleRef sela, int hsize, int vsize);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetCombName")]
-        internal static extern IntPtr selaGetCombName(HandleRef sela, int size, int direction);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getCompositeParameters")]
-        internal static extern int getCompositeParameters(int size, IntPtr psize1, IntPtr psize2, IntPtr pnameh1, IntPtr pnameh2, IntPtr pnamev1, IntPtr pnamev2);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaGetSelnames")]
-        internal static extern IntPtr selaGetSelnames(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selFindMaxTranslations")]
-        internal static extern int selFindMaxTranslations(HandleRef sel, IntPtr pxp, IntPtr pyp, IntPtr pxn, IntPtr pyn);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selRotateOrth")]
-        internal static extern IntPtr selRotateOrth(HandleRef sel, int quads);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaRead")]
-        internal static extern IntPtr selaRead(HandleRef fname);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaReadStream")]
-        internal static extern IntPtr selaReadStream(HandleRef fp);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selRead")]
-        internal static extern IntPtr selRead(HandleRef fname);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selReadStream")]
-        internal static extern IntPtr selReadStream(HandleRef fp);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaWrite")]
-        internal static extern int selaWrite(HandleRef fname, IntPtr sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaWriteStream")]
-        internal static extern int selaWriteStream(HandleRef fp, IntPtr sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selWrite")]
-        internal static extern int selWrite(HandleRef fname, IntPtr sel);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selWriteStream")]
-        internal static extern int selWriteStream(HandleRef fp, IntPtr sel);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateFromString")]
-        internal static extern IntPtr selCreateFromString(HandleRef text, int h, int w, IntPtr name);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selPrintToString")]
-        internal static extern IntPtr selPrintToString(HandleRef sel);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaCreateFromFile")]
-        internal static extern IntPtr selaCreateFromFile([MarshalAs(UnmanagedType.AnsiBStr)] string filename);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateFromPta")]
-        internal static extern IntPtr selCreateFromPta(HandleRef pta, int cy, int cx, IntPtr name);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateFromPix")]
-        internal static extern IntPtr selCreateFromPix(HandleRef pix, int cy, int cx, IntPtr name);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selReadFromColorImage")]
-        internal static extern IntPtr selReadFromColorImage(HandleRef pathname);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selCreateFromColorPix")]
-        internal static extern IntPtr selCreateFromColorPix(HandleRef pixs, IntPtr selname);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selDisplayInPix")]
-        internal static extern IntPtr selDisplayInPix(HandleRef sel, int size, int gthick);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaDisplayInPix")]
-        internal static extern IntPtr selaDisplayInPix(HandleRef sela, int size, int gthick, int spacing, int ncols);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddBasic")]
-        internal static extern IntPtr selaAddBasic(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddHitMiss")]
-        internal static extern IntPtr selaAddHitMiss(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddDwaLinear")]
-        internal static extern IntPtr selaAddDwaLinear(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddDwaCombs")]
-        internal static extern IntPtr selaAddDwaCombs(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddCrossJunctions")]
-        internal static extern IntPtr selaAddCrossJunctions(HandleRef sela, float hlsize, float mdist, int norient, int debugflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "selaAddTJunctions")]
-        internal static extern IntPtr selaAddTJunctions(HandleRef sela, float hlsize, float mdist, int norient, int debugflag);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sela4ccThin")]
-        internal static extern IntPtr sela4ccThin(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sela8ccThin")]
-        internal static extern IntPtr sela8ccThin(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sela4and8ccThin")]
-        internal static extern IntPtr sela4and8ccThin(HandleRef sela);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGenerateSelWithRuns")]
-        internal static extern IntPtr pixGenerateSelWithRuns(HandleRef pixs, int nhlines, int nvlines, int distance, int minlength, int toppix, int botpix, int leftpix, int rightpix, IntPtr ppixe);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGenerateSelRandom")]
-        internal static extern IntPtr pixGenerateSelRandom(HandleRef pixs, float hitfract, float missfract, int distance, int toppix, int botpix, int leftpix, int rightpix, IntPtr ppixe);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGenerateSelBoundary")]
-        internal static extern IntPtr pixGenerateSelBoundary(HandleRef pixs, int hitdist, int missdist, int hitskip, int missskip, int topflag, int botflag, int leftflag, int rightflag, IntPtr ppixe);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGetRunCentersOnLine")]
-        internal static extern IntPtr pixGetRunCentersOnLine(HandleRef pixs, int x, int y, int minlength);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixGetRunsOnLine")]
-        internal static extern IntPtr pixGetRunsOnLine(HandleRef pixs, int x1, int y1, int x2, int y2);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSubsampleBoundaryPixels")]
-        internal static extern IntPtr pixSubsampleBoundaryPixels(HandleRef pixs, int skip);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "adjacentOnPixelInRaster")]
-        internal static extern int adjacentOnPixelInRaster(HandleRef pixs, int x, int y, IntPtr pxa, IntPtr pya);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixDisplayHitMissSel")]
-        internal static extern IntPtr pixDisplayHitMissSel(HandleRef pixs, IntPtr sel, int scalefactor, uint hitcolor, uint misscolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShear")]
-        internal static extern IntPtr pixHShear(HandleRef pixd, IntPtr pixs, int yloc, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShear")]
-        internal static extern IntPtr pixVShear(HandleRef pixd, IntPtr pixs, int xloc, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShearCorner")]
-        internal static extern IntPtr pixHShearCorner(HandleRef pixd, IntPtr pixs, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShearCorner")]
-        internal static extern IntPtr pixVShearCorner(HandleRef pixd, IntPtr pixs, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShearCenter")]
-        internal static extern IntPtr pixHShearCenter(HandleRef pixd, IntPtr pixs, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShearCenter")]
-        internal static extern IntPtr pixVShearCenter(HandleRef pixd, IntPtr pixs, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShearIP")]
-        internal static extern int pixHShearIP(HandleRef pixs, int yloc, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShearIP")]
-        internal static extern int pixVShearIP(HandleRef pixs, int xloc, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixHShearLI")]
-        internal static extern IntPtr pixHShearLI(HandleRef pixs, int yloc, float radang, int incolor);
-
-        [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixVShearLI")]
-        internal static extern IntPtr pixVShearLI(HandleRef pixs, int xloc, float radang, int incolor);
-
-
+        #region spixio.c 
+        // Reading spix from file
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixReadStreamSpix")]
         internal static extern IntPtr pixReadStreamSpix(HandleRef fp);
 
@@ -7887,9 +8032,11 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "sreadHeaderSpix")]
         internal static extern int sreadHeaderSpix(HandleRef data, IntPtr pwidth, IntPtr pheight, IntPtr pbps, IntPtr pspp, IntPtr piscmap);
 
+        // Writing spix to file
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWriteStreamSpix")]
         internal static extern int pixWriteStreamSpix(HandleRef fp, IntPtr pix);
 
+        // Low-level serialization of pix to/from memory (uncompressed)
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixReadMemSpix")]
         internal static extern IntPtr pixReadMemSpix(HandleRef data, IntPtr size);
 
@@ -7902,12 +8049,17 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixDeserializeFromMemory")]
         internal static extern IntPtr pixDeserializeFromMemory(HandleRef data, IntPtr nbytes);
 
+        #endregion
+
+        #region stack.c 
+        // Create/Destroy
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lstackCreate")]
         internal static extern IntPtr lstackCreate(int nalloc);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lstackDestroy")]
         internal static extern void lstackDestroy(HandleRef plstack, int freeflag);
 
+        // Accessors
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lstackAdd")]
         internal static extern int lstackAdd(HandleRef lstack, IntPtr item);
 
@@ -7917,15 +8069,22 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lstackGetCount")]
         internal static extern int lstackGetCount(HandleRef lstack);
 
+        // Text description
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lstackPrint")]
         internal static extern int lstackPrint(HandleRef fp, IntPtr lstack);
 
+        #endregion
+
+        #region stringcode.c
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "strcodeCreateFromFile")]
         internal static extern int strcodeCreateFromFile(HandleRef filein, int fileno, IntPtr outdir);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_getStructStrFromFile")]
         internal static extern int l_getStructStrFromFile([MarshalAs(UnmanagedType.AnsiBStr)] string filename, int field, IntPtr pstr);
+        #endregion
 
+        #region strokes.c 
+        // Stroke parameter measurement
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixFindStrokeLength")]
         internal static extern int pixFindStrokeLength(HandleRef pixs, IntPtr tab8, IntPtr plength);
 
@@ -7935,6 +8094,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixaFindStrokeWidth")]
         internal static extern IntPtr pixaFindStrokeWidth(HandleRef pixa, float thresh, IntPtr tab8, int debug);
 
+        // Stroke width regulation
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixaModifyStrokeWidth")]
         internal static extern IntPtr pixaModifyStrokeWidth(HandleRef pixas, float targetw);
 
@@ -7947,6 +8107,10 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSetStrokeWidth")]
         internal static extern IntPtr pixSetStrokeWidth(HandleRef pixs, int width, int thinfirst, int connectivity);
 
+        #endregion
+
+        #region textops.c 
+        // Font layout
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixAddSingleTextblock")]
         internal static extern IntPtr pixAddSingleTextblock(HandleRef pixs, IntPtr bmf, IntPtr textstr, uint val, int location, IntPtr poverflow);
 
@@ -7968,6 +8132,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixaAddPixWithText")]
         internal static extern int pixaAddPixWithText(HandleRef pixa, IntPtr pixs, int reduction, IntPtr bmf, IntPtr textstr, uint val, int location);
 
+        // Text size estimation and partitioning
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bmfGetLineStrings")]
         internal static extern IntPtr bmfGetLineStrings(HandleRef bmf, IntPtr textstr, int maxw, int firstindent, IntPtr ph);
 
@@ -7977,15 +8142,21 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bmfGetStringWidth")]
         internal static extern int bmfGetStringWidth(HandleRef bmf, IntPtr textstr, IntPtr pw);
 
+        // Text splitting
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "splitStringToParagraphs")]
         internal static extern IntPtr splitStringToParagraphs(HandleRef textstr, int splitflag);
 
+        #endregion
+
+        #region tiffio.c 
+        // Reading tiff:
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixReadTiff")]
         internal static extern IntPtr pixReadTiff([MarshalAs(UnmanagedType.AnsiBStr)] string filename, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixReadStreamTiff")]
         internal static extern IntPtr pixReadStreamTiff(HandleRef fp, int n);
 
+        // Writing tiff:
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWriteTiff")]
         internal static extern int pixWriteTiff([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr pix, int comptype, IntPtr modestring);
 
@@ -7995,6 +8166,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWriteStreamTiff")]
         internal static extern int pixWriteStreamTiff(HandleRef fp, IntPtr pix, int comptype);
 
+        // Reading and writing multipage tiff
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixReadFromMultipageTiff")]
         internal static extern IntPtr pixReadFromMultipageTiff(HandleRef fname, IntPtr poffset);
 
@@ -8007,6 +8179,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "writeMultipageTiffSA")]
         internal static extern int writeMultipageTiffSA(HandleRef sa, IntPtr fileout);
 
+        // Information about tiff file
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fprintTiffInfo")]
         internal static extern int fprintTiffInfo(HandleRef fpout, IntPtr tiffile);
 
@@ -8028,9 +8201,11 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "findTiffCompression")]
         internal static extern int findTiffCompression(HandleRef fp, IntPtr pcomptype);
 
+        // Extraction of tiff g4 data:
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "extractG4DataFromFile")]
         internal static extern int extractG4DataFromFile(HandleRef filein, IntPtr pdata, IntPtr pnbytes, IntPtr pw, IntPtr ph, IntPtr pminisblack);
 
+        // Memory I/O: reading memory --> pix and writing pix --> memory
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixReadMemTiff")]
         internal static extern IntPtr pixReadMemTiff(HandleRef cdata, IntPtr size, int n);
 
@@ -8043,9 +8218,14 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWriteMemTiffCustom")]
         internal static extern int pixWriteMemTiffCustom(HandleRef pdata, IntPtr psize, IntPtr pix, int comptype, IntPtr natags, IntPtr savals, IntPtr satypes, IntPtr nasizes);
 
+        #endregion
+
+        #region utils1.c 
+        // Control of error, warning and info messages
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "setMsgSeverity")]
         internal static extern int setMsgSeverity(int newsev);
 
+        // Error return functions, invoked by macros
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "returnErrorInt")]
         internal static extern int returnErrorInt(HandleRef msg, IntPtr procname, int ival);
 
@@ -8055,9 +8235,11 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "returnErrorPtr")]
         internal static extern IntPtr returnErrorPtr(HandleRef msg, IntPtr procname, IntPtr pval);
 
+        // Test files for equivalence
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "filesAreIdentical")]
         internal static extern int filesAreIdentical(HandleRef fname1, IntPtr fname2, IntPtr psame);
 
+        // Byte-swapping data conversion
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "convertOnLittleEnd16")]
         internal static extern ushort convertOnLittleEnd16(ushort shortin);
 
@@ -8070,18 +8252,22 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "convertOnBigEnd32")]
         internal static extern uint convertOnBigEnd32(uint wordin);
 
+        // File corruption operation
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileCorruptByDeletion")]
         internal static extern int fileCorruptByDeletion(HandleRef filein, float loc, float size, IntPtr fileout);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileCorruptByMutation")]
         internal static extern int fileCorruptByMutation(HandleRef filein, float loc, float size, IntPtr fileout);
 
+        // Generate random integer in given range
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "genRandomIntegerInRange")]
         internal static extern int genRandomIntegerInRange(int range, int seed, IntPtr pval);
 
+        // Simple math function
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lept_roundftoi")]
         internal static extern int lept_roundftoi(float fval);
 
+        // 64-bit hash functions
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_hashStringToUint64")]
         internal static extern int l_hashStringToUint64(HandleRef str, IntPtr phash);
 
@@ -8091,21 +8277,25 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_hashFloat64ToUint64")]
         internal static extern int l_hashFloat64ToUint64(int nbuckets, double val, IntPtr phash);
 
+        // Prime finders
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "findNextLargerPrime")]
         internal static extern int findNextLargerPrime(int start, IntPtr pprime);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lept_isPrime")]
         internal static extern int lept_isPrime(ulong n, IntPtr pis_prime, IntPtr pfactor);
 
+        // Gray code conversion
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "convertBinaryToGrayCode")]
         internal static extern uint convertBinaryToGrayCode(uint val);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "convertGrayCodeToBinary")]
         internal static extern uint convertGrayCodeToBinary(uint val);
 
+        // Leptonica version number
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getLeptonicaVersion")]
         internal static extern IntPtr getLeptonicaVersion();
 
+        // Timing
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "startTimer")]
         internal static extern void startTimer(HandleRef ptr);
 
@@ -8118,6 +8308,11 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_getFormattedDate")]
         internal static extern IntPtr l_getFormattedDate();
 
+
+        #endregion
+
+        #region utils2.c 
+        // Safe string procs
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "stringNew")]
         internal static extern IntPtr stringNew(HandleRef src);
 
@@ -8148,6 +8343,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "stringSplitOnToken")]
         internal static extern int stringSplitOnToken(HandleRef cstr, IntPtr seps, IntPtr phead, IntPtr ptail);
 
+        // Find and replace string and array procs
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "stringRemoveChars")]
         internal static extern IntPtr stringRemoveChars(HandleRef src, IntPtr remchars);
 
@@ -8166,9 +8362,11 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "arrayFindSequence")]
         internal static extern int arrayFindSequence(HandleRef data, IntPtr datalen, IntPtr sequence, IntPtr seqlen, IntPtr poffset, IntPtr pfound);
 
+        // Safe realloc
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "reallocNew")]
         internal static extern IntPtr reallocNew(HandleRef pindata, int oldsize, int newsize);
 
+        // Read and write between file and memory
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_binaryRead")]
         internal static extern IntPtr l_binaryRead([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr pnbytes);
 
@@ -8190,9 +8388,11 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fnbytesInFile")]
         internal static extern IntPtr fnbytesInFile(HandleRef fp);
 
+        // Copy in memory
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_binaryCopy")]
         internal static extern IntPtr l_binaryCopy(HandleRef datas, IntPtr size);
 
+        // File copy operations
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileCopy")]
         internal static extern int fileCopy(HandleRef srcfile, IntPtr newfile);
 
@@ -8202,6 +8402,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileAppendString")]
         internal static extern int fileAppendString([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr str);
 
+        // Multi-platform functions for opening file streams
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fopenReadStream")]
         internal static extern IntPtr fopenReadStream(HandleRef filename);
 
@@ -8211,9 +8412,11 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fopenReadFromMemory")]
         internal static extern IntPtr fopenReadFromMemory(HandleRef data, IntPtr size);
 
+        // Opening a windows tmpfile for writing
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fopenWriteWinTempfile")]
         internal static extern IntPtr fopenWriteWinTempfile();
 
+        // Multi-platform functions that avoid C-runtime boundary crossing with Windows DLLs
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lept_fopen")]
         internal static extern IntPtr lept_fopen([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr mode);
 
@@ -8226,6 +8429,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lept_free")]
         internal static extern void lept_free(HandleRef ptr);
 
+        // Multi-platform file system operations in temp directories
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lept_mkdir")]
         internal static extern int lept_mkdir(HandleRef subdir);
 
@@ -8250,6 +8454,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "lept_cp")]
         internal static extern int lept_cp(HandleRef srcfile, IntPtr newdir, IntPtr newtail, IntPtr pnewpath);
 
+        // General file name operations
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "splitPathAtDirectory")]
         internal static extern int splitPathAtDirectory(HandleRef pathname, IntPtr pdir, IntPtr ptail);
 
@@ -8262,6 +8467,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "appendSubdirs")]
         internal static extern IntPtr appendSubdirs(HandleRef basedir, IntPtr subdirs);
 
+        // Special file name operations
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "convertSepCharsInPath")]
         internal static extern int convertSepCharsInPath(HandleRef path, int type);
 
@@ -8280,15 +8486,22 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "extractNumberFromFilename")]
         internal static extern int extractNumberFromFilename(HandleRef fname, int numpre, int numpost);
 
+        #endregion
+
+        #region warper.c 
+        // High-level captcha interface
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSimpleCaptcha")]
         internal static extern IntPtr pixSimpleCaptcha(HandleRef pixs, int border, int nterms, uint seed, uint color, int cmapflag);
 
+        // Random sinusoidal warping
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixRandomHarmonicWarp")]
         internal static extern IntPtr pixRandomHarmonicWarp(HandleRef pixs, float xmag, float ymag, float xfreq, float yfreq, int nx, int ny, uint seed, int grayval);
 
+        // Stereoscopic warping
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWarpStereoscopic")]
         internal static extern IntPtr pixWarpStereoscopic(HandleRef pixs, int zbend, int zshiftt, int zshiftb, int ybendt, int ybendb, int redleft);
 
+        // Linear and quadratic horizontal stretching
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixStretchHorizontal")]
         internal static extern IntPtr pixStretchHorizontal(HandleRef pixs, int dir, int type, int hmax, int operation, int incolor);
 
@@ -8298,6 +8511,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixStretchHorizontalLI")]
         internal static extern IntPtr pixStretchHorizontalLI(HandleRef pixs, int dir, int type, int hmax, int incolor);
 
+        // Quadratic vertical shear
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixQuadraticVShear")]
         internal static extern IntPtr pixQuadraticVShear(HandleRef pixs, int dir, int vmaxt, int vmaxb, int operation, int incolor);
 
@@ -8307,9 +8521,14 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixQuadraticVShearLI")]
         internal static extern IntPtr pixQuadraticVShearLI(HandleRef pixs, int dir, int vmaxt, int vmaxb, int incolor);
 
+        // Stereo from a pair of images
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixStereoFromPair")]
         internal static extern IntPtr pixStereoFromPair(HandleRef pix1, IntPtr pix2, float rwt, float gwt, float bwt);
 
+        #endregion
+
+        #region watershed.c 
+        // Top-level
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "wshedCreate")]
         internal static extern IntPtr wshedCreate(HandleRef pixs, IntPtr pixm, int mindepth, int debugflag);
 
@@ -8319,6 +8538,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "wshedApply")]
         internal static extern int wshedApply(HandleRef wshed);
 
+        // Output
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "wshedBasins")]
         internal static extern int wshedBasins(HandleRef wshed, IntPtr ppixa, IntPtr pnalevels);
 
@@ -8328,18 +8548,24 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "wshedRenderColors")]
         internal static extern IntPtr wshedRenderColors(HandleRef wshed);
 
+        #endregion
+
+        #region webpio.c 
+        // Reading WebP
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixReadStreamWebP")]
         internal static extern IntPtr pixReadStreamWebP(HandleRef fp);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixReadMemWebP")]
         internal static extern IntPtr pixReadMemWebP(HandleRef filedata, IntPtr filesize);
 
+        // Reading WebP header
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "readHeaderWebP")]
         internal static extern int readHeaderWebP([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr pw, IntPtr ph, IntPtr pspp);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "readHeaderMemWebP")]
         internal static extern int readHeaderMemWebP(HandleRef data, IntPtr size, IntPtr pw, IntPtr ph, IntPtr pspp);
 
+        // Writing WebP
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWriteWebP")]
         internal static extern int pixWriteWebP([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr pixs, int quality, int lossless);
 
@@ -8349,6 +8575,10 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWriteMemWebP")]
         internal static extern int pixWriteMemWebP(HandleRef pencdata, IntPtr pencsize, IntPtr pixs, int quality, int lossless);
 
+        #endregion
+
+        #region writefile.c 
+        // High-level procedures for writing images to file:
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixaWriteFiles")]
         internal static extern int pixaWriteFiles(HandleRef rootname, IntPtr pixa, int format);
 
@@ -8364,6 +8594,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWriteImpliedFormat")]
         internal static extern int pixWriteImpliedFormat([MarshalAs(UnmanagedType.AnsiBStr)] string filename, IntPtr pix, int quality, int progressive);
 
+        // Selection of output format if default is requested
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixChooseOutputFormat")]
         internal static extern int pixChooseOutputFormat(HandleRef pix);
 
@@ -8376,9 +8607,11 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getFormatExtension")]
         internal static extern IntPtr getFormatExtension(int format);
 
+        // Write to memory
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixWriteMem")]
         internal static extern int pixWriteMem(HandleRef pdata, IntPtr psize, IntPtr pix, int format);
 
+        // Image display for debugging
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_fileDisplay")]
         internal static extern int l_fileDisplay(HandleRef fname, int x, int y, float scale);
 
@@ -8400,6 +8633,7 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_chooseDisplayProg")]
         internal static extern void l_chooseDisplayProg(int selection);
 
+        // Deprecated pix output for debugging
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixDisplayWrite")]
         internal static extern int pixDisplayWrite(HandleRef pixs, int reduction);
 
@@ -8409,10 +8643,15 @@ namespace Leptonica.Native
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixDisplayMultiple")]
         internal static extern int pixDisplayMultiple(int res, float scalefactor, IntPtr fileout);
 
+        #endregion
+
+        #region zlibmem.c
+        // zlib operations in memory, using bbuffer
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "zlibCompress")]
         internal static extern IntPtr zlibCompress(HandleRef datain, IntPtr nin, IntPtr pnout);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "zlibUncompress")]
         internal static extern IntPtr zlibUncompress(HandleRef datain, IntPtr nin, IntPtr pnout);
+        #endregion
     }
 }
