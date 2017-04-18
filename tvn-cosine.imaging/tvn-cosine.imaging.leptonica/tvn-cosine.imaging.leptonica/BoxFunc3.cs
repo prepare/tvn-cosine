@@ -82,7 +82,7 @@ namespace Leptonica
         public static Pix PaintBoxa(Pix pix, Boxa boxa, Color fillColor)
         {
             //ensure pix is not null;
-            if (pix == null || boxa == null || boxa.Count < 1 || fillColor == null)
+            if (pix == null || boxa == null || boxa.GetCount() < 1 || fillColor == null)
             {
                 return null;
             }
@@ -113,7 +113,7 @@ namespace Leptonica
         public static Pix PaintBoxaRandom(Pix pix, Boxa boxa)
         {
             //ensure pix is not null;
-            if (pix == null || boxa == null || boxa.Count < 1)
+            if (pix == null || boxa == null || boxa.GetCount() < 1)
             {
                 return null;
             }
@@ -145,7 +145,7 @@ namespace Leptonica
         public static Pix DrawBoxaRandom(Pix pix, Boxa boxa, int width)
         {
             //ensure pix is not null;
-            if (pix == null || boxa == null || boxa.Count < 1)
+            if (pix == null || boxa == null || boxa.GetCount() < 1)
             {
                 return null;
             }
@@ -175,7 +175,7 @@ namespace Leptonica
         public static Pix DrawBoxa(Pix pix, Boxa boxa, int width, Color lineColor)
         {
             //ensure pix is not null;
-            if (pix == null || boxa == null || boxa.Count < 1 || lineColor == null)
+            if (pix == null || boxa == null || boxa.GetCount() < 1 || lineColor == null)
             {
                 return null;
             }

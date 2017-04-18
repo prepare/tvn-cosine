@@ -1,180 +1,169 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
     /// <summary>
     /// boxa.h
     /// </summary>
-    public class Boxa : IDisposable, IEnumerable<Box>, ICloneable
+    public class Boxa : LeptonicaObjectBase, IDisposable
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public readonly HandleRef handleRef;
-
-        #region ctors
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pointer"></param>
-        public Boxa(IntPtr pointer)
-        {
-            handleRef = new HandleRef(this, pointer);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="size"></param>
-        public Boxa(int size)
-            : this(Native.DllImports.boxaCreate(size))
+        private Boxa(IntPtr pointer)
+            : base(pointer)
         { }
-        #endregion
 
-        #region Properties  
         /// <summary>
-        /// 
+        /// boxaCreate()
         /// </summary>
-        public int Count
+        /// <param name="n">n  initial number of ptrs</param>
+        /// <returns>boxa, or NULL on error</returns>
+        public static Boxa Create(int n)
         {
-            get
-            {
-                return Native.DllImports.boxaGetCount(handleRef);
-            }
+            return (Boxa)Native.DllImports.boxaCreate(n);
         }
 
         /// <summary>
-        /// 
+        /// (1) See pix.h for description of the copyflag.
+        /// (2) The copy-clone makes a new boxa that holds clones of each box.
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public Box this[int index]
+        /// <param name="copyflag">copyflag L_COPY, L_CLONE, L_COPY_CLONE</param>
+        /// <returns>new boxa, or NULL on error</returns>
+        public Boxa Copy(InsertionType copyflag)
         {
-            get
-            {
-                return GetBox(index);
-            }
-        }
-        #endregion
-
-        #region Methods
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public Box GetBox(int index)
-        {
-            return (Box)Native.DllImports.boxaGetBox(handleRef, index, InsertionType.CLONE);
+            return (Boxa)Native.DllImports.boxaCopy(handleRef, copyflag);
         }
 
         /// <summary>
-        /// 
+        /// boxaAddBox()
         /// </summary>
-        /// <param name="box"></param>
-        /// <returns></returns>
-        public bool AddBox(Box box)
+        /// <param name="box">box  to be added</param>
+        /// <param name="copyflag">copyflag L_INSERT, L_COPY, L_CLONE</param>
+        /// <returns>true if OK, false on error</returns>
+        public bool TryAddBox(Box box, InsertionType copyflag)
         {
-            return Native.DllImports.boxaAddBox(handleRef, box.handleRef, InsertionType.COPY) == 0;
+            return Native.DllImports.boxaAddBox(handleRef, box.handleRef, copyflag) == 0;
         }
 
         /// <summary>
-        /// 
+        /// (1) Reallocs with doubled size of ptr array.
         /// </summary>
-        /// <returns></returns>
-        public bool ExtendArray()
+        /// <returns>true if OK, false on error</returns>
+        public bool TryExtendArray()
         {
             return Native.DllImports.boxaExtendArray(handleRef) == 0;
         }
 
         /// <summary>
-        /// 
+        /// (1) If necessary, reallocs new boxa ptr array to %size.
         /// </summary>
-        /// <param name="size"></param>
-        /// <returns></returns>
-        public bool ExtendArrayToSize(int size)
+        /// <param name="size">size new size of boxa array</param>
+        /// <returns>true if OK, false on error</returns>
+        public bool TryExtendArrayToSize(int size)
         {
             return Native.DllImports.boxaExtendArrayToSize(handleRef, size) == 0;
         }
 
         /// <summary>
-        /// 
+        /// boxaGetCount()
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public bool RemoveBox(int index)
+        /// <returns>count of all boxes; 0 if no boxes or on error</returns>
+        public int GetCount()
         {
-            return Native.DllImports.boxaRemoveBox(handleRef, index) == 0;
+            return Native.DllImports.boxaGetCount(handleRef);
         }
 
         /// <summary>
-        /// 
+        /// boxaGetValidCount()
         /// </summary>
-        /// <returns></returns>
-        public bool Clear()
+        /// <returns>count of valid boxes; 0 if no valid boxes or on error</returns>
+        public int GetValidCount()
         {
-            return Native.DllImports.boxaClear(handleRef) == 0;
+            return Native.DllImports.boxaGetValidCount(handleRef);
         }
 
         /// <summary>
-        /// 
+        /// boxaGetBox()
         /// </summary>
-        /// <param name="index"></param>
-        /// <param name="box"></param>
-        /// <returns></returns>
-        public bool ReplaceBoxAt(int index, Box box)
+        /// <param name="index">index  to the index-th box</param>
+        /// <param name="accessflag">accessflag  L_COPY or L_CLONE</param>
+        /// <returns>box, or NULL on error</returns>
+        public Box GetBox(int index, InsertionType accessflag)
         {
-            return Native.DllImports.boxaReplaceBox(handleRef, index, box.handleRef) == 0;
+            return (Box)Native.DllImports.boxaGetBox(handleRef, index, accessflag);
         }
 
         /// <summary>
-        /// 
+        ///      (1) This returns NULL for an invalid box in a boxa.
+        ///          For a box to be valid, both the width and height must be > 0.
+        ///      (2) We allow invalid boxes, with w = 0 or h = 0, as placeholders
+        ///          in boxa for which the index of the box in the boxa is important.
+        /// This is an atypical situation; usually you want to put only
+        ///          valid boxes in a boxa.
         /// </summary>
-        /// <param name="index"></param>
-        /// <param name="box"></param>
-        /// <returns></returns>
-        public bool InsertBoxAt(int index, Box box)
+        /// <param name="index">index  to the index-th box</param>
+        /// <param name="accessflag">accessflag  L_COPY or L_CLONE</param>
+        /// <returns>box, or NULL on error</returns>
+        public Box GetValidBox(int index, InsertionType accessflag)
         {
-            return Native.DllImports.boxaInsertBox(handleRef, index, box.handleRef) == 0;
+            return (Box)Native.DllImports.boxaGetValidBox(handleRef, index, accessflag);
         }
-        #endregion
 
-        #region ICloneable Support
         /// <summary>
-        /// 
+        /// boxaFindInvalidBoxes()
         /// </summary>
-        /// <returns></returns>
-        public object Clone()
+        /// <returns>numa of invalid boxes; NULL if there are none or on error</returns>
+        public Numa FindInvalidBoxes()
         {
-            throw new NotImplementedException();
+            return (Numa)Native.DllImports.boxaFindInvalidBoxes(handleRef);
         }
-        #endregion
 
-        #region IEnumerable Support 
         /// <summary>
-        /// 
+        /// boxaGetBoxGeometry()
         /// </summary>
-        /// <returns></returns>
-        public IEnumerator<Box> GetEnumerator()
+        /// <param name="index">index  to the index-th box</param>
+        /// <param name="px">px, py, pw, ph [optional]  each can be null</param>
+        /// <param name="py">px, py, pw, ph [optional]  each can be null</param>
+        /// <param name="pw">px, py, pw, ph [optional]  each can be null</param>
+        /// <param name="ph">px, py, pw, ph [optional]  each can be null</param>
+        /// <returns>true if OK, false on error</returns>
+        public bool TryGetBoxGeometry(int index, out int px, out int py, out int pw, out int ph)
         {
-            return new BoxaBoxEnumerator(this);
+            return Native.DllImports.boxaGetBoxGeometry(handleRef, index, out px, out py, out pw, out ph) == 0;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        /// <summary>
+        /// boxaIsFull()
+        /// </summary>
+        /// <param name="pfull">pfull 1 if boxa is full</param>
+        /// <returns>true if OK, false on error</returns>
+        public bool TryIsFull(out bool pfull)
         {
-            return GetEnumerator();
+            return Native.DllImports.boxaIsFull(handleRef, out pfull) == 0;
         }
-        #endregion
+
+
+        /// <summary>
+        /// Explicitly cast IntPtr to Boxa
+        /// </summary>
+        /// <param name="pointer"></param>
+        public static explicit operator Boxa(IntPtr pointer)
+        {
+            if (pointer != IntPtr.Zero)
+            {
+                return new Boxa(pointer);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
+
         /// <summary>
-        /// 
+        /// This code added to correctly implement the disposable pattern.
         /// </summary>
-        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -184,15 +173,15 @@ namespace Leptonica
                     // TODO: dispose managed state (managed objects).
                 }
 
-                var toDispose = handleRef.Handle;
-                Native.DllImports.boxaDestroy(ref toDispose);
+                var toDestroy = handleRef.Handle;
+                Native.DllImports.boxaDestroy(ref toDestroy);
 
                 disposedValue = true;
             }
         }
 
         /// <summary>
-        /// 
+        /// This code added to correctly implement the disposable pattern.
         /// </summary>
         ~Boxa()
         {
@@ -200,9 +189,8 @@ namespace Leptonica
             Dispose(false);
         }
 
-        // This code added to correctly implement the disposable pattern.
         /// <summary>
-        /// 
+        /// This code added to correctly implement the disposable pattern.
         /// </summary>
         public void Dispose()
         {
@@ -211,5 +199,6 @@ namespace Leptonica
             GC.SuppressFinalize(this);
         }
         #endregion
+
     }
 }

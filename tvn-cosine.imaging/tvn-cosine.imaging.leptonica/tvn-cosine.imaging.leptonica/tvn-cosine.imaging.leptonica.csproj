@@ -58,7 +58,6 @@
     <Compile Include="Box.cs" />
     <Compile Include="Boxa.cs" />
     <Compile Include="Boxaa.cs" />
-    <Compile Include="BoxaBoxEnumerator.cs" />
     <Compile Include="AdaptMap.cs" />
     <Compile Include="Convolve.cs" />
     <Compile Include="Enhance.cs" />

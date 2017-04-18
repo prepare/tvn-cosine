@@ -1,5 +1,4 @@
 using System;
-using Tvn.Cosine.Geometry;
 
 namespace Leptonica
 {
@@ -54,7 +53,7 @@ namespace Leptonica
         /// boxCopy()
         /// </summary>
         /// <returns>copy of box, or NULL on error</returns>
-        public Box boxCopy()
+        public Box Copy()
         {
             return (Box)Native.DllImports.boxCopy(handleRef);
         }
@@ -63,7 +62,7 @@ namespace Leptonica
         /// boxClone()
         /// </summary>
         /// <returns>ptr to same box, or NULL on error</returns>
-        public Box boxClone()
+        public Box Clone()
         {
             return (Box)Native.DllImports.boxCopy(handleRef);
         }
@@ -145,8 +144,8 @@ namespace Leptonica
         /// <param name="pvalid">pvalid true if valid; false otherwise</param>
         /// <returns>true if OK, false on error</returns>
         public bool TryIsValid(out bool pvalid)
-        { 
-            return Native.DllImports.boxIsValid(handleRef, out pvalid) == 0; 
+        {
+            return Native.DllImports.boxIsValid(handleRef, out pvalid) == 0;
         }
 
         /// <summary>

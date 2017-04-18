@@ -711,46 +711,59 @@ namespace Leptonica.Native
         internal static extern int boxIsValid(HandleRef box, out bool pvalid);
 
         // Boxa creation, copy, destruction
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaCreate")]
         internal static extern IntPtr boxaCreate(int n);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaCopy")]
         internal static extern IntPtr boxaCopy(HandleRef boxa, InsertionType copyflag);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaDestroy")]
         internal static extern void boxaDestroy(ref IntPtr pboxa);
 
         // Boxa array extension
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaAddBox")]
         internal static extern int boxaAddBox(HandleRef boxa, HandleRef box, InsertionType copyflag);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaExtendArray")]
         internal static extern int boxaExtendArray(HandleRef boxa);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaExtendArrayToSize")]
         internal static extern int boxaExtendArrayToSize(HandleRef boxa, int size);
 
         // Boxa accessors
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaGetCount")]
         internal static extern int boxaGetCount(HandleRef boxa);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaGetValidCount")]
         internal static extern int boxaGetValidCount(HandleRef boxa);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaGetBox")]
         internal static extern IntPtr boxaGetBox(HandleRef boxa, int index, InsertionType accessflag);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaGetValidBox")]
-        internal static extern IntPtr boxaGetValidBox(HandleRef boxa, int index, int accessflag);
+        internal static extern IntPtr boxaGetValidBox(HandleRef boxa, int index, InsertionType accessflag);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaFindInvalidBoxes")]
         internal static extern IntPtr boxaFindInvalidBoxes(HandleRef boxa);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaGetBoxGeometry")]
-        internal static extern int boxaGetBoxGeometry(HandleRef boxa, int index, IntPtr px, IntPtr py, IntPtr pw, IntPtr ph);
+        internal static extern int boxaGetBoxGeometry(HandleRef boxa, int index, out int px, out int py, out int pw, out int ph);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaIsFull")]
-        internal static extern int boxaIsFull(HandleRef boxa, IntPtr pfull);
+        internal static extern int boxaIsFull(HandleRef boxa, out bool pfull);
 
         // Boxa array modifiers 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaReplaceBox")]

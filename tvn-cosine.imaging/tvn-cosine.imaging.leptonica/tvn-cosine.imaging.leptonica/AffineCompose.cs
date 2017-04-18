@@ -204,16 +204,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.boxaTranslate(boxas.handleRef, transx, transy);
-
-            if (pointer != IntPtr.Zero)
-            {
-                return new Boxa(pointer);
-            }
-            else
-            {
-                return null;
-            }
+            return (Boxa)Native.DllImports.boxaTranslate(boxas.handleRef, transx, transy);
         }
 
         /// <summary>
@@ -230,16 +221,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.boxaScale(boxas.handleRef, scalex, scaley);
-
-            if (pointer != IntPtr.Zero)
-            {
-                return new Boxa(pointer);
-            }
-            else
-            {
-                return null;
-            }
+            return (Boxa)Native.DllImports.boxaScale(boxas.handleRef, scalex, scaley); 
         }
 
         /// <summary>
@@ -257,16 +239,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.boxaRotate(boxas.handleRef, xc, yc, angle);
-
-            if (pointer != IntPtr.Zero)
-            {
-                return new Boxa(pointer);
-            }
-            else
-            {
-                return null;
-            }
+            return (Boxa)Native.DllImports.boxaRotate(boxas.handleRef, xc, yc, angle); 
         }
 
 
@@ -310,16 +283,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.boxaAffineTransform(boxas.handleRef, mat);
-
-            if (pointer != IntPtr.Zero)
-            {
-                return new Boxa(pointer);
-            }
-            else
-            {
-                return null;
-            }
+            return (Boxa)Native.DllImports.boxaAffineTransform(boxas.handleRef, mat); 
         }
 
 
@@ -348,7 +312,7 @@ namespace Leptonica
                 return false;
             }
 
-            return Native.DllImports.l_productMatVec(mat, vecs,  vecd,  size) == 0;
+            return Native.DllImports.l_productMatVec(mat, vecs, vecd, size) == 0;
         }
 
         /// <summary>
@@ -442,6 +406,6 @@ namespace Leptonica
             }
 
             return Native.DllImports.l_productMat4(mat1, mat2, mat3, mat4, matd, size) == 0;
-        } 
+        }
     }
 }
