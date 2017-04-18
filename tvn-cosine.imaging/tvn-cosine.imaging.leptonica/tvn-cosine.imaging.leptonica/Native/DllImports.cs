@@ -292,55 +292,55 @@ namespace Leptonica.Native
 
         #endregion
 
-        #region arrayaccess.c
+        #region arrayaccess.c - DONE
         // Access within an array of 32-bit words 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_getDataBit")]
-        internal static extern int l_getDataBit(HandleRef line, int n);
+        internal static extern int l_getDataBit(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_setDataBit")]
-        internal static extern void l_setDataBit(HandleRef line, int n);
+        internal static extern void l_setDataBit(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_clearDataBit")]
-        internal static extern void l_clearDataBit(HandleRef line, int n);
+        internal static extern void l_clearDataBit(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_setDataBitVal")]
-        internal static extern void l_setDataBitVal(HandleRef line, int n, int val);
+        internal static extern void l_setDataBitVal(IntPtr line, int n, int val);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_getDataDibit")]
-        internal static extern int l_getDataDibit(HandleRef line, int n);
+        internal static extern int l_getDataDibit(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_setDataDibit")]
-        internal static extern void l_setDataDibit(HandleRef line, int n, int val);
+        internal static extern void l_setDataDibit(IntPtr line, int n, int val);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_clearDataDibit")]
-        internal static extern void l_clearDataDibit(HandleRef line, int n);
+        internal static extern void l_clearDataDibit(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_getDataQbit")]
-        internal static extern int l_getDataQbit(HandleRef line, int n);
+        internal static extern int l_getDataQbit(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_setDataQbit")]
-        internal static extern void l_setDataQbit(HandleRef line, int n, int val);
+        internal static extern void l_setDataQbit(IntPtr line, int n, int val);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_clearDataQbit")]
-        internal static extern void l_clearDataQbit(HandleRef line, int n);
+        internal static extern void l_clearDataQbit(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_getDataByte")]
-        internal static extern int l_getDataByte(HandleRef line, int n);
+        internal static extern int l_getDataByte(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_setDataByte")]
-        internal static extern void l_setDataByte(HandleRef line, int n, int val);
+        internal static extern void l_setDataByte(IntPtr line, int n, int val);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_getDataTwoBytes")]
-        internal static extern int l_getDataTwoBytes(HandleRef line, int n);
+        internal static extern int l_getDataTwoBytes(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_setDataTwoBytes")]
-        internal static extern void l_setDataTwoBytes(HandleRef line, int n, int val);
+        internal static extern void l_setDataTwoBytes(IntPtr line, int n, int val);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_getDataFourBytes")]
-        internal static extern int l_getDataFourBytes(HandleRef line, int n);
+        internal static extern int l_getDataFourBytes(IntPtr line, int n);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "l_setDataFourBytes")]
-        internal static extern void l_setDataFourBytes(HandleRef line, int n, int val);
+        internal static extern void l_setDataFourBytes(IntPtr line, int n, int val);
 
         #endregion
 

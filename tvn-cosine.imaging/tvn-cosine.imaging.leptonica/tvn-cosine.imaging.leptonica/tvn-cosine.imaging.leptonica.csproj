@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Affine.cs" />
     <Compile Include="AffineCompose.cs" />
+    <Compile Include="ArrayAccess.cs" />
     <Compile Include="Barcode.cs" />
     <Compile Include="BarcodeFormats.cs" />
     <Compile Include="BarcodeWidths.cs" />
