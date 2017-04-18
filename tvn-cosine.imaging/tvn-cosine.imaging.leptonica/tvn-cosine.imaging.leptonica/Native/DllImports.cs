@@ -373,13 +373,13 @@ namespace Leptonica.Native
 
         #endregion
 
-        #region bbuffer.c
+        #region bbuffer.c - DONE
         // Create/Destroy BBuffer
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbufferCreate")]
-        internal static extern IntPtr bbufferCreate(HandleRef indata, int nalloc);
+        internal static extern IntPtr bbufferCreate(byte[] indata, int nalloc);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbufferDestroy")]
-        internal static extern void bbufferDestroy(HandleRef pbb);
+        internal static extern void bbufferDestroy(ref IntPtr pbb);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbufferDestroyAndSaveData")]
         internal static extern IntPtr bbufferDestroyAndSaveData(HandleRef pbb, IntPtr pnbytes);
@@ -402,25 +402,31 @@ namespace Leptonica.Native
         internal static extern int bbufferWriteStream(HandleRef bb, IntPtr fp, IntPtr nbytes, IntPtr pnout);
         #endregion
 
-        #region bilateral.c
+        #region bilateral.c - DONE
         // Top level approximate separable grayscale or color bilateral filtering
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixBilateral")]
         internal static extern IntPtr pixBilateral(HandleRef pixs, float spatial_stdev, float range_stdev, int ncomps, int reduction);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixBilateralGray")]
         internal static extern IntPtr pixBilateralGray(HandleRef pixs, float spatial_stdev, float range_stdev, int ncomps, int reduction);
 
         // Slow, exact implementation of grayscale or color bilateral filtering 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixBilateralExact")]
-        internal static extern IntPtr pixBilateralExact(HandleRef pixs, IntPtr spatial_kel, IntPtr range_kel);
+        internal static extern IntPtr pixBilateralExact(HandleRef pixs, HandleRef spatial_kel, HandleRef range_kel);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixBilateralGrayExact")]
-        internal static extern IntPtr pixBilateralGrayExact(HandleRef pixs, IntPtr spatial_kel, IntPtr range_kel);
-
+        internal static extern IntPtr pixBilateralGrayExact(HandleRef pixs, HandleRef spatial_kel, HandleRef range_kel);
+      
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixBlockBilateralExact")]
         internal static extern IntPtr pixBlockBilateralExact(HandleRef pixs, float spatial_stdev, float range_stdev);
 
         // Kernel helper function
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeRangeKernel")]
         internal static extern IntPtr makeRangeKernel(float range_stdev);
         #endregion
@@ -655,42 +661,54 @@ namespace Leptonica.Native
 
         #region boxbasic.c 
         // Box creation, copy, clone, destruction
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxCreate")]
         internal static extern IntPtr boxCreate(int x, int y, int w, int h);
-
+    
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxCreateValid")]
         internal static extern IntPtr boxCreateValid(int x, int y, int w, int h);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxCopy")]
         internal static extern IntPtr boxCopy(HandleRef box);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxClone")]
         internal static extern IntPtr boxClone(HandleRef box);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxDestroy")]
         internal static extern void boxDestroy(ref IntPtr pbox);
 
         // Box accessors
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxGetGeometry")]
         internal static extern int boxGetGeometry(HandleRef box, out int px, out int py, out int pw, out int ph);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxSetGeometry")]
         internal static extern int boxSetGeometry(HandleRef box, int x, int y, int w, int h);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxGetSideLocations")]
-        internal static extern int boxGetSideLocations(Box box, IntPtr pl, IntPtr pr, IntPtr pt, IntPtr pb);
+        internal static extern int boxGetSideLocations(HandleRef box, out int pl, out int pr, out int pt, out int pb);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxSetSideLocations")]
-        internal static extern int boxSetSideLocations(Box box, int l, int r, int t, int b);
+        internal static extern int boxSetSideLocations(HandleRef box, int l, int r, int t, int b);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxGetRefcount")]
-        internal static extern int boxGetRefcount(Box box);
+        internal static extern int boxGetRefcount(HandleRef box);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxChangeRefcount")]
-        internal static extern int boxChangeRefcount(Box box, int delta);
+        internal static extern int boxChangeRefcount(HandleRef box, int delta);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxIsValid")]
-        internal static extern int boxIsValid(Box box, IntPtr pvalid);
+        internal static extern int boxIsValid(HandleRef box, out bool pvalid);
 
         // Boxa creation, copy, destruction
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "boxaCreate")]
@@ -3648,79 +3666,102 @@ namespace Leptonica.Native
         internal static extern int pixSetChromaSampling(HandleRef pix, int sampling);
         #endregion
 
-        #region kernel.c
+        #region kernel.c - DONE
+
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelCreate")]
         internal static extern IntPtr kernelCreate(int height, int width);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelDestroy")]
-        internal static extern void kernelDestroy(HandleRef pkel);
+        internal static extern void kernelDestroy(ref IntPtr pkel);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelCopy")]
         internal static extern IntPtr kernelCopy(HandleRef kels);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelGetElement")]
-        internal static extern int kernelGetElement(HandleRef kel, int row, int col, IntPtr pval);
+        internal static extern int kernelGetElement(HandleRef kel, int row, int col, out float pval);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelSetElement")]
         internal static extern int kernelSetElement(HandleRef kel, int row, int col, float val);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelGetParameters")]
-        internal static extern int kernelGetParameters(HandleRef kel, IntPtr psy, IntPtr psx, IntPtr pcy, IntPtr pcx);
+        internal static extern int kernelGetParameters(HandleRef kel, out int psy, out int psx, out int pcy, out int pcx);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelSetOrigin")]
         internal static extern int kernelSetOrigin(HandleRef kel, int cy, int cx);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelGetSum")]
-        internal static extern int kernelGetSum(HandleRef kel, IntPtr psum);
+        internal static extern int kernelGetSum(HandleRef kel, out float psum);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelGetMinMax")]
-        internal static extern int kernelGetMinMax(HandleRef kel, IntPtr pmin, IntPtr pmax);
+        internal static extern int kernelGetMinMax(HandleRef kel, out float pmin, out float pmax);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelNormalize")]
         internal static extern IntPtr kernelNormalize(HandleRef kels, float normsum);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelInvert")]
         internal static extern IntPtr kernelInvert(HandleRef kels);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "create2dFloatArray")]
         internal static extern IntPtr create2dFloatArray(int sy, int sx);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelRead")]
-        internal static extern IntPtr kernelRead(HandleRef fname);
+        internal static extern IntPtr kernelRead([MarshalAs(UnmanagedType.AnsiBStr)] string fname);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelReadStream")]
         internal static extern IntPtr kernelReadStream(HandleRef fp);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelWrite")]
-        internal static extern int kernelWrite(HandleRef fname, IntPtr kel);
+        internal static extern int kernelWrite([MarshalAs(UnmanagedType.AnsiBStr)] string fname, HandleRef kel);
 
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelWriteStream")]
         internal static extern int kernelWriteStream(HandleRef fp, IntPtr kel);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelCreateFromString")]
-        internal static extern IntPtr kernelCreateFromString(int h, int w, int cy, int cx, IntPtr kdata);
+        internal static extern IntPtr kernelCreateFromString(int h, int w, int cy, int cx, [MarshalAs(UnmanagedType.AnsiBStr)] string kdata);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelCreateFromFile")]
-        internal static extern IntPtr kernelCreateFromFile(HandleRef filename);
+        internal static extern IntPtr kernelCreateFromFile([MarshalAs(UnmanagedType.AnsiBStr)] string filename);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelCreateFromPix")]
         internal static extern IntPtr kernelCreateFromPix(HandleRef pix, int cy, int cx);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "kernelDisplayInPix")]
         internal static extern IntPtr kernelDisplayInPix(HandleRef kel, int size, int gthick);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "parseStringForNumbers")]
-        internal static extern IntPtr parseStringForNumbers(HandleRef str, IntPtr seps);
+        internal static extern IntPtr parseStringForNumbers([MarshalAs(UnmanagedType.AnsiBStr)] string str, [MarshalAs(UnmanagedType.AnsiBStr)] string seps);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeFlatKernel")]
         internal static extern IntPtr makeFlatKernel(int height, int width, int cy, int cx);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeGaussianKernel")]
         internal static extern IntPtr makeGaussianKernel(int halfheight, int halfwidth, float stdev, float max);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeGaussianKernelSep")]
-        internal static extern int makeGaussianKernelSep(int halfheight, int halfwidth, float stdev, float max, IntPtr pkelx, IntPtr pkely);
+        internal static extern int makeGaussianKernelSep(int halfheight, int halfwidth, float stdev, float max, out IntPtr pkelx, out IntPtr pkely);
 
+        /* DONE */
         [DllImport(leptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "makeDoGKernel")]
         internal static extern IntPtr makeDoGKernel(int halfheight, int halfwidth, float stdev, float ratio);
         #endregion

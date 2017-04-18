@@ -31,6 +31,22 @@ namespace Leptonica
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Explicitly cast IntPtr to Numa
+        /// </summary>
+        /// <param name="pointer"></param>
+        public static explicit operator Numa(IntPtr pointer)
+        {
+            if (pointer != IntPtr.Zero)
+            {
+                return new Numa(pointer);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 

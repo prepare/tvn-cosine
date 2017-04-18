@@ -52,7 +52,7 @@ namespace Leptonica
 
             IntPtr pboxcPntr;
             var pointer = Native.DllImports.pixClipRectangle(source.handleRef, box.handleRef, out pboxcPntr);
-            pboxc = new Box(pboxcPntr);
+            pboxc = (Box)(pboxcPntr);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);

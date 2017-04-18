@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
@@ -95,8 +96,7 @@ namespace Leptonica
         /// <returns></returns>
         public object Clone()
         {
-            var box = Native.DllImports.ptaCopy(handleRef);
-            return new Box(box);
+            throw new NotImplementedException();
         }
         #endregion
 

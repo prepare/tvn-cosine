@@ -68,15 +68,7 @@ namespace Leptonica
         /// <returns></returns>
         public Box GetBox(int index)
         {
-            var pointer = Native.DllImports.boxaGetBox(handleRef, index, InsertionType.CLONE);
-            if (pointer != IntPtr.Zero)
-            {
-                return new Box(pointer);
-            }
-            else
-            {
-                return null;
-            }
+            return (Box)Native.DllImports.boxaGetBox(handleRef, index, InsertionType.CLONE);
         }
 
         /// <summary>
@@ -107,7 +99,7 @@ namespace Leptonica
         {
             return Native.DllImports.boxaExtendArrayToSize(handleRef, size) == 0;
         }
-         
+
         /// <summary>
         /// 
         /// </summary>
@@ -137,7 +129,7 @@ namespace Leptonica
         {
             return Native.DllImports.boxaReplaceBox(handleRef, index, box.handleRef) == 0;
         }
-         
+
         /// <summary>
         /// 
         /// </summary>
@@ -157,8 +149,7 @@ namespace Leptonica
         /// <returns></returns>
         public object Clone()
         {
-            var box = Native.DllImports.boxaCopy(handleRef, InsertionType.COPY);
-            return new Box(box);
+            throw new NotImplementedException();
         }
         #endregion
 

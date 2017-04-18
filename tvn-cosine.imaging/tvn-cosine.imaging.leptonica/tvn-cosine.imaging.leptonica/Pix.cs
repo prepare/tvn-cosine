@@ -271,6 +271,22 @@ namespace Leptonica
         }
         #endregion
          
+        /// <summary>
+        /// Explicitly cast IntPtr to Pix
+        /// </summary>
+        /// <param name="pointer"></param>
+        public static explicit operator Pix(IntPtr pointer)
+        {
+            if (pointer != IntPtr.Zero)
+            {
+                return new Pix(pointer);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         #region ICloneable Support
         /// <summary>
         /// 

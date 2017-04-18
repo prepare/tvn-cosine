@@ -54,11 +54,7 @@ namespace Leptonica
         {
             get
             {
-                var pointer = Native.DllImports.boxaGetBox(boxa.handleRef, position, InsertionType.CLONE);
-                if (pointer != IntPtr.Zero)
-                    return new Box(pointer);
-                else
-                    throw new ArgumentOutOfRangeException();
+                return (Box)Native.DllImports.boxaGetBox(boxa.handleRef, position, InsertionType.CLONE); 
             }
         }
 

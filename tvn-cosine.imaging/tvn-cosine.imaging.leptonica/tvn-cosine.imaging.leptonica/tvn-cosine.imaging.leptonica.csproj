@@ -52,6 +52,7 @@
     <Compile Include="BarcodeFormats.cs" />
     <Compile Include="BarcodeWidths.cs" />
     <Compile Include="BaseLine.cs" />
+    <Compile Include="Bilateral.cs" />
     <Compile Include="Bilinear.cs" />
     <Compile Include="Binarize.cs" />
     <Compile Include="Box.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="GrayscaleFillingFlags.cs" />
     <Compile Include="ImageFileFormat.cs" />
     <Compile Include="InsertionType.cs" />
+    <Compile Include="LeptonicaObjectBase.cs" />
+    <Compile Include="L_BBuffer.cs" />
+    <Compile Include="L_Kernel.cs" />
     <Compile Include="Native\DllImports.cs" />
     <Compile Include="Numa.cs" />
     <Compile Include="Numaa.cs" />
