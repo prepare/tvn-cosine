@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Tvn.Cosine.Imaging;
 
 namespace Leptonica
@@ -48,7 +49,7 @@ namespace Leptonica
                 destination = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixMaskBoxa(destination.handleRef, source.handleRef, boxa.handleRef, op);
+            var pointer = Native.DllImports.pixMaskBoxa((HandleRef)destination, (HandleRef)source, (HandleRef)boxa, op);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);
@@ -87,7 +88,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixPaintBoxa(pix.handleRef, boxa.handleRef, fillColor.ToAbgrUint());
+            var pointer = Native.DllImports.pixPaintBoxa((HandleRef)pix, (HandleRef)boxa, fillColor.ToAbgrUint());
 
             if (pointer != IntPtr.Zero)
             {
@@ -118,7 +119,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixPaintBoxaRandom(pix.handleRef, boxa.handleRef);
+            var pointer = Native.DllImports.pixPaintBoxaRandom((HandleRef)pix, (HandleRef)boxa);
 
             if (pointer != IntPtr.Zero)
             {
@@ -150,7 +151,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixDrawBoxaRandom(pix.handleRef, boxa.handleRef, width);
+            var pointer = Native.DllImports.pixDrawBoxaRandom((HandleRef)pix, (HandleRef)boxa, width);
 
             if (pointer != IntPtr.Zero)
             {
@@ -180,7 +181,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixDrawBoxa(pix.handleRef, boxa.handleRef, width, lineColor.ToAbgrUint());
+            var pointer = Native.DllImports.pixDrawBoxa((HandleRef)pix, (HandleRef)boxa, width, lineColor.ToAbgrUint());
 
             if (pointer != IntPtr.Zero)
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
@@ -96,7 +97,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixScale(source.handleRef, scaleX, scaleY);
+            var pointer = Native.DllImports.pixScale((HandleRef)source, scaleX, scaleY);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);
@@ -136,7 +137,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixScaleGeneral(source.handleRef, scaleX, scaleY, sharpFraction, sharpWidth);
+            var pointer = Native.DllImports.pixScaleGeneral((HandleRef)source, scaleX, scaleY, sharpFraction, sharpWidth);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);
@@ -161,7 +162,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixScaleToSizeRel(source.handleRef, delWidth, delHeight);
+            var pointer = Native.DllImports.pixScaleToSizeRel((HandleRef)source, delWidth, delHeight);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);
@@ -193,7 +194,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixScaleToSize(source.handleRef, width, height);
+            var pointer = Native.DllImports.pixScaleToSize((HandleRef)source, width, height);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);

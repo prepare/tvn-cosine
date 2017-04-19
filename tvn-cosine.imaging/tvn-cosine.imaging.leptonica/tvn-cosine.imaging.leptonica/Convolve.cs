@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
@@ -27,7 +28,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBlockconv(source.handleRef, wc, hc);
+            var pointer = Native.DllImports.pixBlockconv((HandleRef)source, wc, hc);
 
             if (pointer != IntPtr.Zero)
             {
@@ -56,7 +57,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAddGaussianNoise(source.handleRef, standardDeviation);
+            var pointer = Native.DllImports.pixAddGaussianNoise((HandleRef)source, standardDeviation);
 
             if (pointer != IntPtr.Zero)
             {

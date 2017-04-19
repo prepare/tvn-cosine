@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
-{
+{ 
     /// <summary>
     /// baseline.c
     /// </summary>
@@ -13,7 +14,7 @@ namespace Leptonica
         /// image with pixDeskew(), or, if a projective transform
         ///         is required, by doing pixDeskewLocal() first.
         ///
-        ///     (2) Input null for &pta if you don't want this returned.
+        ///     (2) Input null for  pta if you don't want this returned.
         ///          The pta will come in pairs of points(left and right end
         ///          of each baseline).
         ///      (3) Caution: this will not work properly on text with multiple
@@ -46,12 +47,12 @@ namespace Leptonica
             }
 
             IntPtr pptaPtr;
-            var pointer = Native.DllImports.pixFindBaselines(pixs.handleRef, out pptaPtr, debug ? 1 : 0);
+            var pointer = Native.DllImports.pixFindBaselines((HandleRef)pixs, out pptaPtr, debug ? 1 : 0);
 
             if (pointer != IntPtr.Zero)
             {
-                ppta = new Pta(pptaPtr);
-                return new Numa(pointer);
+                ppta = (Pta)pptaPtr;
+                return (Numa)pointer;
             }
             else
             {
@@ -94,7 +95,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixDeskewLocal(pixs.handleRef, nslices, redsweep, redsearch, sweeprange, sweepdelta, minbsdelta);
+            var pointer = Native.DllImports.pixDeskewLocal((HandleRef)pixs, nslices, redsweep, redsearch, sweeprange, sweepdelta, minbsdelta);
 
             if (pointer != IntPtr.Zero)
             {
@@ -136,13 +137,13 @@ namespace Leptonica
             }
 
             IntPtr pptasPtr, pptadPtr;
-            var answer = Native.DllImports.pixGetLocalSkewTransform(pixs.handleRef, nslices, redsweep, redsearch, sweeprange, sweepdelta, minbsdelta, out pptasPtr, out pptadPtr);
+            var answer = Native.DllImports.pixGetLocalSkewTransform((HandleRef)pixs, nslices, redsweep, redsearch, sweeprange, sweepdelta, minbsdelta, out pptasPtr, out pptadPtr);
 
             if (answer != 0)
             {
 
-                pptas = new Pta(pptasPtr);
-                pptad = new Pta(pptadPtr);
+                pptas = (Pta)pptasPtr;
+                pptad = (Pta)pptadPtr;
                 return true;
             }
             else
@@ -187,10 +188,10 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixGetLocalSkewAngles(pixs.handleRef, nslices, redsweep, redsearch, sweeprange, sweepdelta, minbsdelta, out pa, out pb);
+            var pointer = Native.DllImports.pixGetLocalSkewAngles((HandleRef)pixs, nslices, redsweep, redsearch, sweeprange, sweepdelta, minbsdelta, out pa, out pb);
 
             if (pointer != IntPtr.Zero)
-            { 
+            {
                 return new Numa(pointer);
             }
             else
@@ -200,5 +201,5 @@ namespace Leptonica
                 return null;
             }
         }
-    }
+    } 
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
     /// <summary>
     /// Basic operations on kernels for image convolution
     /// </summary>
-    public class L_Kernel : LeptonicaObjectBase, IDisposable, ICloneable
+    public class L_Kernel : LeptonicaObjectBase 
     {
         /// <summary>
         ///      (1) kernelCreate() initializes all values to 0.
@@ -32,7 +33,7 @@ namespace Leptonica
         /// <returns>true if OK; false on error</returns>
         public bool TryGetElement(int row, int col, out float pval)
         {
-            return Native.DllImports.kernelGetElement(handleRef, row, col, out pval) == 0;
+            return Native.DllImports.kernelGetElement((HandleRef)this, row, col, out pval) == 0;
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Leptonica
         /// <returns>true if OK; false on error</returns>
         public bool SetElement(int row, int col, float val)
         {
-            return Native.DllImports.kernelSetElement(handleRef, row, col, val) == 0;
+            return Native.DllImports.kernelSetElement((HandleRef)this, row, col, val) == 0;
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Leptonica
         /// <returns>true if OK; false on error</returns>
         public bool TryGetParameters(out int psy, out int psx, out int pcy, out int pcx)
         {
-            return Native.DllImports.kernelGetParameters(handleRef, out psy, out psx, out pcy, out pcx) == 0;
+            return Native.DllImports.kernelGetParameters((HandleRef)this, out psy, out psx, out pcy, out pcx) == 0;
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Leptonica
         /// <returns>true if OK; false on error</returns>
         public bool SetOrigin(int cy, int cx)
         {
-            return Native.DllImports.kernelSetOrigin(handleRef, cx, cy) == 0;
+            return Native.DllImports.kernelSetOrigin((HandleRef)this, cx, cy) == 0;
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Leptonica
         /// <returns>true if OK; false on error</returns>
         public bool TryGetSum(out float psum)
         {
-            return Native.DllImports.kernelGetSum(handleRef, out psum) == 0;
+            return Native.DllImports.kernelGetSum((HandleRef)this, out psum) == 0;
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Leptonica
         /// <returns>true if OK; false on error</returns>
         public bool TryGetMinMax(out float pmin, out float pmax)
         {
-            return Native.DllImports.kernelGetMinMax(handleRef, out pmin, out pmax) == 0;
+            return Native.DllImports.kernelGetMinMax((HandleRef)this, out pmin, out pmax) == 0;
         }
 
         /// <summary>
@@ -101,7 +102,7 @@ namespace Leptonica
         /// <returns>keld normalized version of kels, or NULL on error or if sum of elements is very close to 0</returns>
         public L_Kernel Normalize(float normsum)
         {
-            return (L_Kernel)Native.DllImports.kernelNormalize(handleRef, normsum);
+            return (L_Kernel)Native.DllImports.kernelNormalize((HandleRef)this, normsum);
         }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace Leptonica
         /// <returns>keld spatially inverted, about the origin, or NULL on error</returns>
         public L_Kernel Invert()
         {
-            return (L_Kernel)Native.DllImports.kernelInvert(handleRef);
+            return (L_Kernel)Native.DllImports.kernelInvert((HandleRef)this);
 
         }
 
@@ -133,7 +134,7 @@ namespace Leptonica
         /// <returns>pix display of kernel, or NULL on error</returns>
         public Pix DisplayInPix(int size, int gthick)
         {
-            var pixPointer = Native.DllImports.kernelDisplayInPix(handleRef, size, gthick);
+            var pixPointer = Native.DllImports.kernelDisplayInPix((HandleRef)this, size, gthick);
             if (pixPointer == IntPtr.Zero)
             {
                 return null;
@@ -151,7 +152,7 @@ namespace Leptonica
         /// <returns>true if OK; false on error</returns>
         public bool TryWrite(string fname)
         {
-            return Native.DllImports.kernelWrite(fname, handleRef) == 0;
+            return Native.DllImports.kernelWrite(fname, (HandleRef)this) == 0;
         }
 
         /// <summary>
@@ -229,17 +230,8 @@ namespace Leptonica
         /// <param name="cx">cy, cx origin of kernel</param>
         /// <returns></returns>
         public static L_Kernel CreateFromPix(Pix pix, int cy, int cx)
-        {
-            if (pix == null)
-                throw new ArgumentNullException("Pix cannot be null");
-
-            if (cy < 0 || cy > pix.Height)
-                throw new ArgumentOutOfRangeException("cy out of range.  Must be within dimensions of pix");
-
-            if (cx < 0 || cy > pix.Width)
-                throw new ArgumentOutOfRangeException("cx out of range.  Must be within dimensions of pix");
-
-            return (L_Kernel)Native.DllImports.kernelCreateFromPix(pix.handleRef, cy, cx);
+        { 
+            return (L_Kernel)Native.DllImports.kernelCreateFromPix((HandleRef)pix, cy, cx);
         }
 
         /// <summary>
@@ -364,59 +356,22 @@ namespace Leptonica
             }
         }
 
-        #region ICloneable Support 
         /// <summary>
-        /// Clone kels source kernel
+        /// kernelCopy()
         /// </summary>
-        /// <returns> keld copy of kels, or NULL on error</returns>
-        public object Clone()
+        /// <returns>keld copy of kels, or NULL on error</returns>
+        public L_Kernel Copy()
         {
-            return (L_Kernel)Native.DllImports.kernelCopy(handleRef);
+            return (L_Kernel)Native.DllImports.kernelCopy((HandleRef)this);
         }
-        #endregion
-
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
 
         /// <summary>
         /// kernelDestroy()
         /// </summary>
-        /// <param name="disposing"></param>
-        protected virtual void Dispose(bool disposing)
+        public void Destroy()
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-                var toDispose = handleRef.Handle;
-                Native.DllImports.kernelDestroy(ref toDispose);
-
-                disposedValue = true;
-            }
+            var toDestroy = (IntPtr)this;
+            Native.DllImports.kernelDestroy(ref toDestroy);
         }
-
-        /// <summary>
-        /// This code added to correctly implement the disposable pattern.
-        /// </summary>
-        ~L_Kernel()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(false);
-        }
-
-        /// <summary> 
-        /// This code added to correctly implement the disposable pattern.
-        /// </summary>
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        #endregion
     }
 }

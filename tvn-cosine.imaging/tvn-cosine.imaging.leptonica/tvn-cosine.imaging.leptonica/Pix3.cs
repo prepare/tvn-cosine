@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
@@ -93,7 +94,7 @@ namespace Leptonica
                 return false;
             }
 
-            return Native.DllImports.pixCombineMasked(destination.handleRef, source.handleRef, mask.handleRef) == 0;
+            return Native.DllImports.pixCombineMasked((HandleRef)destination, (HandleRef)source, (HandleRef)mask) == 0;
         }
 
         /// <summary>
@@ -141,7 +142,7 @@ namespace Leptonica
                 return false;
             }
 
-            return Native.DllImports.pixCombineMaskedGeneral(destination.handleRef, source.handleRef, mask.handleRef, x, y) == 0;
+            return Native.DllImports.pixCombineMaskedGeneral((HandleRef)destination, (HandleRef)source, (HandleRef)mask, x, y) == 0;
         }
 
         /// <summary>
@@ -192,7 +193,7 @@ namespace Leptonica
                 return false;
             }
 
-            return Native.DllImports.pixPaintThroughMask(destination.handleRef, mask.handleRef, x, y, paintColor.ToAbgrUint()) == 0;
+            return Native.DllImports.pixPaintThroughMask((HandleRef)destination, (HandleRef)mask, x, y, paintColor.ToAbgrUint()) == 0;
         }
 
 
@@ -220,7 +221,7 @@ namespace Leptonica
                 destination = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixInvert(destination.handleRef, source.handleRef);
+            var pointer = Native.DllImports.pixInvert((HandleRef)destination, (HandleRef)source);
 
             if (pointer != IntPtr.Zero)
             {

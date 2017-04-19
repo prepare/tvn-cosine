@@ -4,35 +4,86 @@ using System.Runtime.InteropServices;
 namespace Leptonica
 {
     /// <summary>
-    /// 
+    /// numabasic.c
     /// </summary>
-    public class Numa : System.ICloneable, System.IDisposable
+    public class Numa : LeptonicaObjectBase
     {
         /// <summary>
-        /// 
+        /// Creates a new Numa from pointer
         /// </summary>
-        public readonly HandleRef handleRef;
+        /// <param name="pointer">The pointer</param>
+        public Numa(IntPtr pointer)
+            : base(pointer)
+        { }
 
         /// <summary>
-        /// 
+        /// numaCreate()
         /// </summary>
-        /// <param name="pointer"></param>
-        public Numa(System.IntPtr pointer)
+        /// <param name="n">n size of number array to be alloc'd 0 for default</param>
+        /// <returns>na, or NULL on error</returns>
+        public static Numa Create(int n)
         {
-            handleRef = new HandleRef(this, pointer);
+            return (Numa)Native.DllImports.numaCreate(n);
         }
 
         /// <summary>
-        /// 
+        ///  (1) We can't insert this int array into the numa, because a numa
+        ///      takes a float array.So this just copies the data from the
+        ///      input array into the numa.The input array continues to be
+        ///      owned by the caller.
         /// </summary>
-        /// <returns></returns>
-        public object Clone()
+        /// <param name="iarray">iarray integer</param>
+        /// <param name="size">size of the array</param>
+        /// <returns>na, or NULL on error</returns>
+        public static Numa CreateFromIArray(int[] iarray, int size)
         {
-            throw new NotImplementedException();
+            return (Numa)Native.DllImports.numaCreateFromIArray(iarray, size);
         }
 
         /// <summary>
-        /// Explicitly cast IntPtr to Numa
+        ///      (1) With L_INSERT, ownership of the input array is transferred
+        /// to the returned numa, and all %size elements are considered
+        ///          to be valid.
+        /// </summary>
+        /// <param name="farray">farray float</param>
+        /// <param name="size">size of the array</param>
+        /// <param name="copyflag">copyflag L_INSERT or L_COPY</param>
+        /// <returns>na, or NULL on error</returns>
+        public static Numa CreateFromFArray(float[] farray, int size, InsertionType copyflag)
+        {
+            return (Numa)Native.DllImports.numaCreateFromFArray(farray, size, copyflag);
+        }
+
+        /// <summary>
+        /// (1) Decrements the ref count and, if 0, destroys the numa.
+        /// (2) Always nulls the input ptr.
+        /// </summary>
+        public void Destroy()
+        {
+            var toDestroy = (IntPtr)this;
+            Native.DllImports.numaDestroy(ref toDestroy);
+        }
+
+        /// <summary>
+        /// numaCopy()
+        /// </summary>
+        /// <returns>copy of numa, or NULL on error</returns>
+        public Numa Copy()
+        {
+            return (Numa)Native.DllImports.numaCopy((HandleRef)this);
+        }
+
+        /// <summary>
+        /// numaClone()
+        /// </summary>
+        /// <returns>ptr to same numa, or NULL on error</returns>
+        public Numa Clone()
+        {
+            return (Numa)Native.DllImports.numaClone((HandleRef)this);
+        }
+
+        /// <summary>
+        /// Explicitly cast IntPtr to L_Kernal
         /// </summary>
         /// <param name="pointer"></param>
         public static explicit operator Numa(IntPtr pointer)
@@ -46,50 +97,5 @@ namespace Leptonica
                 return null;
             }
         }
-
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-
-                // var toDispose = handleRef.Handle;
-                //  Native.DllImports.boxDestroy(ref toDispose);
-
-                disposedValue = true;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        ~Numa()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(false);
-        }
-
-        // This code added to correctly implement the disposable pattern.
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        #endregion
     }
 }

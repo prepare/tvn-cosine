@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
-{
+{ 
     /// <summary>
     /// affinecompose.c
     /// </summary>
@@ -108,16 +109,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.ptaTranslate(ptas.handleRef, transx, transy);
-
-            if (pointer != IntPtr.Zero)
-            {
-                return new Pta(pointer);
-            }
-            else
-            {
-                return null;
-            }
+            return (Pta)Native.DllImports.ptaTranslate((HandleRef)ptas, transx, transy);
         }
 
         /// <summary>
@@ -134,16 +126,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.ptaScale(ptas.handleRef, scalex, scaley);
-
-            if (pointer != IntPtr.Zero)
-            {
-                return new Pta(pointer);
-            }
-            else
-            {
-                return null;
-            }
+            return (Pta)Native.DllImports.ptaScale((HandleRef)ptas, scalex, scaley);
         }
 
         /// <summary>
@@ -174,16 +157,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.ptaRotate(ptas.handleRef, xc, yc, angle);
-
-            if (pointer != IntPtr.Zero)
-            {
-                return new Pta(pointer);
-            }
-            else
-            {
-                return null;
-            }
+           return (Pta)Native.DllImports.ptaRotate((HandleRef)ptas, xc, yc, angle);
         }
 
 
@@ -204,7 +178,7 @@ namespace Leptonica
                 return null;
             }
 
-            return (Boxa)Native.DllImports.boxaTranslate(boxas.handleRef, transx, transy);
+            return (Boxa)Native.DllImports.boxaTranslate((HandleRef)boxas, transx, transy);
         }
 
         /// <summary>
@@ -221,7 +195,7 @@ namespace Leptonica
                 return null;
             }
 
-            return (Boxa)Native.DllImports.boxaScale(boxas.handleRef, scalex, scaley); 
+            return (Boxa)Native.DllImports.boxaScale((HandleRef)boxas, scalex, scaley);
         }
 
         /// <summary>
@@ -239,7 +213,7 @@ namespace Leptonica
                 return null;
             }
 
-            return (Boxa)Native.DllImports.boxaRotate(boxas.handleRef, xc, yc, angle); 
+            return (Boxa)Native.DllImports.boxaRotate((HandleRef)boxas, xc, yc, angle);
         }
 
 
@@ -258,16 +232,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.ptaAffineTransform(ptas.handleRef, mat);
-
-            if (pointer != IntPtr.Zero)
-            {
-                return new Pta(pointer);
-            }
-            else
-            {
-                return null;
-            }
+            return (Pta)Native.DllImports.ptaAffineTransform((HandleRef)ptas, mat); 
         }
 
         /// <summary>
@@ -283,10 +248,8 @@ namespace Leptonica
                 return null;
             }
 
-            return (Boxa)Native.DllImports.boxaAffineTransform(boxas.handleRef, mat); 
+            return (Boxa)Native.DllImports.boxaAffineTransform((HandleRef)boxas, mat);
         }
-
-
 
         // Matrix operations
         /// <summary>
@@ -407,5 +370,5 @@ namespace Leptonica
 
             return Native.DllImports.l_productMat4(mat1, mat2, mat3, mat4, matd, size) == 0;
         }
-    }
+    } 
 }

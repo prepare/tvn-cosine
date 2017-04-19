@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica 
 {
@@ -35,7 +36,7 @@ namespace Leptonica
             }
 
 
-            var pointer = Native.DllImports.pixModifyBrightness(destination.handleRef, source.handleRef, fraction);
+            var pointer = Native.DllImports.pixModifyBrightness((HandleRef)destination, (HandleRef)source, fraction);
 
             if (pointer != IntPtr.Zero)
             {

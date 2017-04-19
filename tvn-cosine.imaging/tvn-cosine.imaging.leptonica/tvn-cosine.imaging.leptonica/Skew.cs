@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
@@ -30,7 +31,7 @@ namespace Leptonica
                 return false;
             }
 
-            return Native.DllImports.pixFindSkew(pix.handleRef, out radiance, out confidence) == 0;
+            return Native.DllImports.pixFindSkew((HandleRef)pix, out radiance, out confidence) == 0;
         }
 
 
@@ -51,7 +52,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixDeskew(pix.handleRef, redSearch);
+            var pointer = Native.DllImports.pixDeskew((HandleRef)pix, redSearch);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);
@@ -82,7 +83,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixFindSkewAndDeskew(pix.handleRef, redsearch, out pangle, out pconf);
+            var pointer = Native.DllImports.pixFindSkewAndDeskew((HandleRef)pix, redsearch, out pangle, out pconf);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);
@@ -117,7 +118,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixDeskewGeneral(pix.handleRef, redsweep, sweepRange, sweepDelta, redsearch, threshold, out radiance, out confidence);
+            var pointer = Native.DllImports.pixDeskewGeneral((HandleRef)pix, redsweep, sweepRange, sweepDelta, redsearch, threshold, out radiance, out confidence);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);

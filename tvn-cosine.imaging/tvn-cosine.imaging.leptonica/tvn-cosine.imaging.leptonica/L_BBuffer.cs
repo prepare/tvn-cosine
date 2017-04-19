@@ -12,7 +12,7 @@ namespace Leptonica
     ///    and one to the head of the queue(where you start from
     ///    when writing bytes out of it. 
     /// </summary>
-    public class L_BBuffer : LeptonicaObjectBase, IDisposable 
+    public class L_BBuffer : LeptonicaObjectBase
     {
         /// <summary>
         ///       (1) If a buffer address is given, you should read all the data in.
@@ -26,48 +26,42 @@ namespace Leptonica
         public L_BBuffer(byte[] indata, int nalloc)
             : base(Native.DllImports.bbufferCreate(indata, nalloc))
         { }
-         
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
 
         /// <summary>
-        /// bbufferDestroy()
+        /// (1) Destroys the byte array in the bbuffer and then the bbuffer;
+        ///     then nulls the contents of the input ptr.
         /// </summary>
-        /// <param name="disposing"></param>
-        protected virtual void Dispose(bool disposing)
+        public void Destroy()
         {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-                var toDispose = handleRef.Handle;
-                Native.DllImports.bbufferDestroy(ref toDispose);
-
-                disposedValue = true;
-            }
+            var toDispose = (IntPtr)this;
+            Native.DllImports.bbufferDestroy(ref toDispose);
         }
 
         /// <summary>
-        /// This code added to correctly implement the disposable pattern.
+        ///       (1) For a read after write, first remove the written
+        ///           bytes by shifting the unwritten bytes in the array,
+        ///           then check if there is enough room to add the new bytes.
+        ///  If not, realloc with bbufferExpandArray(), resulting
+        ///          in a second writing of the unwritten bytes.While less
+        ///           efficient, this is simpler than making a special case
+        ///           of reallocNew().
         /// </summary>
-        ~L_BBuffer()
+        /// <param name="src">source memory buffer from which bytes are read</param>
+        /// <param name="nbytes">bytes to be read</param>
+        /// <returns> true if OK, false on error</returns>
+        public bool TryRead(byte[] src, int nbytes)
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(false);
+            return Native.DllImports.bbufferRead((HandleRef)this, src, nbytes) == 0;
         }
 
         /// <summary>
-        /// This code added to correctly implement the disposable pattern.
+        /// (1) reallocNew() copies all bb->nalloc bytes, even though only bb->n are data.
         /// </summary>
-        public void Dispose()
+        /// <param name="nbytes">nbytes  number of bytes to extend array size</param>
+        /// <returns> true if OK, false on error</returns>
+        public bool TryExtendArray(int nbytes)
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            return Native.DllImports.bbufferExtendArray((HandleRef)this, nbytes) == 0;
         }
-        #endregion
     }
 }

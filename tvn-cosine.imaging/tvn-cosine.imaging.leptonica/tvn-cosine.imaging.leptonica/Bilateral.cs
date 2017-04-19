@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
-{
+{ 
     /// <summary>
     /// Top level approximate separable grayscale or color bilateral filtering
     /// </summary>
@@ -63,7 +64,7 @@ namespace Leptonica
                 return null;
             }
 
-            return (Pix)Native.DllImports.pixBilateral(pixs.handleRef, spatial_stdev, range_stdev, ncomps, reduction);
+            return (Pix)Native.DllImports.pixBilateral((HandleRef)pixs, spatial_stdev, range_stdev, ncomps, reduction);
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace Leptonica
                 return null;
             }
 
-            return (Pix)Native.DllImports.pixBilateralGray(pixs.handleRef, spatial_stdev, range_stdev, ncomps, reduction);
+            return (Pix)Native.DllImports.pixBilateralGray((HandleRef)pixs, spatial_stdev, range_stdev, ncomps, reduction);
         }
 
         /// <summary>
@@ -112,7 +113,7 @@ namespace Leptonica
                 return null;
             }
 
-            return (Pix)Native.DllImports.pixBilateralExact(pixs.handleRef, spatial_kel.handleRef, range_kel.handleRef);
+            return (Pix)Native.DllImports.pixBilateralExact((HandleRef)pixs, (HandleRef)spatial_kel, (HandleRef)range_kel);
         }
 
         /// <summary>
@@ -131,7 +132,7 @@ namespace Leptonica
                 return null;
             }
 
-            return (Pix)Native.DllImports.pixBilateralGrayExact(pixs.handleRef, spatial_kel.handleRef, range_kel.handleRef);
+            return (Pix)Native.DllImports.pixBilateralGrayExact((HandleRef)pixs, (HandleRef)spatial_kel, (HandleRef)range_kel);
         }
 
         /// <summary>
@@ -174,7 +175,7 @@ namespace Leptonica
                 return null;
             }
 
-            return (Pix)Native.DllImports.pixBlockBilateralExact(pixs.handleRef, spatial_stdev, range_stdev);
+            return (Pix)Native.DllImports.pixBlockBilateralExact((HandleRef)pixs, spatial_stdev, range_stdev);
         }
 
         /// <summary>
@@ -194,5 +195,5 @@ namespace Leptonica
 
             return (L_Kernel)Native.DllImports.makeRangeKernel(range_stdev);
         }
-    }
+    } 
 }

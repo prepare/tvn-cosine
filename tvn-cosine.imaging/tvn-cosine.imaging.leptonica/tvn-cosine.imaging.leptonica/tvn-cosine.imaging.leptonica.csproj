@@ -83,7 +83,6 @@
     <Compile Include="Pixa.cs" />
     <Compile Include="PixaPixEnumerator.cs" />
     <Compile Include="PixColorMap.cs" />
-    <Compile Include="PixColorMapColorEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pta.cs" />
     <Compile Include="Rotate.cs" />

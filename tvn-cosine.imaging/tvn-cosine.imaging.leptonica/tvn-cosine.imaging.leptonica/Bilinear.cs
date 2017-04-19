@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
-{
+{ 
     /// <summary>
     /// bilinear.c
     /// </summary>
@@ -38,7 +39,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBilinearSampledPta(pixs.handleRef, ptad.handleRef, ptas.handleRef, incolor);
+            var pointer = Native.DllImports.pixBilinearSampledPta((HandleRef)pixs, (HandleRef)ptad, (HandleRef)ptas, incolor);
 
             if (pointer != IntPtr.Zero)
             {
@@ -74,7 +75,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBilinearSampled(pixs.handleRef, vc, incolor);
+            var pointer = Native.DllImports.pixBilinearSampled((HandleRef)pixs, vc, incolor);
 
             if (pointer != IntPtr.Zero)
             {
@@ -114,7 +115,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBilinearPta(pixs.handleRef, ptad.handleRef, ptas.handleRef, incolor);
+            var pointer = Native.DllImports.pixBilinearPta((HandleRef)pixs, (HandleRef)ptad, (HandleRef)ptas, incolor);
 
             if (pointer != IntPtr.Zero)
             {
@@ -146,7 +147,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBilinear(pixs.handleRef, vc, incolor);
+            var pointer = Native.DllImports.pixBilinear((HandleRef)pixs, vc, incolor);
 
             if (pointer != IntPtr.Zero)
             {
@@ -182,7 +183,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBilinearPtaColor(pixs.handleRef, ptad.handleRef, ptas.handleRef, colorval.ToAbgrUint());
+            var pointer = Native.DllImports.pixBilinearPtaColor((HandleRef)pixs, (HandleRef)ptad, (HandleRef)ptas, colorval.ToAbgrUint());
 
             if (pointer != IntPtr.Zero)
             {
@@ -213,7 +214,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBilinearColor(pixs.handleRef, vc, colorval.ToAbgrUint());
+            var pointer = Native.DllImports.pixBilinearColor((HandleRef)pixs, vc, colorval.ToAbgrUint());
 
             if (pointer != IntPtr.Zero)
             {
@@ -249,7 +250,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBilinearPtaGray(pixs.handleRef, ptad.handleRef, ptas.handleRef, grayval);
+            var pointer = Native.DllImports.pixBilinearPtaGray((HandleRef)pixs, (HandleRef)ptad, (HandleRef)ptas, grayval);
 
             if (pointer != IntPtr.Zero)
             {
@@ -280,7 +281,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixBilinearGray(pixs.handleRef, vc, grayval);
+            var pointer = Native.DllImports.pixBilinearGray((HandleRef)pixs, vc, grayval);
 
             if (pointer != IntPtr.Zero)
             {
@@ -354,7 +355,7 @@ namespace Leptonica
                 pixg = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixBilinearPtaWithAlpha(pixs.handleRef, ptad.handleRef, ptas.handleRef, pixg.handleRef, fract, border);
+            var pointer = Native.DllImports.pixBilinearPtaWithAlpha((HandleRef)pixs, (HandleRef)ptad, (HandleRef)ptas, (HandleRef)pixg, fract, border);
 
             if (pointer != IntPtr.Zero)
             {
@@ -432,7 +433,7 @@ namespace Leptonica
                 return false;
             }
 
-            return Native.DllImports.getBilinearXformCoeffs(ptad.handleRef, ptas.handleRef, out pvc) == 0;
+            return Native.DllImports.getBilinearXformCoeffs((HandleRef)ptad, (HandleRef)ptas, out pvc) == 0;
         }
 
         /// <summary>
@@ -478,5 +479,5 @@ namespace Leptonica
 
             return Native.DllImports.bilinearXformPt(vc, x, y, out pxp, out pyp) == 0;
         } 
-    }
+    } 
 }

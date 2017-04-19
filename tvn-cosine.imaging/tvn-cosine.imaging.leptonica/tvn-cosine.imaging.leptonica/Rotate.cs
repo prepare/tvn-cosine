@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
@@ -55,15 +56,8 @@ namespace Leptonica
             {
                 return null;
             }
-
-            //fix the width and height
-            if (width == -1 || height == -1)
-            {
-                width = pix.Width;
-                height = pix.Height;
-            }
-
-            var pointer = Native.DllImports.pixRotate(pix.handleRef, radiance, type, incolor, width, height);
+              
+            var pointer = Native.DllImports.pixRotate((HandleRef)pix, radiance, type, incolor, width, height);
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);

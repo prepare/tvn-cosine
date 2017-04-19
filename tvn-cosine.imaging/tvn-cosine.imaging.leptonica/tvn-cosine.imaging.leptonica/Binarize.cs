@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
@@ -72,7 +69,7 @@ namespace Leptonica
             }
 
             IntPtr ppixthPtr, ppixdPtr;
-            var answer = Native.DllImports.pixOtsuAdaptiveThreshold(pixs.handleRef, sx, sy, smoothx, smoothy, scorefract, out ppixthPtr, out ppixdPtr);
+            var answer = Native.DllImports.pixOtsuAdaptiveThreshold((HandleRef)pixs, sx, sy, smoothx, smoothy, scorefract, out ppixthPtr, out ppixdPtr);
 
             if (answer != 0)
             {
@@ -134,7 +131,7 @@ namespace Leptonica
                 pixim = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixOtsuThreshOnBackgroundNorm(pixs.handleRef, pixim.handleRef, sx, sy, thresh, mincount, bgval, smoothx, smoothy, scorefract, out pthresh);
+            var pointer = Native.DllImports.pixOtsuThreshOnBackgroundNorm((HandleRef)pixs, (HandleRef)pixim, sx, sy, thresh, mincount, bgval, smoothx, smoothy, scorefract, out pthresh);
 
             if (pointer != IntPtr.Zero)
             {
@@ -197,7 +194,7 @@ namespace Leptonica
                 pixim = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixMaskedThreshOnBackgroundNorm(pixs.handleRef, pixim.handleRef, sx, sy, thresh, mincount, smoothx, smoothy, scorefract, out pthresh);
+            var pointer = Native.DllImports.pixMaskedThreshOnBackgroundNorm((HandleRef)pixs, (HandleRef)pixim, sx, sy, thresh, mincount, smoothx, smoothy, scorefract, out pthresh);
 
             if (pointer != IntPtr.Zero)
             {
@@ -250,7 +247,7 @@ namespace Leptonica
             }
 
             IntPtr ppixthPtr, ppixdPtr;
-            var answer = Native.DllImports.pixSauvolaBinarizeTiled(pixs.handleRef, whsize, factor, nx, ny, out ppixthPtr, out ppixdPtr);
+            var answer = Native.DllImports.pixSauvolaBinarizeTiled((HandleRef)pixs, whsize, factor, nx, ny, out ppixthPtr, out ppixdPtr);
 
             if (answer != 0)
             {
@@ -313,7 +310,7 @@ namespace Leptonica
             }
 
             IntPtr ppixmPtr, ppixsdPtr, ppixthPtr, ppixdPtr;
-            var answer = Native.DllImports.pixSauvolaBinarize(pixs.handleRef, whsize, factor, addborder, out ppixmPtr, out ppixsdPtr, out ppixthPtr, out ppixdPtr);
+            var answer = Native.DllImports.pixSauvolaBinarize((HandleRef)pixs, whsize, factor, addborder, out ppixmPtr, out ppixsdPtr, out ppixthPtr, out ppixdPtr);
 
             if (answer != 0)
             {
@@ -380,7 +377,7 @@ namespace Leptonica
             }
 
             IntPtr ppixsdPtr;
-            var pointer = Native.DllImports.pixSauvolaGetThreshold(pixm.handleRef, pixms.handleRef, factor, out ppixsdPtr);
+            var pointer = Native.DllImports.pixSauvolaGetThreshold((HandleRef)pixm, (HandleRef)pixms, factor, out ppixsdPtr);
 
             if (pointer != IntPtr.Zero)
             {
@@ -421,7 +418,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixApplyLocalThreshold(pixs.handleRef, pixth.handleRef, redfactor);
+            var pointer = Native.DllImports.pixApplyLocalThreshold((HandleRef)pixs, (HandleRef)pixth, redfactor);
 
             if (pointer != IntPtr.Zero)
             {
@@ -503,7 +500,7 @@ namespace Leptonica
 
             IntPtr ppixdPtr;
             int idebugflag = debugflag ? 1 : 0;
-            var answer = Native.DllImports.pixThresholdByConnComp(pixs.handleRef, pixm.handleRef, start, end, incr, thresh48, threshdiff, out pglobthresh, out ppixdPtr, idebugflag);
+            var answer = Native.DllImports.pixThresholdByConnComp((HandleRef)pixs, (HandleRef)pixm, start, end, incr, thresh48, threshdiff, out pglobthresh, out ppixdPtr, idebugflag);
 
             if (answer != 0)
             {
@@ -517,5 +514,5 @@ namespace Leptonica
                 return false;
             }
         }
-    }
+    } 
 }

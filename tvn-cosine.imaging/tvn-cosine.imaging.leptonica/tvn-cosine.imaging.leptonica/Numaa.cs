@@ -3,74 +3,53 @@ using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
-    public class Numaa : System.ICloneable, System.IDisposable
+    /// <summary>
+    /// Numaa
+    /// </summary>
+    public class Numaa : LeptonicaObjectBase
     {
         /// <summary>
-        /// 
+        /// Creates a new Numaa from pointer
         /// </summary>
-        public readonly HandleRef handleRef;
+        /// <param name="pointer">The pointer</param>
+        public Numaa(IntPtr pointer)
+            : base(pointer)
+        { }
 
         /// <summary>
-        /// 
+        /// numaCreate()
+        /// </summary>
+        /// <param name="n">n size of number array to be alloc'd 0 for default</param>
+        /// <returns>na, or NULL on error</returns>
+        public static Numaa Create(int n)
+        {
+            return (Numaa)Native.DllImports.numaaCreate(n);
+        }
+         
+        /// <summary>
+        /// (1) Decrements the ref count and, if 0, destroys the numa.
+        /// (2) Always nulls the input ptr.
+        /// </summary>
+        public void Destroy()
+        {
+            var toDestroy = (IntPtr)this;
+            Native.DllImports.numaaDestroy(ref toDestroy);
+        } 
+
+        /// <summary>
+        /// Explicitly cast IntPtr to L_Kernal
         /// </summary>
         /// <param name="pointer"></param>
-        public Numaa(System.IntPtr pointer)
+        public static explicit operator Numaa(IntPtr pointer)
         {
-            handleRef = new HandleRef(this, pointer);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public object Clone()
-        {
-            throw new NotImplementedException();
-        }
-
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
+            if (pointer != IntPtr.Zero)
             {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-
-                // var toDispose = handleRef.Handle;
-                //  Native.DllImports.boxDestroy(ref toDispose);
-
-                disposedValue = true;
+                return new Numaa(pointer);
+            }
+            else
+            {
+                return null;
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        ~Numaa()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(false);
-        }
-
-        // This code added to correctly implement the disposable pattern.
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        #endregion
     }
 }

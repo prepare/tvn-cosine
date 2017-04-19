@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
-{
+{ 
     /// <summary>
     /// affine.c
     /// </summary>
@@ -49,8 +50,8 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffineSampledPta(pixs.handleRef,
-                ptad.handleRef, ptas.handleRef, incolor);
+            var pointer = Native.DllImports.pixAffineSampledPta((HandleRef)pixs,
+                (HandleRef)ptad, (HandleRef)ptas, incolor);
 
             if (pointer != IntPtr.Zero)
             {
@@ -81,7 +82,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffineSampled(source.handleRef,
+            var pointer = Native.DllImports.pixAffineSampled((HandleRef)source,
               vc, incolor);
 
             if (pointer != IntPtr.Zero)
@@ -122,8 +123,8 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffinePta(pixs.handleRef,
-              ptad.handleRef, ptas.handleRef, incolor);
+            var pointer = Native.DllImports.pixAffinePta((HandleRef)pixs,
+              (HandleRef)ptad, (HandleRef)ptas, incolor);
 
             if (pointer != IntPtr.Zero)
             {
@@ -155,7 +156,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffine(pixs.handleRef,
+            var pointer = Native.DllImports.pixAffine((HandleRef)pixs,
               vc, incolor);
 
             if (pointer != IntPtr.Zero)
@@ -191,8 +192,8 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffinePtaColor(pixs.handleRef,
-              ptad.handleRef, ptas.handleRef, color.ToAbgrUint());
+            var pointer = Native.DllImports.pixAffinePtaColor((HandleRef)pixs,
+              (HandleRef)ptad, (HandleRef)ptas, color.ToAbgrUint());
 
             if (pointer != IntPtr.Zero)
             {
@@ -222,7 +223,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffineColor(pixs.handleRef,
+            var pointer = Native.DllImports.pixAffineColor((HandleRef)pixs,
               vc, color.ToAbgrUint());
 
             if (pointer != IntPtr.Zero)
@@ -258,8 +259,8 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffinePtaGray(pixs.handleRef,
-              ptad.handleRef, ptas.handleRef, grayval);
+            var pointer = Native.DllImports.pixAffinePtaGray((HandleRef)pixs,
+              (HandleRef)ptad, (HandleRef)ptas, grayval);
 
             if (pointer != IntPtr.Zero)
             {
@@ -289,7 +290,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffineGray(pixs.handleRef,
+            var pointer = Native.DllImports.pixAffineGray((HandleRef)pixs,
               vc, grayval);
 
             if (pointer != IntPtr.Zero)
@@ -363,8 +364,8 @@ namespace Leptonica
                 pixg = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixAffinePtaWithAlpha(pixs.handleRef,
-                ptad.handleRef, ptas.handleRef, pixg.handleRef, fract, border);
+            var pointer = Native.DllImports.pixAffinePtaWithAlpha((HandleRef)pixs,
+                (HandleRef)ptad, (HandleRef)ptas, (HandleRef)pixg, fract, border);
 
             if (pointer != IntPtr.Zero)
             {
@@ -448,8 +449,8 @@ namespace Leptonica
                 return false;
             }
 
-            return Native.DllImports.getAffineXformCoeffs(ptas.handleRef,
-                ptad.handleRef, out pvc) == 0;
+            return Native.DllImports.getAffineXformCoeffs((HandleRef)ptas,
+                (HandleRef)ptad, out pvc) == 0;
         }
 
         /// <summary>
@@ -664,8 +665,8 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAffineSequential(pixs.handleRef,
-                ptad.handleRef, ptas.handleRef, bw, bh);
+            var pointer = Native.DllImports.pixAffineSequential((HandleRef)pixs,
+                (HandleRef)ptad, (HandleRef)ptas, bw, bh);
 
             if (pointer != IntPtr.Zero)
             {
@@ -676,5 +677,5 @@ namespace Leptonica
                 return null;
             }
         }
-    }
+    } 
 }

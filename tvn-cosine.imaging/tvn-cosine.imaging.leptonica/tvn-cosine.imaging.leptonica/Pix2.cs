@@ -1,4 +1,5 @@
-﻿using System; 
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Leptonica
 {
@@ -22,7 +23,7 @@ namespace Leptonica
                 return null;
             }
 
-            var pointer = Native.DllImports.pixAddBorder(source.handleRef, width, borderColor.ToAbgrUint());
+            var pointer = Native.DllImports.pixAddBorder((HandleRef)source, width, borderColor.ToAbgrUint());
             if (pointer != IntPtr.Zero)
             {
                 return new Pix(pointer);

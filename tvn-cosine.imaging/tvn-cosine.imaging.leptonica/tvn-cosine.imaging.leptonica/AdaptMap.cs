@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
-namespace Leptonica 
+namespace Leptonica
 {
     /// <summary>
     /// adaptmap.c local adaptive; mostly gray-to-gray in preparation for binarization
@@ -41,7 +42,7 @@ namespace Leptonica
                 greyScale = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixCleanBackgroundToWhite(source.handleRef, mask.handleRef, greyScale.handleRef, gamma, blackValue, whiteValue);
+            var pointer = Native.DllImports.pixCleanBackgroundToWhite((HandleRef)source, (HandleRef)mask, (HandleRef)greyScale, gamma, blackValue, whiteValue);
 
             if (pointer != IntPtr.Zero)
             {
@@ -83,7 +84,7 @@ namespace Leptonica
                 greyScale = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixBackgroundNormSimple(source.handleRef, mask.handleRef, greyScale.handleRef);
+            var pointer = Native.DllImports.pixBackgroundNormSimple((HandleRef)source, (HandleRef)mask, (HandleRef)greyScale);
 
             if (pointer != IntPtr.Zero)
             {
@@ -174,7 +175,7 @@ namespace Leptonica
             }
 
 
-            var pointer = Native.DllImports.pixBackgroundNorm(source.handleRef, mask.handleRef, greyScale.handleRef, sx, sy, thresh, mincount, bgval, smoothx, smoothy);
+            var pointer = Native.DllImports.pixBackgroundNorm((HandleRef)source, (HandleRef)mask, (HandleRef)greyScale, sx, sy, thresh, mincount, bgval, smoothx, smoothy);
 
             if (pointer != IntPtr.Zero)
             {
@@ -235,7 +236,7 @@ namespace Leptonica
                 mask = new Pix(IntPtr.Zero);
             }
 
-            var pointer = Native.DllImports.pixBackgroundNormMorph(source.handleRef, mask.handleRef, reduction, size, bgval);
+            var pointer = Native.DllImports.pixBackgroundNormMorph((HandleRef)source, (HandleRef)mask, reduction, size, bgval);
 
             if (pointer != IntPtr.Zero)
             {
@@ -281,7 +282,7 @@ namespace Leptonica
             }
 
             IntPtr pixPointer;
-            var result = Native.DllImports.pixBackgroundNormGrayArray(source.handleRef, mask.handleRef, sx, sy, thresh, mincount, bgval, smoothx, smoothy, out pixPointer);
+            var result = Native.DllImports.pixBackgroundNormGrayArray((HandleRef)source, (HandleRef)mask, sx, sy, thresh, mincount, bgval, smoothx, smoothy, out pixPointer);
 
             if (result != 1)
             {
@@ -336,8 +337,8 @@ namespace Leptonica
             }
 
             IntPtr ppixrPointer, ppixgPointer, ppixbPointer;
-            var result = Native.DllImports.pixBackgroundNormRGBArrays(pixs.handleRef, pixim.handleRef,
-                pixg.handleRef, sx, sy, thresh, mincount, bgval, smoothx, smoothy,
+            var result = Native.DllImports.pixBackgroundNormRGBArrays((HandleRef)pixs, (HandleRef)pixim,
+                (HandleRef)pixg, sx, sy, thresh, mincount, bgval, smoothx, smoothy,
                 out ppixrPointer, out ppixgPointer, out ppixbPointer);
 
             if (result != 1)
@@ -384,7 +385,7 @@ namespace Leptonica
             }
 
             IntPtr pixPointer;
-            var result = Native.DllImports.pixBackgroundNormGrayArrayMorph(source.handleRef, mask.handleRef,
+            var result = Native.DllImports.pixBackgroundNormGrayArrayMorph((HandleRef)source, (HandleRef)mask,
                 reduction, size, bgval, out pixPointer);
 
             if (result != 1)
@@ -431,7 +432,7 @@ namespace Leptonica
             }
 
             IntPtr ppixrPointer, ppixgPointer, ppixbPointer;
-            var result = Native.DllImports.pixBackgroundNormRGBArraysMorph(source.handleRef, mask.handleRef,
+            var result = Native.DllImports.pixBackgroundNormRGBArraysMorph((HandleRef)source, (HandleRef)mask,
                 reduction, size, bgval,
                 out ppixrPointer, out ppixgPointer, out ppixbPointer);
 
@@ -481,7 +482,7 @@ namespace Leptonica
             }
 
             IntPtr pixPointer;
-            var result = Native.DllImports.pixGetBackgroundGrayMap(source.handleRef, mask.handleRef, sx, sy, thresh, mincount, out pixPointer);
+            var result = Native.DllImports.pixGetBackgroundGrayMap((HandleRef)source, (HandleRef)mask, sx, sy, thresh, mincount, out pixPointer);
 
             if (result != 1)
             {
@@ -533,8 +534,8 @@ namespace Leptonica
             }
 
             IntPtr ppixrPointer, ppixgPointer, ppixbPointer;
-            var result = Native.DllImports.pixGetBackgroundRGBMap(source.handleRef, mask.handleRef,
-                grayscale.handleRef, sx, sy, thresh, mincount,
+            var result = Native.DllImports.pixGetBackgroundRGBMap((HandleRef)source, (HandleRef)mask,
+                (HandleRef)grayscale, sx, sy, thresh, mincount,
                 out ppixrPointer, out ppixgPointer, out ppixbPointer);
 
             if (result != 1)
@@ -576,7 +577,7 @@ namespace Leptonica
             }
 
             IntPtr pixPointer;
-            var result = Native.DllImports.pixGetBackgroundGrayMapMorph(source.handleRef, mask.handleRef, reduction, size, out pixPointer);
+            var result = Native.DllImports.pixGetBackgroundGrayMapMorph((HandleRef)source, (HandleRef)mask, reduction, size, out pixPointer);
 
             if (result != 1)
             {
@@ -617,7 +618,7 @@ namespace Leptonica
             }
 
             IntPtr ppixrPointer, ppixgPointer, ppixbPointer;
-            var result = Native.DllImports.pixGetBackgroundRGBMapMorph(source.handleRef, mask.handleRef,
+            var result = Native.DllImports.pixGetBackgroundRGBMapMorph((HandleRef)source, (HandleRef)mask,
                 reduction, size,
                 out ppixrPointer, out ppixgPointer, out ppixbPointer);
 
@@ -675,7 +676,7 @@ namespace Leptonica
                 return false;
             }
 
-            var success = Native.DllImports.pixFillMapHoles(pix.handleRef, nx, ny, filltype);
+            var success = Native.DllImports.pixFillMapHoles((HandleRef)pix, nx, ny, filltype);
 
             if (success == 0)
             {
@@ -702,7 +703,7 @@ namespace Leptonica
                 return null;
             }
 
-            var result = Native.DllImports.pixExtendByReplication(source.handleRef, addw, addh);
+            var result = Native.DllImports.pixExtendByReplication((HandleRef)source, addw, addh);
 
             if (result != IntPtr.Zero)
             {
@@ -741,7 +742,7 @@ namespace Leptonica
                 mask = new Pix(IntPtr.Zero);
             }
 
-            var result = Native.DllImports.pixSmoothConnectedRegions(source.handleRef, mask.handleRef, factor);
+            var result = Native.DllImports.pixSmoothConnectedRegions((HandleRef)source, (HandleRef)mask, factor);
 
             if (result == 0)
             {
@@ -813,7 +814,7 @@ namespace Leptonica
                 return null;
             }
 
-            var result = Native.DllImports.pixGetInvBackgroundMap(source.handleRef, bgval, smoothx, smoothy);
+            var result = Native.DllImports.pixGetInvBackgroundMap((HandleRef)source, bgval, smoothx, smoothy);
 
             if (result != IntPtr.Zero)
             {
@@ -847,8 +848,8 @@ namespace Leptonica
                 return null;
             }
 
-            var result = Native.DllImports.pixApplyInvBackgroundGrayMap(source.handleRef,
-                mask.handleRef, sx, sy);
+            var result = Native.DllImports.pixApplyInvBackgroundGrayMap((HandleRef)source,
+                (HandleRef)mask, sx, sy);
 
             if (result != IntPtr.Zero)
             {
@@ -890,8 +891,8 @@ namespace Leptonica
                 return null;
             }
 
-            var result = Native.DllImports.pixApplyInvBackgroundRGBMap(source.handleRef,
-                pixmr.handleRef, pixmg.handleRef, pixmb.handleRef, sx, sy);
+            var result = Native.DllImports.pixApplyInvBackgroundRGBMap((HandleRef)source,
+                (HandleRef)pixmr, (HandleRef)pixmg, (HandleRef)pixmb, sx, sy);
 
             if (result != IntPtr.Zero)
             {
@@ -938,8 +939,8 @@ namespace Leptonica
                 return null;
             }
 
-            var result = Native.DllImports.pixApplyVariableGrayMap(source.handleRef,
-                pixg.handleRef, target);
+            var result = Native.DllImports.pixApplyVariableGrayMap((HandleRef)source,
+                (HandleRef)pixg, target);
 
             if (result != IntPtr.Zero)
             {
@@ -995,7 +996,7 @@ namespace Leptonica
                 destination = new Pix(IntPtr.Zero);
             }
 
-            var result = Native.DllImports.pixGlobalNormRGB(destination.handleRef, source.handleRef,
+            var result = Native.DllImports.pixGlobalNormRGB((HandleRef)destination, (HandleRef)source,
                 rval, gval, bval, mapval);
 
             if (result != IntPtr.Zero)
@@ -1050,7 +1051,7 @@ namespace Leptonica
                 destination = new Pix(IntPtr.Zero);
             }
 
-            var result = Native.DllImports.pixGlobalNormNoSatRGB(destination.handleRef, source.handleRef,
+            var result = Native.DllImports.pixGlobalNormNoSatRGB((HandleRef)destination, (HandleRef)source,
                 rval, gval, bval, factor, rank);
 
             if (result != IntPtr.Zero)
@@ -1113,7 +1114,7 @@ namespace Leptonica
             }
 
             IntPtr ppixthPointer, ppixbPointer, ppixdPointer;
-            var result = Native.DllImports.pixThresholdSpreadNorm(pixs.handleRef, filtertype,
+            var result = Native.DllImports.pixThresholdSpreadNorm((HandleRef)pixs, filtertype,
                 edgethresh, smoothx, smoothy, gamma, minval, maxval, targetthresh,
                 out ppixthPointer, out ppixbPointer, out ppixdPointer);
 
@@ -1167,7 +1168,7 @@ namespace Leptonica
                 return null;
             }
 
-            var result = Native.DllImports.pixBackgroundNormFlex(source.handleRef, sx, sy, smoothx, smoothy, delta);
+            var result = Native.DllImports.pixBackgroundNormFlex((HandleRef)source, sx, sy, smoothx, smoothy, delta);
 
             if (result != IntPtr.Zero)
             {
@@ -1228,7 +1229,7 @@ namespace Leptonica
                 pixd = new Pix(IntPtr.Zero);
             }
 
-            var result = Native.DllImports.pixContrastNorm(pixd.handleRef, pix.handleRef, sx, sy, mindiff, smoothx, smoothy);
+            var result = Native.DllImports.pixContrastNorm((HandleRef)pixd, (HandleRef)pix, sx, sy, mindiff, smoothx, smoothy);
 
             if (result != IntPtr.Zero)
             {
@@ -1265,7 +1266,7 @@ namespace Leptonica
             }
 
             IntPtr ppixminPointer, ppixmaxPointer;
-            var result = Native.DllImports.pixMinMaxTiles(source.handleRef, sx, sy, mindiff, smoothx, smoothy,
+            var result = Native.DllImports.pixMinMaxTiles((HandleRef)source, sx, sy, mindiff, smoothx, smoothy,
                 out ppixminPointer, out ppixmaxPointer);
 
             if (result == 0)
@@ -1309,16 +1310,7 @@ namespace Leptonica
                 return false;
             }
 
-            var result = Native.DllImports.pixSetLowContrast(pixs1.handleRef, pixs2.handleRef, mindiff);
-
-            if (result == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Native.DllImports.pixSetLowContrast((HandleRef)pixs1, (HandleRef)pixs2, mindiff) == 0; 
         }
 
         /// <summary>
@@ -1357,20 +1349,11 @@ namespace Leptonica
             }
             if (pixd == null)
             {
-                pixd = new Pix(IntPtr.Zero);
+                pixd =  new Pix(IntPtr.Zero);
             }
 
-            var result = Native.DllImports.pixLinearTRCTiled(pixd.handleRef, pixs.handleRef, sx, sy, pixmin.handleRef, pixmax.handleRef);
-
-            if (result != IntPtr.Zero)
-            {
-                return new Pix(result);
-            }
-            else
-            {
-                return null;
-            }
+            return (Pix)Native.DllImports.pixLinearTRCTiled((HandleRef)pixd, (HandleRef)pixs, sx, sy, (HandleRef)pixmin, (HandleRef)pixmax);
         }
-         
+
     }
 }
