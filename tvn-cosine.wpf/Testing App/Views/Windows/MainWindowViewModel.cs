@@ -33,15 +33,15 @@ namespace Testing_App.Views.Windows
                 int id;
                 if (int.TryParse(drawingMode.ToString(), out id))
                 {
-                    if (Enum.IsDefined(typeof(CanvasDrawingMode), (int)id))
+                    if (Enum.IsDefined(typeof(CANVAS_DRAWING_MODE), id))
                     {
-                        CanvasDrawingMode = (CanvasDrawingMode)id;
+                        CanvasDrawingMode = (CANVAS_DRAWING_MODE)id;
                     }
                 }
                 return;
             }
 
-            CanvasDrawingMode = CanvasDrawingMode.NONE;
+            CanvasDrawingMode = CANVAS_DRAWING_MODE.NONE;
         }
 
         private IEnumerable<IZone> zones;
@@ -51,8 +51,8 @@ namespace Testing_App.Views.Windows
             set { SetProperty(ref zones, value); }
         }
 
-        private CanvasDrawingMode canvasDrawingMode;
-        public CanvasDrawingMode CanvasDrawingMode
+        private CANVAS_DRAWING_MODE canvasDrawingMode;
+        public CANVAS_DRAWING_MODE CanvasDrawingMode
         {
             get { return canvasDrawingMode; }
             set { SetProperty(ref canvasDrawingMode, value); }

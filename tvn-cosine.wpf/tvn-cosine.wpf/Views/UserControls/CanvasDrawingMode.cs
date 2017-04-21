@@ -1,6 +1,6 @@
 ﻿namespace Tvn.Cosine.Wpf.Views.UserControls
 { 
-    public enum CanvasDrawingMode
+    public enum CANVAS_DRAWING_MODE
     {
         NONE = 0,
         HEADLINE = 1,

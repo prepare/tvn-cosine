@@ -201,10 +201,12 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
             var zone = d as Zone;
             if ((bool)e.NewValue)
             {
+                Panel.SetZIndex(zone, 99);
                 zone.rectangle.Opacity = 0.6;
             }
             else
             {
+                Panel.SetZIndex(zone, 0);
                 zone.rectangle.Opacity = 0.4;
             }
         }

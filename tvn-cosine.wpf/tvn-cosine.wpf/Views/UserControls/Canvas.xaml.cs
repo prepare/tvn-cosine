@@ -150,18 +150,18 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         #endregion
 
         #region Drawing Mode  
-        public CanvasDrawingMode DrawingMode
+        public CANVAS_DRAWING_MODE DrawingMode
         {
-            get { return (CanvasDrawingMode)GetValue(DrawingModeProperty); }
+            get { return (CANVAS_DRAWING_MODE)GetValue(DrawingModeProperty); }
             set { SetValue(DrawingModeProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for DrawingMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DrawingModeProperty =
             DependencyProperty.Register("DrawingMode",
-                typeof(CanvasDrawingMode),
+                typeof(CANVAS_DRAWING_MODE),
                 typeof(Canvas),
-                new FrameworkPropertyMetadata(CanvasDrawingMode.NONE)
+                new FrameworkPropertyMetadata(CANVAS_DRAWING_MODE.NONE)
                 {
                     BindsTwoWayByDefault = true,
                     DefaultUpdateSourceTrigger = System.Windows.Data.UpdateSourceTrigger.PropertyChanged
@@ -195,12 +195,12 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
         private void UserControl_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             isCapturedToDraw = false;
-            if (DrawingMode == CanvasDrawingMode.DELETE)
+            if (DrawingMode == CANVAS_DRAWING_MODE.DELETE)
             {
                 deleteZones();
             }
 
-            DrawingMode = CanvasDrawingMode.NONE;
+            DrawingMode = CANVAS_DRAWING_MODE.NONE;
             Mouse.Capture(null);
         }
 
@@ -221,7 +221,7 @@ namespace Tvn.Cosine.Wpf.Views.UserControls
                 };
                 Zones.Add(newZoneToDraw);
             }
-            else
+            else  
             {
                 var point = Mouse.GetPosition(itemsControl);
                 foreach (var zone in Zones)
